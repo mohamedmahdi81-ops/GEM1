@@ -1,7 +1,7 @@
 # GEM1 — Step 10 Confidence Engine: Validation Report
 
 **Date**: 2026-07-17
-**Auditor**: Independent verification performed in the cloud coworking session, directly against raw files on Mohammed's machine — not self-reported by the Claude Code session that built the pipeline.
+**Auditor**: Independent verification performed in the cloud coworking session, directly against raw files on Mohammed's machine — not self-reported by the development session that built the pipeline.
 **Scope**: Steps 9 (consensus scoring) and 10 (hierarchical confidence engine v1), covering all 10 cohort/group combinations, all 12,931 reactions per group (129,310 rows total).
 
 ## Purpose
@@ -10,7 +10,7 @@ Before implementing Step 11 (empirical weight calibration), confirm that Step 10
 
 ## Method
 
-All checks were performed by independently reloading the raw Step 5 model JSONs (`data/context_specific_models/*.json`), the Human-GEM base model (`models/Human-GEM.json`), and the Step 9/10 outputs, then recomputing every derived value from first principles and comparing against what the pipeline produced. This audit did not trust any self-reported summary from the Claude Code session that built the pipeline — every number below was independently recomputed from source data.
+All checks were performed by independently reloading the raw Step 5 model JSONs (`data/context_specific_models/*.json`), the Human-GEM base model (`models/Human-GEM.json`), and the Step 9/10 outputs, then recomputing every derived value from first principles and comparing against what the pipeline produced. This audit did not trust any self-reported summary from the development session that built the pipeline — every number below was independently recomputed from source data.
 
 ## Results
 

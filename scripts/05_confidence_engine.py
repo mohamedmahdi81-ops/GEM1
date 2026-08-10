@@ -6,9 +6,8 @@ This is GEM1's core methodological contribution: a decomposable, per-reaction
 confidence score with a fully auditable decision trace, built in explicit
 layers so additional evidence (flux-sampling uncertainty, perturbation
 robustness) can be added later without changing the output schema. Full
-formula definitions and design rationale are documented in CLAUDE.md under
-"Step 10 methodology" -- this docstring gives the short version; CLAUDE.md is
-the source of truth if the two ever disagree.
+formula definitions and design rationale are given directly in this
+docstring and the implementation below.
 
 Layer 0 (raw evidence): per-algorithm active/inactive calls for FASTCORE,
 iMAT, tINIT (the "core" algorithms) and GIMME, taken directly from Step 5's

@@ -17,8 +17,8 @@ Methodology (per Mohammed's instructions, 2026-07-18):
    `06_flux_analysis.py` (via importlib, since the module name starts with a
    digit) rather than re-deriving the active-reaction-set logic -- so the
    exact same reaction set (Step 9's strict_consensus_reactions unioned with
-   the 519-reaction growth-support set, see CLAUDE.md's Step 6 methodology
-   section) is used here. Step 6 is a functional scaffold consumed by this
+   the 519-reaction growth-support set, as derived in Step 6's own
+   methodology) is used here. Step 6 is a functional scaffold consumed by this
    step, not re-derived or reinterpreted.
 
 2. Biomass floor, not a single point. Sampling the model exactly at its FBA

@@ -22,7 +22,7 @@ Steps 2, 4, and 5 were originally tagged generically as "Sandbox" or "Coworker +
 | 10 | Hierarchical confidence engine | Custom Python (weighted scoring module) | **Implemented, v1, fully audited (2026-07-17), but stale — must be regenerated after Step 9 is regenerated.** The audit's verdict on internal logic/formula correctness still holds; the underlying numbers do not, since they were computed from the pre-fix iMAT/tINIT sets. |
 | 11 | Empirical weight calibration | scikit-learn, statsmodels | Pending |
 | 12 | Visualization & confidence reporting | Escher, matplotlib / plotly | Pending |
-| 13 | Biological interpretation & manuscript synthesis | Domain expertise + literature | Pending (Mohammed's, not Claude Code's) |
+| 13 | Biological interpretation & manuscript synthesis | Domain expertise + literature | Pending (Mohammed's own domain expertise, not an automated pipeline step) |
 
 ## Step 5 growth-capability fix (2026-07-18)
 
@@ -46,7 +46,7 @@ Steps 2, 4, and 5 were originally tagged generically as "Sandbox" or "Coworker +
 
 **Validation plan once the corrected re-extraction completes** (per outside review's checks, still worth doing regardless of the mechanism question above): (1) independently re-verify all 10 groups' new iMAT/tINIT sets sustain ≥90% max biomass flux; (2) confirm the fix doesn't add so many reactions that it swamps the expression-driven signal; (3) confirm disease-group differences are preserved (groups shouldn't converge toward near-identical models); (4) only then regenerate Step 9/10 and re-audit.
 
-**Status**: script changes (including the 2026-07-18 revision to `core`/`essential_reactions`) written and committed to disk on Mohammed's machine. Re-extraction execution is pending — next action is a minimal, execution-only Claude Code prompt to run the script (no design decisions left for it to make).
+**Status**: script changes (including the 2026-07-18 revision to `core`/`essential_reactions`) written and committed to disk on Mohammed's machine. Re-extraction execution is pending — next action is a minimal, execution-only run of the script (no design decisions left to make).
 
 ## Environment — hard-won fixes (do not rediscover these)
 
@@ -93,7 +93,7 @@ Note: this table's "3-algo consensus" column will shift once iMAT/tINIT are re-e
 
 **Methodology decision (locked in with Mohammed, 2026-07-17)**: GIMME is NOT folded into the Step 9 cross-algorithm consensus as an equal-weight vote — its near-total inclusiveness would systematically inflate agreement scores for reactions the other three are more selective about, diluting the discriminative signal the consensus score is meant to capture. Instead: **primary consensus is derived from FASTCORE, iMAT, and tINIT only. GIMME is evaluated independently as a permissive-reconstruction robustness check** (which reactions stay included even under a less restrictive strategy), feeding into Step 10's hierarchical, decomposable confidence engine as its own evidence axis rather than being blended into the 3-algorithm structural consensus.
 
-**Manuscript-language consequence, flagged, not yet changed**: the novelty dossier's and CLAUDE.md's "Core novelty" framing both currently describe a flat "multi-algorithm reconstruction consensus (iMAT/GIMME/FASTCORE/INIT)" — this needs updating to reflect the 3-algorithm structural consensus + GIMME-as-independent-robustness-check design once Mohammed signs off on the specific wording.
+**Manuscript-language consequence, flagged, not yet changed**: the novelty dossier's "novelty claim" framing currently describes a flat "multi-algorithm reconstruction consensus (iMAT/GIMME/FASTCORE/INIT)" — this needs updating to reflect the 3-algorithm structural consensus + GIMME-as-independent-robustness-check design once Mohammed signs off on the specific wording.
 
 ## Decisions locked in
 - **Application framing**: GEM1 is a disease-agnostic framework; NAFLD/MASLD is its first validation case study (not its scope). See GEM1-novelty-dossier.md.
@@ -104,7 +104,6 @@ Note: this table's "3-algo consensus" column will shift once iMAT/tINIT are re-e
   - **GSE135251** — RNA-seq, 216 samples (healthy 10 / steatosis 51 / NASH 155). Gene-ID mapping done.
 - **Step 9 consensus design**: FASTCORE + iMAT + tINIT form the primary consensus; GIMME evaluated separately as a robustness check (see above).
 - **Growth-capability fix (2026-07-18)**: iMAT/tINIT re-extraction hard-constrains a 519-reaction minimal growth-supporting set (LP-derived) via troppo's `core`/`essential_reactions` parameters — confirmed to match tINIT's own published task-driven design, not a pipeline-specific workaround; FASTCORE/GIMME outputs are unaffected and untouched.
-- **Editing ownership (2026-07-18)**: all file edits to the GEM1 project (scripts, CLAUDE.md, docs) are made directly by the cloud coworking session via the device bridge, not routed through or self-reported by Claude Code — this followed a recurring pattern of Claude Code's self-reported CLAUDE.md writes not actually landing on disk.
 
 ## Notes carried from Step 2 discussion
 - PC specs on file: Intel i5-12400F (6C/12T, ~2.5GHz), 16GB RAM, RTX 2060 Super (GPU not used by COBRApy solvers), Windows 11 Pro.

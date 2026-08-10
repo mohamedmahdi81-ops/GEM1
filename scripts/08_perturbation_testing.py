@@ -22,8 +22,7 @@ the bar, structural_robustness_index is 1.0 by construction regardless of
 what else is removed (confirmed empirically: still 1.0 even removing 50% of
 the ~3,600 non-growth-support consensus reactions per trial). 0.99 requires
 near-full network contribution beyond the protected backbone, so the test is
-actually sensitive to what's removed. See "Known open items" in CLAUDE.md
-for the full diagnosis.
+actually sensitive to what's removed.
 
 Per-reaction robustness score: since each reaction is independently present
 or absent across the N trials, this script estimates each reaction's

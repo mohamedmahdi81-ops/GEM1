@@ -26,8 +26,8 @@ internally-consistent numbers", not "did it match a manuscript figure".
 
 Long-running (~30 min estimated from historical Step 6 FVA timings at a
 smaller reaction-set size) -- launch via detached Start-Process per the
-project's established pattern (see CLAUDE.md gotchas), not as a Claude-Code-
-attached foreground/background job.
+project's established pattern, not as an interactive-session-attached
+foreground/background job.
 """
 
 import json

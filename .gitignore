@@ -75,6 +75,11 @@ GEM1_project_package.zip
 CLAUDE.md
 CLAUDE.md.bak
 
+# bootstrap prompt for starting a Claude Code session on this project --
+# entirely dependent on CLAUDE.md (see above), which is not part of the
+# public release, so this file would only point readers at a nonexistent file
+KICKOFF_PROMPT.md
+
 # development/diagnostic scripts not required by the publication/reproducibility pipeline
 # (kept locally, just not part of the public release -- see audit/README.md Phase 6 report)
 scripts/_*.py

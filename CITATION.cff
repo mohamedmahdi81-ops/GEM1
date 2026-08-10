@@ -1,17 +1,20 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 type: software
-title: "GEM1: A Confidence-Aware Framework for Genome-Scale Metabolic Signature Discovery"
+title: "A Calibrated Approach to Integrating Biochemical Evidence for Metabolic Reaction Prioritization in Genome-Scale Metabolic Models"
 abstract: >-
   GEM1 integrates genome-scale metabolic modeling (GSMM) with probabilistic
   flux uncertainty estimation, cross-reconstruction-algorithm consensus, and
-  a hierarchical, empirically-calibrated confidence score, to rank candidate
-  disease biomarkers by reproducibility and robustness across independent
-  cohorts and reconstruction methods. Demonstrated using NAFLD/MASLD as a
-  case study.
+  a hierarchical, empirically-calibrated confidence score into a single
+  reaction-level prioritization metric. Demonstrated using NAFLD/MASLD as a
+  first validation case study across three independent transcriptomic
+  cohorts, with a full independent arithmetic and provenance audit
+  documenting the architecture's reproducibility, its structural
+  limitations under strict cross-algorithm consensus gating, and the
+  empirical instability of its calibrated weighting at small sample sizes.
 authors:
-  - family-names: "Al-Badri"
-    given-names: "Mohammed Mahdi Sami"
+  - family-names: "Sami"
+    given-names: "Mohammed Mahdi"
     email: "mohamedmahdi81@kus.edu.iq"
 license: MIT
 version: "1.0.0"

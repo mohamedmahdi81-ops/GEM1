@@ -1,7 +1,7 @@
 # GEM1 — Step 11 Calibration Biomarker → Reaction Mapping
 
 Status: **DRAFT, for review. Not yet used in any code.** This document maps the 5 calibration
-biomarkers locked in under "Decisions locked in" in `CLAUDE.md` to specific Human-GEM
+biomarkers locked in under "Decisions locked in" in `docs/GEM1-roadmap-schedule.md` to specific Human-GEM
 (`models/Human-GEM.json`) reaction IDs, so Step 11's empirical weight calibration has a fixed,
 version-controlled, auditable ground truth to calibrate against — rather than reaction choices
 made ad hoc inside calibration code.
@@ -27,7 +27,7 @@ synthesis, and the methionine/SAM cycle. Reduced serine/glycine availability is 
 increased diversion of one-carbon units to support the proliferative/lipogenic demands of a
 steatotic/NASH liver.
 
-**Literature rationale** (per `CLAUDE.md`'s "Decisions locked in"): Mardinoglu et al. 2014 (GSMM
+**Literature rationale**: Mardinoglu et al. 2014 (GSMM
 study) + an independent 2025 metabolomics vote-counting meta-analysis + a 2023 SHMT2 mechanistic
 study specifically.
 
@@ -169,7 +169,7 @@ included).
 fatty acid synthesis from acetyl-CoA/malonyl-CoA (FASN) and subsequent desaturation to
 monounsaturated fatty acids (SCD1) — contributing to hepatic triglyceride accumulation.
 
-**Literature rationale**: Multiple independent stable-isotope tracer studies (per `CLAUDE.md`).
+**Literature rationale**: Multiple independent stable-isotope tracer studies (full citations not yet added to this document -- pending).
 
 **SCD1 — reaction selected**:
 
@@ -239,7 +239,7 @@ be synthesized choline-independently via sequential methylation of phosphatidyle
 PEMT, using SAM as the methyl donor. Choline/PC depletion is implicated in NAFLD both directly
 (impaired VLDL/triglyceride export, which requires PC) and via its connection to the same one-carbon
 methyl-donor pool as the serine/glycine axis (biomarker 1) — a genetic, cohort, and RCT evidence
-base per `CLAUDE.md`.
+base (full citations not yet added to this document).
 
 **Reactions selected**:
 

@@ -1,7 +1,7 @@
 """
 GEM1 - Step 9: Reconstruction-algorithm consensus scoring.
 
-Design locked in 2026-07-17 (see CLAUDE.md): the primary consensus is built
+Design locked in 2026-07-17: the primary consensus is built
 from FASTCORE + iMAT + tINIT only (strict all-3-agree). GIMME is excluded
 from the vote itself -- its active-reaction sets are 80-96% of the whole
 network (vs. 39-64% for the other three), so folding it into an equal-weight

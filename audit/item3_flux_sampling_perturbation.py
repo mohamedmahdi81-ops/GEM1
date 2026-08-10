@@ -25,7 +25,7 @@ is what makes this a check of the *pipeline's execution*, not a different
 experiment.
 
 Long-running (~75 min estimated from historical Step 7+8 timings) -- launch
-via detached Start-Process, not a Claude-Code-attached job.
+via detached Start-Process, not an interactive-session-attached job.
 """
 
 import json

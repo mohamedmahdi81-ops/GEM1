@@ -9,7 +9,7 @@ all specified below (frozen scientific content verbatim from the approved specif
 initially truncated mid-transmission across three attempts before arriving intact). Everything
 below this notice was independently verified against the actual project filesystem on
 2026-07-30 (pipeline outputs, scripts, manifests) — nothing was inferred from filenames or
-assumed from CLAUDE.md's prose alone without checking the underlying files. Three open items
+assumed without checking the underlying files directly. Three open items
 remain (see "Open Items" at the end) — none of the frozen scientific content is affected by them.
 
 ---
@@ -49,7 +49,7 @@ GSMM workflow?"
 | Confidence engine | `data/confidence_scores/` | Exists (13 entries incl. `confidence_manifest.csv`) |
 | Empirical calibration | `data/calibration/` | Exists (13 entries incl. `calibration_manifest.csv`, `calibration_weights_and_validation.json`) |
 
-**Input datasets / input files**: `models/Human-GEM.json` (base GSMM); `data/geo_cohorts/` (GSE89632, GSE126848, GSE135251 — all 3 confirmed present per CLAUDE.md's "Decisions locked in" and the directory listing above). Confirmed present, not inferred from naming alone — directory contents enumerated directly.
+**Input datasets / input files**: `models/Human-GEM.json` (base GSMM); `data/geo_cohorts/` (GSE89632, GSE126848, GSE135251 — all 3 confirmed present per the directory listing above). Confirmed present, not inferred from naming alone — directory contents enumerated directly.
 
 **Analysis scripts** (all confirmed to exist as files; confirmed by module docstring / manifest cross-check they produce the outputs above, not merely by filename):
 `scripts/01_load_base_model.py`, `02_fetch_geo_cohorts.py`, `02b_build_rnaseq_expression_matrices.py`, `03_build_context_specific_models.py`, `04_consensus_scoring.py`, `05_confidence_engine.py`, `06_flux_analysis.py`, `07_flux_sampling.py`, `08_perturbation_testing.py`, `09_calibration.py`.
@@ -69,13 +69,13 @@ GSMM workflow?"
 
 **Reproducibility**:
 - Pipeline stage: All (Steps 1–11)
-- Generation script: **Not yet implemented.** Step 12 ("Visualization & confidence reporting") is listed as Pending in `CLAUDE.md`'s roadmap; no figure-rendering script exists anywhere in `scripts/` (confirmed via repo-wide search for figure/plot/viz-named files — none found).
+- Generation script: **Not yet implemented.** Step 12 ("Visualization & confidence reporting") is listed as Pending in `docs/GEM1-roadmap-schedule.md`; no figure-rendering script exists anywhere in `scripts/` (confirmed via repo-wide search for figure/plot/viz-named files — none found).
 - Input files: see table above
 - Manifest version: no single versioned pipeline manifest exists; each step has its own dated manifest CSV (see table above). Most recent regeneration batch spans 2026-07-23 (Step 5 re-extraction) through 2026-07-30 (Step 11 calibration).
-- Model version: `Human-GEM.json`'s own `version` field = `1`; no separate upstream release tag is recorded in this repo beyond the reaction/metabolite/gene counts CLAUDE.md already documents (12,931 / 8,461 / 2,848 — all confirmed to match the local file exactly).
+- Model version: `Human-GEM.json`'s own `version` field = `1`; no separate upstream release tag is recorded in this repo beyond the reaction/metabolite/gene counts confirmed directly against the local model file (12,931 / 8,461 / 2,848 — all confirmed to match the local file exactly).
 - Calibration version: production weights `(w1=0.15, w2=0.15, w3=0.70)`, fixed 2026-07-30 (`data/calibration/calibration_weights_and_validation.json`).
 - Output directory: N/A (no figure output exists yet)
-- Verification status: Underlying Steps 1–11 outputs independently re-audited at multiple points (see `CLAUDE.md`'s per-step methodology sections and the "Step 5 re-extraction" / "Step 11 calibration" sections for the full audit trail). The figure itself has not been generated or verified, since it doesn't exist yet.
+- Verification status: Underlying Steps 1–11 outputs independently re-audited at multiple points (see `audit/README.md` and `scripts/README.md` for the full audit trail). The figure itself has not been generated or verified, since it doesn't exist yet.
 
 **Caption outline**: "Overview of the GEM1 pipeline. (A) Four-stage workflow from raw transcriptomic cohorts through context-specific reconstruction (four independent algorithms), uncertainty quantification (flux sampling and perturbation robustness), and a hierarchical, empirically-calibrated confidence engine, applied here to three independent NAFLD/MASLD cohorts. (B) Structure of the confidence engine's evidence layers."
 
@@ -305,7 +305,7 @@ inspecting the results?"
 
 ### Verified support
 
-**Required pipeline outputs**: `data/calibration/calibration_weights_and_validation.json` (production weights, LOCO/LOBO fold-level records) and `CLAUDE.md`'s "Step 11 empirical weight calibration" section (2026-07-30), which documents the floor-sensitivity comparison in full, including the corrected miscitation. **The floor=0.05/0.0 comparison numbers themselves are not in the JSON file** (that diagnostic, `scripts/_floor_sensitivity_check.py`, only prints to stdout — it does not persist a structured output file) — `CLAUDE.md` is currently the only saved, durable record of those specific numbers. Recommend persisting them to a JSON/CSV alongside the existing calibration outputs before this figure is finalized, rather than relying on a prose paragraph as the source of record.
+**Required pipeline outputs**: `data/calibration/calibration_weights_and_validation.json` (production weights, LOCO/LOBO fold-level records) and `data/calibration/floor_sensitivity_results.json` (floor=0.05/0.0 comparison numbers, written by `scripts/_floor_sensitivity_check.py`).
 
 **Input datasets / input files**: Same as Figure 4, plus the ad hoc floor=0.05/0.0 re-runs.
 
@@ -319,7 +319,7 @@ inspecting the results?"
 **Statistical analysis** — computed fresh this session, paired by matched fold (floor=0.15 vs. floor=0.05, same 3 LOCO + 5 LOBO folds):
 - Primary statistical test: Wilcoxon signed-rank test, floor=0.15 vs. floor=0.05, n=8 matched folds, no ties this time: **W=8.0, p=0.1953** — not statistically significant, directly supporting the "statistically indistinguishable" claim (this is a real computed result, not an assumption; a non-significant p-value here is the expected/desired outcome for this figure's claim, not a null result to be hidden). **Corrected 2026-08-05** (was stated as p=0.1797): `scripts/12_figure5_calibration_validation.py`, the permanent version of this session's ad hoc check, reproduced W=8.0 exactly and every effect-size number exactly (mean paired diff 0.0036, SD 0.0059, between-fold SD 0.037 LOCO/0.123 LOBO) but got p=0.1953, not 0.1797. Checked whether this was a different-method artifact before concluding otherwise: neither script (`09_calibration.py` nor `_floor_sensitivity_check.py`) contains any Wilcoxon call at all — the original number, like Figure 4's, was computed ad hoc outside any saved script, so there is no alternate "method used by another script" to attribute the gap to. Explicitly tried scipy's `'exact'`, `'approx'` (with and without continuity correction) methods against these exact 8 pairs: exact/auto=0.1953, approx-no-correction=0.1614, approx-with-correction=0.1834 — none reproduce 0.1797. Same conclusion as Figure 4: an unrecoverable one-off arithmetic slip at ad hoc computation time, not a methodology disagreement, and it does not change this figure's qualitative claim (both the old and corrected p-value clear "not significant at alpha=0.05" identically). **Method now standardized project-wide**: any future paired Wilcoxon signed-rank test in this pipeline should use `scipy.stats.wilcoxon(..., method='auto')` (scipy's default), which resolves to the exact distribution whenever n<50 with no ties/zeros, as used here and in Figure 4.
 - Secondary statistical test: Direct comparison of the paired-difference magnitude against between-fold variability: mean paired difference = 0.0036 (SD 0.0059), versus between-fold SD of 0.037 (LOCO) and 0.123 (LOBO) at floor=0.15 — the floor effect is roughly 6–20× smaller than ordinary fold-to-fold variability, a more interpretable way to state "narrow performance range" than the p-value alone.
-- Effect size: Mean paired difference 0.0036 (floor=0.05 minus floor=0.15) — small and in the *opposite* direction from what would justify keeping floor=0.15 on performance grounds (floor=0.05 is marginally higher); the manuscript's justification for 0.15 must rest on interpretability, not on this number, per the design decision already recorded in `CLAUDE.md`.
+- Effect size: Mean paired difference 0.0036 (floor=0.05 minus floor=0.15) — small and in the *opposite* direction from what would justify keeping floor=0.15 on performance grounds (floor=0.05 is marginally higher); the manuscript's justification for 0.15 must rest on interpretability, not on this number.
 - Confidence interval: Not computed (same small-n limitation as Figure 4).
 - Multiple-testing correction: N/A — single pre-specified comparison.
 - Significance threshold: α=0.05 (not met — consistent with, and supporting, the "near-tie" framing).
@@ -328,16 +328,16 @@ inspecting the results?"
 **Reproducibility**:
 - Pipeline stage: Step 11
 - Generation script: `scripts/09_calibration.py` (production) + `scripts/_floor_sensitivity_check.py` (sensitivity check)
-- Input files: `data/calibration/calibration_weights_and_validation.json`; floor=0.05/0.0 numbers currently recorded only in `CLAUDE.md` prose (see gap noted above)
+- Input files: `data/calibration/calibration_weights_and_validation.json`; floor=0.05/0.0 numbers in `data/calibration/floor_sensitivity_results.json`
 - Manifest version: 2026-07-30
 - Model version: `Human-GEM.json` version `1`
 - Calibration version: production `(0.15, 0.15, 0.70)`; floor-sensitivity variants `(~0.5-0.6, 0.05, ~0.35-0.45)` at floor=0.05/0.0
 - Output directory: `data/calibration/`
-- Verification status: Production weights and LOCO/LOBO means verified against the JSON directly. Floor=0.05/0.0 numbers verified against this session's own captured tool output (not a persisted file — flagged as a reproducibility gap above). The corrected-miscitation history (an earlier, wrong "0.676 vs 0.883" framing) is documented in full in `CLAUDE.md` and should NOT be the source cited in the manuscript — only the reconciled table there is authoritative. The primary Wilcoxon p-value has also now been independently re-verified by a second, permanent method (`scripts/12_figure5_calibration_validation.py`, Step 12, 2026-08-05): W=8.0 and every effect-size number reproduced exactly, but p was found to be 0.1953, not the previously stated 0.1797 — corrected above.
+- Verification status: Production weights and LOCO/LOBO means verified against the JSON directly. Floor=0.05/0.0 numbers verified against this session's own captured tool output (not a persisted file — flagged as a reproducibility gap above). An earlier miscitation (a wrong "0.676 vs 0.883" framing) was corrected; the reconciled numbers in `data/calibration/floor_sensitivity_results.json` and this document are authoritative, not any earlier draft. The primary Wilcoxon p-value has also now been independently re-verified by a second, permanent method (`scripts/12_figure5_calibration_validation.py`, Step 12, 2026-08-05): W=8.0 and every effect-size number reproduced exactly, but p was found to be 0.1953, not the previously stated 0.1797 — corrected above.
 
 **Caption outline**: "Nested cross-validation for empirical weight calibration. (A) LOCO/LOBO nested structure. (B) Performance is a near-tie across weight-floor settings (Wilcoxon p=0.195, paired by fold), differing by roughly 6-20x less than ordinary fold-to-fold variability. (C) Production weights (0.15/0.15/0.70) were retained for decomposability, not because they are the numerical optimum — a marginally higher-scoring, consensus-dominant alternative exists and is disclosed."
 
-**Dependencies**: Step 11 complete; floor=0.05/0.0 results should be persisted to a structured file (not just `CLAUDE.md` prose) before this figure is built, per the gap flagged above.
+**Dependencies**: Step 11 complete; floor=0.05/0.0 results are persisted in `data/calibration/floor_sensitivity_results.json` (see above).
 
 ---
 
@@ -362,7 +362,7 @@ metabolic network context.
 
 **Input datasets / input files**: Same calibrated-score outputs as Figures 3-5; the 5 biomarker pathways already mapped to specific reaction IDs in `docs/STEP11_BIOMARKER_MAPPING.md` are the natural candidates for "representative pathway visualizations" (e.g. urea cycle, serine/glycine one-carbon metabolism).
 
-**Analysis scripts**: **None exist.** Confirmed by direct check: `import escher` succeeds in the `GEM1` conda environment (version 1.8.1 installed, matching `CLAUDE.md`'s documented environment setup), but a repo-wide search found zero files referencing Escher, pathway maps, or visualization of any kind. Step 12 (Visualization & confidence reporting) is genuinely not started — this is not an oversight in this document, it's the actual current state of the repository.
+**Analysis scripts**: **None exist.** Confirmed by direct check: `import escher` succeeds in the `GEM1` conda environment (version 1.8.1 installed, matching the environment setup documented in `environment.yml`), but a repo-wide search found zero files referencing Escher, pathway maps, or visualization of any kind. Step 12 (Visualization & confidence reporting) is genuinely not started — this is not an oversight in this document, it's the actual current state of the repository.
 
 **Panel layout** (proposed): One or two Escher map panels (e.g., urea cycle; serine/glycine one-carbon metabolism), reactions colored/sized by `calibrated_confidence_score`, using Human-GEM's existing map definitions if available in the installed Escher package, or a custom map built from the relevant biomarker's mapped reaction IDs if not.
 
@@ -420,7 +420,7 @@ including Panel A alone, without first confirming with Mohammed whether a curati
 
 **Required pipeline outputs**: Same base per-reaction data as Figures 3–5 (`data/calibration/all_groups_calibrated.csv`), plus the richer per-reaction metadata (`reaction_name`, `subsystem` — 147 unique subsystems, confirmed by direct count) that lives in `data/confidence_scores/{cohort}__{group}__confidence.csv` but was **not** carried into Step 11's own output. Confirmed directly: `all_groups_calibrated.csv`'s columns are `cohort, group, reaction_id, primary_consensus_score, is_active, is_growth_support, flux_confidence_raw, perturbation_robustness_raw, rank_consensus, rank_flux_confidence, rank_perturbation, calibrated_confidence_score` — no `reaction_name` or `subsystem`. Any "extended pathway summary" beyond the 5 locked-in biomarkers would need a join back to the confidence CSVs on `reaction_id` to recover that metadata; this join is straightforward with existing data but has not been done.
 
-**Input datasets / input files**: Same 3 GEO cohorts as all other results figures. Note: `CLAUDE.md`'s "Decisions locked in" section specifies exactly 5 official calibration biomarkers — there is no pre-existing, curated "additional biomarker" set beyond those 5. "Additional pathways and biomarkers" for this figure would require new literature curation (analogous to `docs/STEP11_BIOMARKER_MAPPING.md`'s existing work), not just a re-plot of already-mapped reactions — this is a real scope gap, not a data-availability one.
+**Input datasets / input files**: Same 3 GEO cohorts as all other results figures. Note: exactly 5 official calibration biomarkers are locked in (see "Decisions locked in" in `docs/GEM1-roadmap-schedule.md`) — there is no pre-existing, curated "additional biomarker" set beyond those 5. "Additional pathways and biomarkers" for this figure would require new literature curation (analogous to `docs/STEP11_BIOMARKER_MAPPING.md`'s existing work), not just a re-plot of already-mapped reactions — this is a real scope gap, not a data-availability one.
 
 **Analysis scripts**: None exist. No script in this repository aggregates confidence/calibration scores by subsystem, and no script defines any biomarker/pathway set beyond the 5 already locked in for Step 11.
 
@@ -472,4 +472,4 @@ All 3 items originally flagged here are now built and independently verified:
 
 2. **Figure 3 biomarker-ranking table.** `scripts/11_biomarker_ranking_by_group.py` → `data/calibration/biomarker_ranking_by_group.csv` (50 rows = 5 biomarkers × 10 groups; max-aggregated `calibrated_confidence_score`, argmax reaction, percentile rank via the same `method='min'` convention as `09_calibration.py`'s `evaluation_percentile`, and ordinal rank). **Investigating the output surfaced a genuine finding, not a bug**: `bcaa`'s cross-group percentile has by far the highest variance of the 5 biomarkers (mean 0.676, std 0.366, min 0.000077) because all 9 of its mapped reactions are structurally inactive (`is_active=False`, `primary_consensus_score=0` for 8 of 9; the 9th at 0.5 but still below the strict-consensus threshold) in exactly 2 groups — `GSE126848/healthy` and `GSE126848/obese_no_NAFLD` — confirmed directly against `all_groups_calibrated.csv`. This is the same signal already visible in `bcaa`'s weak LOBO fold score (0.676, matches this table's mean almost exactly) — now traced to its concrete cause rather than left as an unexplained weak point.
 
-3. **Figure 5 floor-sensitivity persistence.** `scripts/_floor_sensitivity_check.py` modified to also write `data/calibration/floor_sensitivity_results.json`. All LOCO/LOBO fold-level numbers reproduced exactly on re-run (bit-for-bit match to the values already in this document and in `CLAUDE.md`). **Also fixed a real bug found while doing this**: the script's "production weights at this floor" line previously called an un-parameterized helper that silently ignored the loop's floor value, always reporting `(0.15,0.15,0.7)` regardless of which floor was being tested. Fixed to correctly thread the floor through; the corrected output shows floor=0.05 and floor=0.0 both select `(0.5, 0.05, 0.45)` (score 0.8835) as their actual per-floor production weights — consistent with, and a more precise version of, the "~0.5-0.6, 0.05, ~0.35-0.45" range already described in `CLAUDE.md`.
+3. **Figure 5 floor-sensitivity persistence.** `scripts/_floor_sensitivity_check.py` modified to also write `data/calibration/floor_sensitivity_results.json`. All LOCO/LOBO fold-level numbers reproduced exactly on re-run (bit-for-bit match to the values already in this document). **Also fixed a real bug found while doing this**: the script's "production weights at this floor" line previously called an un-parameterized helper that silently ignored the loop's floor value, always reporting `(0.15,0.15,0.7)` regardless of which floor was being tested. Fixed to correctly thread the floor through; the corrected output shows floor=0.05 and floor=0.0 both select `(0.5, 0.05, 0.45)` (score 0.8835) as their actual per-floor production weights — consistent with, and a more precise version of, the "~0.5-0.6, 0.05, ~0.35-0.45" range already described above.

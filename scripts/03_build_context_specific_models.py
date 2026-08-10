@@ -191,8 +191,8 @@ def patch_gimme_reaction_activity_bug():
     so `self.exp_vector == -1` is a single Python `False` (list-to-scalar
     comparison), not an elementwise mask -- the documented rule "reactions
     with no usable expression score (-1) are always kept active" silently
-    never fires, for every cohort. Confirmed via diagnostic (2026-07-17,
-    CLAUDE.md gotcha): this alone doesn't explain the observed ~5x GIMME
+    never fires, for every cohort. Confirmed via diagnostic (2026-07-17):
+    this alone doesn't explain the observed ~5x GIMME
     active-reaction gap between microarray and RNA-seq cohorts (the bug
     removes the same ~5,150 NaN-scored reactions from `ones` regardless of
     platform) -- see the min-max scaling fix in run_gimme() below for the
@@ -293,7 +293,7 @@ def get_fastcc_consistent_set(rw) -> set:
     """
     Model-only, same every run -- cached to disk because this run has been
     killed mid-execution by the host process exiting multiple times
-    (2026-07-17, see CLAUDE.md gotchas), and FastCC alone takes ~15-20 min on
+    (2026-07-17), and FastCC alone takes ~15-20 min on
     Human-GEM's 12,931 reactions, so re-deriving it on every restart wastes
     the bulk of the time between kills.
     """
@@ -336,8 +336,8 @@ def build_no_gpr_mask(model, r_ids) -> np.ndarray:
 
 def run_gimme(rw, reaction_scores, biomass_idx, no_gpr_mask):
     """
-    Two fixes applied here 2026-07-17 (see CLAUDE.md gotcha for the full
-    diagnostic and before/after numbers):
+    Two fixes applied here 2026-07-17 (diagnostic and before/after numbers
+    below):
 
     1. Scaling: plain min-max scaling of raw reaction_scores is scale-
     sensitive. GSE89632 (microarray) scores are already log2 intensities

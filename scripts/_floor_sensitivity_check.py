@@ -6,8 +6,8 @@ a near-optimal decomposable solution. Reuses 09_calibration.py's functions
 unmodified; only the grid's floor differs.
 
 2026-07-30 update (Figure 5 reproducibility gap, docs/MANUSCRIPT_FIGURES.md):
-this originally only printed to stdout, so its numbers lived only in a
-CLAUDE.md prose summary, not in any regenerable structured file. Now also
+this originally only printed to stdout, so its numbers lived only as ad hoc
+console output, not in any regenerable structured file. Now also
 writes data/calibration/floor_sensitivity_results.json. Also fixes a real bug
 found while doing this: the original "production weights at this floor" line
 called m.select_best_weights(), which internally calls
@@ -135,9 +135,9 @@ def main():
             "note": (
                 "Persisted 2026-07-30 to close the Figure 5 reproducibility gap "
                 "(docs/MANUSCRIPT_FIGURES.md) -- previously these numbers existed "
-                "only as CLAUDE.md prose. Regenerate by re-running this script; "
-                "values should match CLAUDE.md's 'Step 11 empirical weight "
-                "calibration' section's floor-sensitivity table."
+                "only as ad hoc console output, not a persisted file. Regenerate "
+                "by re-running this script; values should match "
+                "docs/MANUSCRIPT_FIGURES.md's Figure 5 floor-sensitivity table."
             ),
         }, f, indent=2, default=str)
     print(f"\nWrote {OUT_PATH}")

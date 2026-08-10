@@ -30,8 +30,8 @@ pathway cartoons (including Escher's own convention of a
 Data overlaid: calibrated_confidence_score (Step 11 output) for a
 representative cohort/group pair. GSE135251 was chosen as the representative
 cohort because it is this project's largest, most clinically-graded cohort
-(spans healthy -> steatosis -> NASH -> fibrosis/cirrhosis, per CLAUDE.md's
-"Decisions locked in"), and healthy vs. NASH as the representative group
+(spans healthy -> steatosis -> NASH -> fibrosis/cirrhosis), and healthy vs.
+NASH as the representative group
 pair because that is the clearest disease-contrast the spec's own framing
 ("high-confidence metabolic alterations", "biologically meaningful
 pathways") calls for. This is a visualization choice, not a new scientific

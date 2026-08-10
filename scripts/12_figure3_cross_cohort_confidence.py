@@ -18,8 +18,9 @@ of the spec), not recomputed here.
 Statistical analysis -- per the spec's own explicit methodological note:
 a naive Kruskal-Wallis/ANOVA directly on calibrated_confidence_score across
 cohorts is REJECTED as circular (rank-normalization forces every group's
-active-reaction mean to ~0.5 by construction; CLAUDE.md's own
-calibration_manifest.csv confirms this: all 10 groups sit at 0.5001). This
+active-reaction mean to ~0.5 by construction;
+data/calibration/calibration_manifest.csv confirms this: all 10 groups sit
+at 0.5001). This
 script does not compute that test.
 
 - Primary statistic: nested LOCO cross-validation, already computed in Step

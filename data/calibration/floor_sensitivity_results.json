@@ -265,5 +265,5 @@
       "production_selection_score_at_this_floor": 0.8835434227824608
     }
   },
-  "note": "Persisted 2026-07-30 to close the Figure 5 reproducibility gap (docs/MANUSCRIPT_FIGURES.md) -- previously these numbers existed only as CLAUDE.md prose. Regenerate by re-running this script; values should match CLAUDE.md's 'Step 11 empirical weight calibration' section's floor-sensitivity table."
+  "note": "Persisted 2026-07-30 to close the Figure 5 reproducibility gap (docs/MANUSCRIPT_FIGURES.md) -- previously these numbers existed only as ad hoc console output, not a persisted file. Regenerate by re-running this script; values should match docs/MANUSCRIPT_FIGURES.md's Figure 5 floor-sensitivity table."
 }
