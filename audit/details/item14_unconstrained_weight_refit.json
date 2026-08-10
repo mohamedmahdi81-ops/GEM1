@@ -1,0 +1,214 @@
+{
+  "item": 14,
+  "description": "Unconstrained (0-to-1, no 0.15 floor) LOCO/LOBO weight re-fit, same grid-search/nested-CV machinery as item 5",
+  "methodology": {
+    "floor_used": 0.0,
+    "grid_step": 0.05,
+    "grid_size": 231,
+    "reused_code": "item5_loco_lobo_refit.py's generate_weight_grid/select_best_weights/nested_loco/nested_lobo, imported directly (this audit's own code, not GEM1's scoring modules) -- only the floor parameter changes"
+  },
+  "reported_weights": [
+    0.15,
+    0.15,
+    0.7
+  ],
+  "unconstrained_production_weights": [
+    0.5,
+    0.05,
+    0.45
+  ],
+  "unconstrained_production_score": 0.8835434227824608,
+  "loco_folds": [
+    {
+      "outer_test_cohort": "GSE126848",
+      "selected_weights": [
+        0.5,
+        0.05,
+        0.45
+      ],
+      "inner_selection_score": 0.909927048694352,
+      "outer_held_out_score": 0.8439679839146239
+    },
+    {
+      "outer_test_cohort": "GSE135251",
+      "selected_weights": [
+        0.5,
+        0.05,
+        0.45
+      ],
+      "inner_selection_score": 0.8816236176629806,
+      "outer_held_out_score": 0.900574845977367
+    },
+    {
+      "outer_test_cohort": "GSE89632",
+      "selected_weights": [
+        0.6,
+        0.05,
+        0.35
+      ],
+      "inner_selection_score": 0.8725536823653752,
+      "outer_held_out_score": 0.9182842265357152
+    }
+  ],
+  "lobo_folds": [
+    {
+      "outer_test_biomarker": "bcaa",
+      "selected_weights": [
+        0.5,
+        0.05,
+        0.45
+      ],
+      "inner_selection_score": 0.9347401593070914,
+      "outer_held_out_score": 0.6787564766839378
+    },
+    {
+      "outer_test_biomarker": "choline_pc",
+      "selected_weights": [
+        0.6,
+        0.05,
+        0.35
+      ],
+      "inner_selection_score": 0.8603491609310956,
+      "outer_held_out_score": 0.9758178021808058
+    },
+    {
+      "outer_test_biomarker": "dnl_scd1_fasn",
+      "selected_weights": [
+        0.6,
+        0.05,
+        0.35
+      ],
+      "inner_selection_score": 0.888836903565076,
+      "outer_held_out_score": 0.8618668316448843
+    },
+    {
+      "outer_test_biomarker": "serine_glycine_shmt",
+      "selected_weights": [
+        0.6,
+        0.05,
+        0.35
+      ],
+      "inner_selection_score": 0.8594868919650451,
+      "outer_held_out_score": 0.9792668780450082
+    },
+    {
+      "outer_test_biomarker": "urea_cycle",
+      "selected_weights": [
+        0.35,
+        0.05,
+        0.6
+      ],
+      "inner_selection_score": 0.8753325342200913,
+      "outer_held_out_score": 0.9122496326656873
+    }
+  ],
+  "per_fold_analysis": [
+    {
+      "fold": "production (no holdout)",
+      "unconstrained_weights": [
+        0.5,
+        0.05,
+        0.45
+      ],
+      "matches_reported_0.15_0.15_0.70": false,
+      "is_boundary_solution": false,
+      "floor_0.15_would_have_been_binding": true
+    },
+    {
+      "fold": "LOCO held-out=GSE126848",
+      "unconstrained_weights": [
+        0.5,
+        0.05,
+        0.45
+      ],
+      "matches_reported_0.15_0.15_0.70": false,
+      "is_boundary_solution": false,
+      "floor_0.15_would_have_been_binding": true
+    },
+    {
+      "fold": "LOCO held-out=GSE135251",
+      "unconstrained_weights": [
+        0.5,
+        0.05,
+        0.45
+      ],
+      "matches_reported_0.15_0.15_0.70": false,
+      "is_boundary_solution": false,
+      "floor_0.15_would_have_been_binding": true
+    },
+    {
+      "fold": "LOCO held-out=GSE89632",
+      "unconstrained_weights": [
+        0.6,
+        0.05,
+        0.35
+      ],
+      "matches_reported_0.15_0.15_0.70": false,
+      "is_boundary_solution": false,
+      "floor_0.15_would_have_been_binding": true
+    },
+    {
+      "fold": "LOBO held-out=bcaa",
+      "unconstrained_weights": [
+        0.5,
+        0.05,
+        0.45
+      ],
+      "matches_reported_0.15_0.15_0.70": false,
+      "is_boundary_solution": false,
+      "floor_0.15_would_have_been_binding": true
+    },
+    {
+      "fold": "LOBO held-out=choline_pc",
+      "unconstrained_weights": [
+        0.6,
+        0.05,
+        0.35
+      ],
+      "matches_reported_0.15_0.15_0.70": false,
+      "is_boundary_solution": false,
+      "floor_0.15_would_have_been_binding": true
+    },
+    {
+      "fold": "LOBO held-out=dnl_scd1_fasn",
+      "unconstrained_weights": [
+        0.6,
+        0.05,
+        0.35
+      ],
+      "matches_reported_0.15_0.15_0.70": false,
+      "is_boundary_solution": false,
+      "floor_0.15_would_have_been_binding": true
+    },
+    {
+      "fold": "LOBO held-out=serine_glycine_shmt",
+      "unconstrained_weights": [
+        0.6,
+        0.05,
+        0.35
+      ],
+      "matches_reported_0.15_0.15_0.70": false,
+      "is_boundary_solution": false,
+      "floor_0.15_would_have_been_binding": true
+    },
+    {
+      "fold": "LOBO held-out=urea_cycle",
+      "unconstrained_weights": [
+        0.35,
+        0.05,
+        0.6
+      ],
+      "matches_reported_0.15_0.15_0.70": false,
+      "is_boundary_solution": false,
+      "floor_0.15_would_have_been_binding": true
+    }
+  ],
+  "n_folds_matching_reported": 0,
+  "n_folds_total": 9,
+  "n_folds_boundary_solution": 0,
+  "n_folds_where_015_floor_would_bind": 9,
+  "floor_binding_conclusion": "ASYMMETRIC: the floor bound HARD on w_F (flux confidence) -- every fold wants w_F near 0 (0.05, the smallest nonzero grid step), well below the old 0.15 floor. It did NOT bind on w_C (consensus) in the direction of holding it down -- every fold wants w_C substantially ABOVE 0.15 (0.35-0.6), i.e. 0.15 was actually far LOWER than what the objective prefers for consensus. Forcing w_F up to its 0.15 minimum (which the objective does not want at all) consumed weight budget, and the remaining 0.85 split between w_C and w_P within the floor-constrained search space landed at 0.15/0.70 as the best AVAILABLE combination under that restriction -- not because w_C wanted to be low, but because the floor-constrained grid never explored the true unconstrained preference (high w_C, near-zero w_F, moderate w_P). CONCLUSION: the floor was actively constraining the result, and the true unconstrained preference is consensus-dominant, not perturbation-dominant, contrary to what (0.15,0.15,0.70) suggests.",
+  "status": "RESOLVED",
+  "max_abs_discrepancy": 0.44999999999999996,
+  "elapsed_seconds": 568.4947280883789
+}

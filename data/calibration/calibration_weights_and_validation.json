@@ -1,0 +1,282 @@
+{
+  "production_weights_used": {
+    "w1_consensus": 0.15,
+    "w2_flux_confidence": 0.15,
+    "w3_perturbation": 0.7
+  },
+  "results_by_biomarker_set": {
+    "full_isoform": {
+      "biomarker_mapping": {
+        "serine_glycine_shmt": [
+          "MAR03845",
+          "MAR04792"
+        ],
+        "urea_cycle": [
+          "MAR03873",
+          "MAR03809",
+          "MAR03811",
+          "MAR03813",
+          "MAR03816",
+          "MAR08426"
+        ],
+        "bcaa": [
+          "MAR03744",
+          "MAR03747",
+          "MAR03765",
+          "MAR06923",
+          "MAR03777",
+          "MAR03778",
+          "MAR06416",
+          "MAR06419",
+          "MAR06421"
+        ],
+        "dnl_scd1_fasn": [
+          "MAR02150",
+          "MAR02182",
+          "MAR00146"
+        ],
+        "choline_pc": [
+          "MAR00636",
+          "MAR00638",
+          "MAR00653",
+          "MAR01603",
+          "MAR01606"
+        ]
+      },
+      "loco": {
+        "folds": [
+          {
+            "outer_test_cohort": "GSE89632",
+            "selected_weights": [
+              0.15,
+              0.15,
+              0.7
+            ],
+            "inner_selection_score": 0.868527182739154,
+            "outer_held_out_score": 0.9116799422576237
+          },
+          {
+            "outer_test_cohort": "GSE126848",
+            "selected_weights": [
+              0.15,
+              0.15,
+              0.7
+            ],
+            "inner_selection_score": 0.9039182326708426,
+            "outer_held_out_score": 0.8408978423942465
+          },
+          {
+            "outer_test_cohort": "GSE135251",
+            "selected_weights": [
+              0.15,
+              0.15,
+              0.7
+            ],
+            "inner_selection_score": 0.8762888923259351,
+            "outer_held_out_score": 0.8961565230840615
+          }
+        ],
+        "mean_outer_held_out_score": 0.8829114359119772,
+        "note": "Inner loop has only 2 folds (3 cohorts total) -- thin, stated limitation."
+      },
+      "lobo": {
+        "folds": [
+          {
+            "outer_test_biomarker": "serine_glycine_shmt",
+            "selected_weights": [
+              0.15,
+              0.15,
+              0.7
+            ],
+            "inner_selection_score": 0.8549145464387904,
+            "outer_held_out_score": 0.9738921970458589
+          },
+          {
+            "outer_test_biomarker": "urea_cycle",
+            "selected_weights": [
+              0.15,
+              0.15,
+              0.7
+            ],
+            "inner_selection_score": 0.8678311808831489,
+            "outer_held_out_score": 0.9222256592684246
+          },
+          {
+            "outer_test_biomarker": "bcaa",
+            "selected_weights": [
+              0.15,
+              0.15,
+              0.7
+            ],
+            "inner_selection_score": 0.9293384115690975,
+            "outer_held_out_score": 0.6761967365246306
+          },
+          {
+            "outer_test_biomarker": "dnl_scd1_fasn",
+            "selected_weights": [
+              0.15,
+              0.15,
+              0.7
+            ],
+            "inner_selection_score": 0.885383961023896,
+            "outer_held_out_score": 0.8520145387054365
+          },
+          {
+            "outer_test_biomarker": "choline_pc",
+            "selected_weights": [
+              0.15,
+              0.15,
+              0.7
+            ],
+            "inner_selection_score": 0.8560822828860877,
+            "outer_held_out_score": 0.96922125125667
+          }
+        ],
+        "mean_outer_held_out_score": 0.8787100765602041
+      },
+      "production": {
+        "weights": [
+          0.15,
+          0.15,
+          0.7
+        ],
+        "selection_score": 0.8787100765602041
+      }
+    },
+    "single_proxy": {
+      "biomarker_mapping": {
+        "serine_glycine_shmt": [
+          "MAR04792"
+        ],
+        "urea_cycle": [
+          "MAR03873",
+          "MAR03809",
+          "MAR03811",
+          "MAR03813",
+          "MAR03816"
+        ],
+        "bcaa": [
+          "MAR03765",
+          "MAR03744",
+          "MAR03778",
+          "MAR06416",
+          "MAR06419",
+          "MAR06421"
+        ],
+        "dnl_scd1_fasn": [
+          "MAR02182",
+          "MAR00146"
+        ],
+        "choline_pc": [
+          "MAR00638"
+        ]
+      },
+      "loco": {
+        "folds": [
+          {
+            "outer_test_cohort": "GSE89632",
+            "selected_weights": [
+              0.6,
+              0.15,
+              0.25
+            ],
+            "inner_selection_score": 0.5008719356584951,
+            "outer_held_out_score": 0.6724563709947672
+          },
+          {
+            "outer_test_cohort": "GSE126848",
+            "selected_weights": [
+              0.6,
+              0.15,
+              0.25
+            ],
+            "inner_selection_score": 0.5942206068105071,
+            "outer_held_out_score": 0.4857590286907431
+          },
+          {
+            "outer_test_cohort": "GSE135251",
+            "selected_weights": [
+              0.15,
+              0.15,
+              0.7
+            ],
+            "inner_selection_score": 0.5820528188075168,
+            "outer_held_out_score": 0.5082205552548139
+          }
+        ],
+        "mean_outer_held_out_score": 0.5554786516467747,
+        "note": "Inner loop has only 2 folds (3 cohorts total) -- thin, stated limitation."
+      },
+      "lobo": {
+        "folds": [
+          {
+            "outer_test_biomarker": "serine_glycine_shmt",
+            "selected_weights": [
+              0.35,
+              0.15,
+              0.5
+            ],
+            "inner_selection_score": 0.6097169592452246,
+            "outer_held_out_score": 0.31700564534838754
+          },
+          {
+            "outer_test_biomarker": "urea_cycle",
+            "selected_weights": [
+              0.15,
+              0.15,
+              0.7
+            ],
+            "inner_selection_score": 0.4577468873250328,
+            "outer_held_out_score": 0.9222256592684246
+          },
+          {
+            "outer_test_biomarker": "bcaa",
+            "selected_weights": [
+              0.15,
+              0.15,
+              0.7
+            ],
+            "inner_selection_score": 0.5192541180109813,
+            "outer_held_out_score": 0.6761967365246306
+          },
+          {
+            "outer_test_biomarker": "dnl_scd1_fasn",
+            "selected_weights": [
+              0.55,
+              0.3,
+              0.15
+            ],
+            "inner_selection_score": 0.489436238496636,
+            "outer_held_out_score": 0.769917253112675
+          },
+          {
+            "outer_test_biomarker": "choline_pc",
+            "selected_weights": [
+              0.35,
+              0.15,
+              0.5
+            ],
+            "inner_selection_score": 0.6889490371974325,
+            "outer_held_out_score": 7.733353955610548e-05
+          }
+        ],
+        "mean_outer_held_out_score": 0.5370845255587348
+      },
+      "production": {
+        "weights": [
+          0.35,
+          0.15,
+          0.5
+        ],
+        "selection_score": 0.5511746964658573
+      }
+    }
+  },
+  "weight_floor": 0.15,
+  "grid_step": 0.05,
+  "limitations": [
+    "Only 5 biomarkers and 10 groups to calibrate/validate against -- both LOCO and LOBO nested-CV estimates have wide uncertainty.",
+    "LOCO's inner loop has only 2 folds (3 cohorts total, one held out as the outer test leaves only 2 for inner selection).",
+    "single_proxy biomarker set includes two judgment calls not explicitly pinned down in docs/STEP11_BIOMARKER_MAPPING.md (BCAT isoform choice, single FASN step choice) -- see BIOMARKERS_SINGLE_PROXY comments in this script."
+  ]
+}

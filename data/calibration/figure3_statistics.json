@@ -1,0 +1,13 @@
+{
+  "primary_loco_mean_full_isoform": 0.8829114359119772,
+  "primary_loco_fold_range": [
+    0.8408978423942465,
+    0.9116799422576237
+  ],
+  "secondary_kendalls_w": 0.6666666666666666,
+  "secondary_friedman_chi2": 8.0,
+  "secondary_friedman_p": 0.0915781944436709,
+  "secondary_n_cohorts": 3,
+  "secondary_n_biomarkers": 5,
+  "secondary_note": "Kendall's W across cohorts on biomarker rank order, newly computed at Step 12 per the spec's explicit instruction (docs/MANUSCRIPT_FIGURES.md Figure 3 'Secondary statistical test' field). Not previously computed anywhere in the pipeline."
+}

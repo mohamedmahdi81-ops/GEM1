@@ -1,0 +1,109 @@
+{
+  "item": 17,
+  "description": "Per-axis unconstrained weight preferences -- single-axis production fits for all 5 biomarker axes",
+  "methodology": {
+    "floor": 0.0,
+    "grid_step": 0.05,
+    "grid_size": 231,
+    "fit_type": "single-axis production fit (no CV/holdout), select_best_weights(df, ALL_GROUPS, {axis: reactions}, grid, cache)",
+    "dnl_mapping_used": "FASN-inclusive (audit_common.BIOMARKERS_FULL['dnl_scd1_fasn']) -- same as item14/item16, NOT the SCD1-only mapping from items 12/13"
+  },
+  "per_axis_weights": {
+    "serine_glycine_shmt": {
+      "weights": [
+        0.1,
+        0.05,
+        0.85
+      ],
+      "score": 0.9806743484649292,
+      "recomputed": true,
+      "source": "this script"
+    },
+    "urea_cycle": {
+      "weights": [
+        0.45,
+        0.3,
+        0.25
+      ],
+      "score": null,
+      "recomputed": false,
+      "source": "item16 simple-LOBO 'held-out=bcaa' leg (trained on urea_cycle alone)"
+    },
+    "bcaa": {
+      "weights": [
+        0.25,
+        0.7,
+        0.05
+      ],
+      "score": null,
+      "recomputed": false,
+      "source": "item16 simple-LOBO 'held-out=urea_cycle' leg (trained on bcaa alone)"
+    },
+    "dnl_scd1_fasn": {
+      "weights": [
+        0.7,
+        0.0,
+        0.3
+      ],
+      "score": 0.8733740623308328,
+      "recomputed": true,
+      "source": "this script"
+    },
+    "choline_pc": {
+      "weights": [
+        0.1,
+        0.05,
+        0.85
+      ],
+      "score": 0.978060474827933,
+      "recomputed": true,
+      "source": "this script"
+    }
+  },
+  "cross_check_urea_bcaa": {
+    "urea_cycle": {
+      "recomputed_weights": [
+        0.45,
+        0.3,
+        0.25
+      ],
+      "matches_carried_forward": true
+    },
+    "bcaa": {
+      "recomputed_weights": [
+        0.25,
+        0.7,
+        0.05
+      ],
+      "matches_carried_forward": true
+    }
+  },
+  "dominant_component_by_axis": {
+    "serine_glycine_shmt": "w_P",
+    "urea_cycle": "mixed/no-dominant",
+    "bcaa": "w_F",
+    "dnl_scd1_fasn": "w_C",
+    "choline_pc": "w_P"
+  },
+  "reference_multi_axis_fits": {
+    "5-axis (item14)": {
+      "weights": [
+        0.528,
+        0.05,
+        0.422
+      ],
+      "note": "mean across production+LOCO+LOBO folds, consensus-dominant"
+    },
+    "2-axis urea_cycle+bcaa (item16)": {
+      "weights": [
+        0.358,
+        0.558,
+        0.083
+      ],
+      "note": "mean across production+LOCO+simple-LOBO folds, flux-confidence-dominant, BCAA-driven"
+    }
+  },
+  "status": "RESOLVED",
+  "max_abs_discrepancy": "N/A -- descriptive characterization, not a reconciliation against a prior figure",
+  "elapsed_seconds": 113.05321502685547
+}

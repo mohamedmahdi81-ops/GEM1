@@ -1,0 +1,68 @@
+{
+  "item": 10,
+  "description": "Section 3.7 per-group BCAA severity means, independently recomputed from biomarker_ranking_by_group.csv",
+  "population": "biomarker=='bcaa' rows, grouped by disease severity (healthy/steatosis/NASH), averaged across the 3 cohorts sharing that group label; GSE126848's 'obese_no_NAFLD' 4th group excluded (not part of the 3-point severity ladder)",
+  "per_group_detail": {
+    "healthy": [
+      {
+        "cohort": "GSE89632",
+        "percentile_rank_in_group": 0.804346
+      },
+      {
+        "cohort": "GSE126848",
+        "percentile_rank_in_group": 7.7e-05
+      },
+      {
+        "cohort": "GSE135251",
+        "percentile_rank_in_group": 0.715335
+      }
+    ],
+    "steatosis": [
+      {
+        "cohort": "GSE89632",
+        "percentile_rank_in_group": 0.90341
+      },
+      {
+        "cohort": "GSE126848",
+        "percentile_rank_in_group": 0.872245
+      },
+      {
+        "cohort": "GSE135251",
+        "percentile_rank_in_group": 0.937592
+      }
+    ],
+    "NASH": [
+      {
+        "cohort": "GSE89632",
+        "percentile_rank_in_group": 0.933802
+      },
+      {
+        "cohort": "GSE126848",
+        "percentile_rank_in_group": 0.693218
+      },
+      {
+        "cohort": "GSE135251",
+        "percentile_rank_in_group": 0.901864
+      }
+    ]
+  },
+  "independent_means": {
+    "healthy": 0.506586,
+    "steatosis": 0.9044156666666666,
+    "NASH": 0.8429613333333332
+  },
+  "reported_means": {
+    "healthy": 0.5066,
+    "steatosis": 0.9044,
+    "NASH": 0.843
+  },
+  "discrepancies": {
+    "healthy": 1.4000000000069512e-05,
+    "steatosis": 1.5666666666636075e-05,
+    "NASH": 3.8666666666742344e-05
+  },
+  "max_abs_discrepancy": 3.8666666666742344e-05,
+  "pass_threshold": 0.001,
+  "status": "PASS",
+  "elapsed_seconds": 0.00702667236328125
+}

@@ -1,0 +1,41 @@
+{
+  "cohort": "GSE135251",
+  "group": "healthy",
+  "consensus_definition_used": "strict",
+  "n_active_reactions": 4350,
+  "obj_frac": 0.9,
+  "biomass_floor": 112.3545772636827,
+  "fba_optimum_used": 124.83841918186967,
+  "n_samples": 500,
+  "thinning": 100,
+  "processes": 1,
+  "seed": 42,
+  "runtime_seconds": 401.11,
+  "step6_input_check": {
+    "step6_fba_objective_value": 124.83841918186967,
+    "freshly_solved_fba_objective_value": 124.83841918186967,
+    "fba_reproduced": true,
+    "step6_n_active_reactions": 4350,
+    "this_step_n_active_reactions": 4267,
+    "active_set_size_matches": false,
+    "reduced_model_fba_value": 124.83841918186971,
+    "reduced_model_matches_bounds_zeroed_model": true
+  },
+  "validation": {
+    "n_samples_total": 500,
+    "pct_samples_structurally_valid": 100.0,
+    "n_reactions_with_range_violations": 7,
+    "total_range_violation_count": 665,
+    "ks_d_statistic_mean": 0.3023,
+    "ks_d_statistic_median": 0.292,
+    "ks_d_statistic_max": 0.764,
+    "standardized_mean_shift_median": 0.3658,
+    "n_reactions_with_medium_or_larger_shift": 750,
+    "pct_reactions_with_medium_or_larger_shift": 28.5063,
+    "pct_reactions_within_fva_range": 99.8391,
+    "ks_alpha": 0.01,
+    "n_reactions_ks_tested": 2631,
+    "n_reactions_ks_significant": 2515,
+    "pct_reactions_ks_significant": 95.591
+  }
+}

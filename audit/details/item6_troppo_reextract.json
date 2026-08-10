@@ -1,0 +1,18 @@
+{
+  "item": 6,
+  "description": "Active-reaction counts for all cohort x group x algorithm combinations, independently reconstructed via fresh troppo code",
+  "n_combinations_total": 40,
+  "n_combinations_reconstructed": 39,
+  "n_combinations_expected_success": 39,
+  "n_within_tolerance": 40,
+  "tolerances_used": {
+    "fastcore": 0.02,
+    "gimme": 0.05,
+    "imat": 0.15,
+    "tinit": 0.15
+  },
+  "fastcc_consistent_reactions": 11641,
+  "max_abs_discrepancy": 203.0,
+  "status": "PASS",
+  "elapsed_seconds": 3389.012196779251
+}

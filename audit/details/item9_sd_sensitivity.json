@@ -1,0 +1,84 @@
+{
+  "item": 9,
+  "description": "Section 3.4 component-level SD sensitivity, independently recomputed from raw rank components",
+  "reported_sd": {
+    "calibrated": 0.2002,
+    "perturbation_dominant": 0.29,
+    "equal_weighting": 0.1236
+  },
+  "direct_column_check": {
+    "calibrated_confidence_score_sd_pooled": 0.26091335435805685,
+    "calibrated_confidence_score_sd_per_group_mean": 0.2607391240997378,
+    "reported": 0.2002,
+    "discrepancy": 0.06053912409973783
+  },
+  "full_grid": {
+    "calibrated__active_only__raw__pooled": 0.2001524582050257,
+    "calibrated__active_only__eval_pct__pooled": 0.287218839144224,
+    "calibrated__active_only__raw__per_group_mean": 0.2000788117778626,
+    "calibrated__active_only__eval_pct__per_group_mean": 0.28720385099612955,
+    "calibrated__all_rows_zero_filled__raw__pooled": 0.26091335435805685,
+    "calibrated__all_rows_zero_filled__eval_pct__pooled": 0.39564091972655746,
+    "calibrated__all_rows_zero_filled__raw__per_group_mean": 0.2607391240997378,
+    "calibrated__all_rows_zero_filled__eval_pct__per_group_mean": 0.39547580417076067,
+    "perturbation_dominant__active_only__raw__pooled": 0.28840242984241016,
+    "perturbation_dominant__active_only__eval_pct__pooled": 0.2777076135865956,
+    "perturbation_dominant__active_only__raw__per_group_mean": 0.2884004551913769,
+    "perturbation_dominant__active_only__eval_pct__per_group_mean": 0.27765141218945866,
+    "perturbation_dominant__all_rows_zero_filled__raw__pooled": 0.2866203747186385,
+    "perturbation_dominant__all_rows_zero_filled__eval_pct__pooled": 0.3942443411339366,
+    "perturbation_dominant__all_rows_zero_filled__raw__per_group_mean": 0.2864522717617052,
+    "perturbation_dominant__all_rows_zero_filled__eval_pct__per_group_mean": 0.3940801232651773,
+    "equal_weighting__active_only__raw__pooled": 0.1235890604766859,
+    "equal_weighting__active_only__eval_pct__pooled": 0.2871832649601897,
+    "equal_weighting__active_only__raw__per_group_mean": 0.12340250187750126,
+    "equal_weighting__active_only__eval_pct__per_group_mean": 0.2871728436858458,
+    "equal_weighting__all_rows_zero_filled__raw__pooled": 0.2449159206475244,
+    "equal_weighting__all_rows_zero_filled__eval_pct__pooled": 0.39563775913407406,
+    "equal_weighting__all_rows_zero_filled__raw__per_group_mean": 0.24473836675157648,
+    "equal_weighting__all_rows_zero_filled__eval_pct__per_group_mean": 0.3954726701004707,
+    "calibrated__DIRECT_COLUMN__pooled": 0.26091335435805685,
+    "calibrated__DIRECT_COLUMN__per_group_mean": 0.2607391240997378
+  },
+  "closest_cell_per_architecture": {
+    "calibrated": {
+      "cell": "calibrated__active_only__raw__pooled",
+      "value": 0.2001524582050257,
+      "abs_diff": 4.7541794974292895e-05
+    },
+    "perturbation_dominant": {
+      "cell": "perturbation_dominant__active_only__raw__pooled",
+      "value": 0.28840242984241016,
+      "abs_diff": 0.0015975701575898227
+    },
+    "equal_weighting": {
+      "cell": "equal_weighting__active_only__raw__pooled",
+      "value": 0.1235890604766859,
+      "abs_diff": 1.0939523314101862e-05
+    }
+  },
+  "cells_matching_reported_within_tol": {
+    "calibrated": {
+      "calibrated__active_only__raw__pooled": 0.2001524582050257,
+      "calibrated__active_only__raw__per_group_mean": 0.2000788117778626
+    },
+    "perturbation_dominant": {
+      "calibrated__active_only__eval_pct__pooled": 0.287218839144224,
+      "calibrated__active_only__eval_pct__per_group_mean": 0.28720385099612955,
+      "perturbation_dominant__active_only__raw__pooled": 0.28840242984241016,
+      "perturbation_dominant__active_only__raw__per_group_mean": 0.2884004551913769,
+      "perturbation_dominant__all_rows_zero_filled__raw__pooled": 0.2866203747186385,
+      "perturbation_dominant__all_rows_zero_filled__raw__per_group_mean": 0.2864522717617052,
+      "equal_weighting__active_only__eval_pct__pooled": 0.2871832649601897,
+      "equal_weighting__active_only__eval_pct__per_group_mean": 0.2871728436858458
+    },
+    "equal_weighting": {
+      "equal_weighting__active_only__raw__pooled": 0.1235890604766859,
+      "equal_weighting__active_only__raw__per_group_mean": 0.12340250187750126
+    }
+  },
+  "max_abs_discrepancy": 0.0015975701575898227,
+  "pass_threshold": 0.01,
+  "status": "PASS",
+  "elapsed_seconds": 0.5820002555847168
+}

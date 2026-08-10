@@ -1,0 +1,269 @@
+{
+  "floors_tested": [
+    0.15,
+    0.05,
+    0.0
+  ],
+  "biomarker_set": "full_isoform",
+  "results_by_floor": {
+    "0.15": {
+      "loco_folds": [
+        {
+          "outer_test_cohort": "GSE89632",
+          "weights": [
+            0.15,
+            0.15,
+            0.7
+          ],
+          "outer_score": 0.9116799422576237
+        },
+        {
+          "outer_test_cohort": "GSE126848",
+          "weights": [
+            0.15,
+            0.15,
+            0.7
+          ],
+          "outer_score": 0.8408978423942465
+        },
+        {
+          "outer_test_cohort": "GSE135251",
+          "weights": [
+            0.15,
+            0.15,
+            0.7
+          ],
+          "outer_score": 0.8961565230840615
+        }
+      ],
+      "loco_mean": 0.8829114359119772,
+      "lobo_folds": [
+        {
+          "outer_test_biomarker": "serine_glycine_shmt",
+          "weights": [
+            0.15,
+            0.15,
+            0.7
+          ],
+          "outer_score": 0.9738921970458589
+        },
+        {
+          "outer_test_biomarker": "urea_cycle",
+          "weights": [
+            0.15,
+            0.15,
+            0.7
+          ],
+          "outer_score": 0.9222256592684246
+        },
+        {
+          "outer_test_biomarker": "bcaa",
+          "weights": [
+            0.15,
+            0.15,
+            0.7
+          ],
+          "outer_score": 0.6761967365246306
+        },
+        {
+          "outer_test_biomarker": "dnl_scd1_fasn",
+          "weights": [
+            0.15,
+            0.15,
+            0.7
+          ],
+          "outer_score": 0.8520145387054365
+        },
+        {
+          "outer_test_biomarker": "choline_pc",
+          "weights": [
+            0.15,
+            0.15,
+            0.7
+          ],
+          "outer_score": 0.96922125125667
+        }
+      ],
+      "lobo_mean": 0.8787100765602041,
+      "production_weights_at_this_floor": [
+        0.15,
+        0.15,
+        0.7
+      ],
+      "production_selection_score_at_this_floor": 0.8787100765602041
+    },
+    "0.05": {
+      "loco_folds": [
+        {
+          "outer_test_cohort": "GSE89632",
+          "weights": [
+            0.6,
+            0.05,
+            0.35
+          ],
+          "outer_score": 0.9182842265357152
+        },
+        {
+          "outer_test_cohort": "GSE126848",
+          "weights": [
+            0.5,
+            0.05,
+            0.45
+          ],
+          "outer_score": 0.8439679839146239
+        },
+        {
+          "outer_test_cohort": "GSE135251",
+          "weights": [
+            0.5,
+            0.05,
+            0.45
+          ],
+          "outer_score": 0.900574845977367
+        }
+      ],
+      "loco_mean": 0.8876090188092354,
+      "lobo_folds": [
+        {
+          "outer_test_biomarker": "serine_glycine_shmt",
+          "weights": [
+            0.6,
+            0.05,
+            0.35
+          ],
+          "outer_score": 0.9792668780450082
+        },
+        {
+          "outer_test_biomarker": "urea_cycle",
+          "weights": [
+            0.35,
+            0.05,
+            0.6
+          ],
+          "outer_score": 0.9122496326656873
+        },
+        {
+          "outer_test_biomarker": "bcaa",
+          "weights": [
+            0.5,
+            0.05,
+            0.45
+          ],
+          "outer_score": 0.6787564766839378
+        },
+        {
+          "outer_test_biomarker": "dnl_scd1_fasn",
+          "weights": [
+            0.6,
+            0.05,
+            0.35
+          ],
+          "outer_score": 0.8618668316448843
+        },
+        {
+          "outer_test_biomarker": "choline_pc",
+          "weights": [
+            0.6,
+            0.05,
+            0.35
+          ],
+          "outer_score": 0.9758178021808058
+        }
+      ],
+      "lobo_mean": 0.8815915242440646,
+      "production_weights_at_this_floor": [
+        0.5,
+        0.05,
+        0.45
+      ],
+      "production_selection_score_at_this_floor": 0.8835434227824608
+    },
+    "0.0": {
+      "loco_folds": [
+        {
+          "outer_test_cohort": "GSE89632",
+          "weights": [
+            0.6,
+            0.05,
+            0.35
+          ],
+          "outer_score": 0.9182842265357152
+        },
+        {
+          "outer_test_cohort": "GSE126848",
+          "weights": [
+            0.5,
+            0.05,
+            0.45
+          ],
+          "outer_score": 0.8439679839146239
+        },
+        {
+          "outer_test_cohort": "GSE135251",
+          "weights": [
+            0.5,
+            0.05,
+            0.45
+          ],
+          "outer_score": 0.900574845977367
+        }
+      ],
+      "loco_mean": 0.8876090188092354,
+      "lobo_folds": [
+        {
+          "outer_test_biomarker": "serine_glycine_shmt",
+          "weights": [
+            0.6,
+            0.05,
+            0.35
+          ],
+          "outer_score": 0.9792668780450082
+        },
+        {
+          "outer_test_biomarker": "urea_cycle",
+          "weights": [
+            0.35,
+            0.05,
+            0.6
+          ],
+          "outer_score": 0.9122496326656873
+        },
+        {
+          "outer_test_biomarker": "bcaa",
+          "weights": [
+            0.5,
+            0.05,
+            0.45
+          ],
+          "outer_score": 0.6787564766839378
+        },
+        {
+          "outer_test_biomarker": "dnl_scd1_fasn",
+          "weights": [
+            0.6,
+            0.05,
+            0.35
+          ],
+          "outer_score": 0.8618668316448843
+        },
+        {
+          "outer_test_biomarker": "choline_pc",
+          "weights": [
+            0.6,
+            0.05,
+            0.35
+          ],
+          "outer_score": 0.9758178021808058
+        }
+      ],
+      "lobo_mean": 0.8815915242440646,
+      "production_weights_at_this_floor": [
+        0.5,
+        0.05,
+        0.45
+      ],
+      "production_selection_score_at_this_floor": 0.8835434227824608
+    }
+  },
+  "note": "Persisted 2026-07-30 to close the Figure 5 reproducibility gap (docs/MANUSCRIPT_FIGURES.md) -- previously these numbers existed only as CLAUDE.md prose. Regenerate by re-running this script; values should match CLAUDE.md's 'Step 11 empirical weight calibration' section's floor-sensitivity table."
+}

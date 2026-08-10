@@ -1,0 +1,11 @@
+cohort,group,n_3algo_consensus,n_3algo_union,n_gimme,pct_gimme_of_total_network,n_gimme_retains_consensus,pct_consensus_retained_by_gimme,n_gimme_only,pct_gimme_reactions_that_are_gimme_only,fastcore_missing
+GSE89632,NASH,3955,10015,12308,95.2,3944,99.7,2467,20.0,False
+GSE89632,healthy,4054,9854,12419,96.0,4037,99.6,2733,22.0,False
+GSE89632,steatosis,3915,10012,12279,95.0,3901,99.6,2458,20.0,False
+GSE126848,NASH,4197,9214,10764,83.2,4091,97.5,2184,20.3,False
+GSE126848,healthy,4747,8618,10397,80.4,4625,97.4,2125,20.4,True
+GSE126848,obese_no_NAFLD,3994,9329,10514,81.3,3898,97.6,1894,18.0,False
+GSE126848,steatosis,4333,9473,10442,80.8,4230,97.6,1825,17.5,False
+GSE135251,NASH,4097,9424,10696,82.7,3988,97.3,1976,18.5,False
+GSE135251,healthy,4267,9517,10559,81.7,4118,96.5,1861,17.6,False
+GSE135251,steatosis,4001,9224,10662,82.5,3902,97.5,2138,20.1,False

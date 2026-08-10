@@ -1,0 +1,136 @@
+{
+  "item": 19,
+  "description": "Final SHMT p=2.1e-5 reconciliation attempt via two-level nested (cohort-then-overall) Fisher combination",
+  "already_tried_note": "This exact procedure (per-group p -> Fisher-combine within each cohort -> Fisher-combine across cohorts) is NOT a new, previously-untried variant -- it is precisely item11_calibrated_enrichment_audit.py's 'nested_design' (two-level nested), already computed and reported at N=20,000: raw p=8.898e-06. The 'flat 10-group' and 'one-level-across-all-groups' variants referenced in the request are DIFFERENT designs (item13's frozen flat procedure, and item11/item12's nested_test_one_level respectively) -- this two-level cohort-then-overall design was already the closest match found in item11, not an untested possibility.",
+  "fresh_100k_result": {
+    "per_group": [
+      {
+        "cohort": "GSE89632",
+        "group": "healthy",
+        "observed_statistic": 0.9664372438326502,
+        "n_null_ge_observed": 6546,
+        "p_value": 0.06546934530654694
+      },
+      {
+        "cohort": "GSE89632",
+        "group": "steatosis",
+        "observed_statistic": 0.9734745959322558,
+        "n_null_ge_observed": 5370,
+        "p_value": 0.053709462905370944
+      },
+      {
+        "cohort": "GSE89632",
+        "group": "NASH",
+        "observed_statistic": 0.9907199752532674,
+        "n_null_ge_observed": 1825,
+        "p_value": 0.018259817401825983
+      },
+      {
+        "cohort": "GSE126848",
+        "group": "healthy",
+        "observed_statistic": 0.9621065656175083,
+        "n_null_ge_observed": 7386,
+        "p_value": 0.07386926130738693
+      },
+      {
+        "cohort": "GSE126848",
+        "group": "obese_no_NAFLD",
+        "observed_statistic": 0.9842239579305545,
+        "n_null_ge_observed": 3155,
+        "p_value": 0.03155968440315597
+      },
+      {
+        "cohort": "GSE126848",
+        "group": "steatosis",
+        "observed_statistic": 0.9800479467945248,
+        "n_null_ge_observed": 3992,
+        "p_value": 0.03992960070399296
+      },
+      {
+        "cohort": "GSE126848",
+        "group": "NASH",
+        "observed_statistic": 0.9549918799783466,
+        "n_null_ge_observed": 8765,
+        "p_value": 0.08765912340876592
+      },
+      {
+        "cohort": "GSE135251",
+        "group": "healthy",
+        "observed_statistic": 0.982445286520764,
+        "n_null_ge_observed": 3500,
+        "p_value": 0.035009649903500965
+      },
+      {
+        "cohort": "GSE135251",
+        "group": "steatosis",
+        "observed_statistic": 0.9820586188229835,
+        "n_null_ge_observed": 3644,
+        "p_value": 0.03644963550364496
+      },
+      {
+        "cohort": "GSE135251",
+        "group": "NASH",
+        "observed_statistic": 0.9624158997757327,
+        "n_null_ge_observed": 7489,
+        "p_value": 0.07489925100748993
+      }
+    ],
+    "per_cohort": {
+      "GSE89632": {
+        "n_groups": 3,
+        "group_p_values": [
+          0.06546934530654694,
+          0.053709462905370944,
+          0.018259817401825983
+        ],
+        "fisher_statistic": 19.306783470518443,
+        "df": 6,
+        "p_value": 0.0036757065816818146
+      },
+      "GSE126848": {
+        "n_groups": 4,
+        "group_p_values": [
+          0.07386926130738693,
+          0.03155968440315597,
+          0.03992960070399296,
+          0.08765912340876592
+        ],
+        "fisher_statistic": 23.432540424288874,
+        "df": 8,
+        "p_value": 0.002851112912642173
+      },
+      "GSE135251": {
+        "n_groups": 3,
+        "group_p_values": [
+          0.035009649903500965,
+          0.03644963550364496,
+          0.07489925100748993
+        ],
+        "fisher_statistic": 18.511133505703995,
+        "df": 6,
+        "p_value": 0.0050740816687741
+      }
+    },
+    "final_fisher_statistic": 33.499330970657994,
+    "final_df": 6,
+    "p_value": 8.403096744991068e-06
+  },
+  "prior_20k_result_cited_from_item11": {
+    "raw_p": 8.898391051559429e-06,
+    "bh_adjusted_p": 4.4491955257797144e-05,
+    "per_cohort_p": {
+      "GSE89632": 0.0037263431807431635,
+      "GSE126848": 0.0028763148138795103,
+      "GSE135251": 0.005291991741890545
+    }
+  },
+  "reported_value": 2.1e-05,
+  "ratio_100k_vs_reported": 2.4990786893555303,
+  "within_order_of_magnitude_100k": true,
+  "ratio_20k_vs_reported": 2.359977200183822,
+  "within_order_of_magnitude_20k": true,
+  "conclusion": "MATCHES within an order of magnitude -- DO NOT retract. The two-level nested (cohort-then-overall) Fisher combination, recomputed fresh at N=100,000 permutations, gives a raw combined p of 8.403e-06, a ratio of 2.50x from the reported 2.1e-5 (well within the 10x order-of-magnitude threshold; for comparison, the N=20,000 result -- already reported in item11 -- was 2.36x off). This is the best-matching mechanism found across every variant tested in this audit (flat, one-level nested, two-level nested), and it lands close enough to 2.1e-5 that a nested Fisher combination of this specific structure is a credible, defensible explanation for the original figure. It is not an exact bit-for-bit reproduction (no source script exists to confirm the precise seed/draw count/tie-breaking used originally), but 'unrecoverable, retract' is NOT the conclusion this evidence supports -- 'plausible mechanism identified, exact reproduction not possible without source code' is the accurate summary.",
+  "status": "MATCHES_WITHIN_ORDER_OF_MAGNITUDE -- NOT unrecoverable",
+  "max_abs_discrepancy": 1.2596903255008931e-05,
+  "elapsed_seconds": 0.3798179626464844
+}

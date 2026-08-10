@@ -1,0 +1,192 @@
+{
+  "item": 16,
+  "description": "Growth-support confound check on item14's unconstrained-weight consensus-dominant finding",
+  "premise_check": {
+    "request_claimed": "3 axes overlap growth support (SHMT, DNL, choline_pc), 2 don't (urea_cycle, bcaa)",
+    "actual_finding_under_item14s_mapping": "Only 2 axes overlap (SHMT: 1/2, choline_pc: 1/5); DNL (FASN-inclusive mapping, as item14 used it) has 0/3 overlap. DNL only overlaps (1/3) under the alternate SCD1-only mapping used in items 12/13, which item14 did NOT use.",
+    "growth_support_overlap_by_axis": {
+      "serine_glycine_shmt": {
+        "n_mapped": 2,
+        "n_overlap": 1,
+        "overlapping_reactions": [
+          "MAR03845"
+        ]
+      },
+      "urea_cycle": {
+        "n_mapped": 6,
+        "n_overlap": 0,
+        "overlapping_reactions": []
+      },
+      "bcaa": {
+        "n_mapped": 9,
+        "n_overlap": 0,
+        "overlapping_reactions": []
+      },
+      "dnl_scd1_fasn": {
+        "n_mapped": 3,
+        "n_overlap": 0,
+        "overlapping_reactions": []
+      },
+      "choline_pc": {
+        "n_mapped": 5,
+        "n_overlap": 1,
+        "overlapping_reactions": [
+          "MAR00653"
+        ]
+      },
+      "dnl_scd1_only_alt_mapping": {
+        "n_mapped": 3,
+        "n_overlap": 1,
+        "overlapping_reactions": [
+          "MAR00148"
+        ],
+        "note": "the SCD1-only mapping used in items 12/13, NOT the mapping item14 actually used"
+      }
+    }
+  },
+  "restricted_axes_used": [
+    "urea_cycle",
+    "bcaa"
+  ],
+  "restricted_fit": {
+    "production_weights": [
+      0.25,
+      0.7,
+      0.05
+    ],
+    "production_score": 0.8179027144072384,
+    "loco_folds": [
+      {
+        "outer_test_cohort": "GSE126848",
+        "selected_weights": [
+          0.3,
+          0.65,
+          0.05
+        ],
+        "inner_selection_score": 0.8993503982677287,
+        "outer_held_out_score": 0.6956248549996134
+      },
+      {
+        "outer_test_cohort": "GSE135251",
+        "selected_weights": [
+          0.65,
+          0.3,
+          0.05
+        ],
+        "inner_selection_score": 0.7958136777253628,
+        "outer_held_out_score": 0.9020312943056736
+      },
+      {
+        "outer_test_cohort": "GSE89632",
+        "selected_weights": [
+          0.25,
+          0.7,
+          0.05
+        ],
+        "inner_selection_score": 0.7994322429304255,
+        "outer_held_out_score": 0.8954966102131827
+      }
+    ],
+    "lobo_folds": [
+      {
+        "outer_test_biomarker": "bcaa",
+        "trained_on": [
+          "urea_cycle"
+        ],
+        "selected_weights": [
+          0.45,
+          0.3,
+          0.25
+        ],
+        "training_score": 0.9369654319078183,
+        "outer_held_out_score": 0.6955687881834351,
+        "note": "single-level (non-nested) -- with only 2 biomarkers, nested nested LOBO's inner loop is degenerate"
+      },
+      {
+        "outer_test_biomarker": "urea_cycle",
+        "trained_on": [
+          "bcaa"
+        ],
+        "selected_weights": [
+          0.25,
+          0.7,
+          0.05
+        ],
+        "training_score": 0.7003016008042688,
+        "outer_held_out_score": 0.935503828010208,
+        "note": "single-level (non-nested) -- with only 2 biomarkers, nested nested LOBO's inner loop is degenerate"
+      }
+    ],
+    "all_fold_weights": [
+      [
+        0.25,
+        0.7,
+        0.05
+      ],
+      [
+        0.3,
+        0.65,
+        0.05
+      ],
+      [
+        0.65,
+        0.3,
+        0.05
+      ],
+      [
+        0.25,
+        0.7,
+        0.05
+      ],
+      [
+        0.45,
+        0.3,
+        0.25
+      ],
+      [
+        0.25,
+        0.7,
+        0.05
+      ]
+    ],
+    "fold_labels": [
+      "production (no holdout)",
+      "LOCO held-out=GSE126848",
+      "LOCO held-out=GSE135251",
+      "LOCO held-out=GSE89632",
+      "simple-LOBO held-out=bcaa",
+      "simple-LOBO held-out=urea_cycle"
+    ]
+  },
+  "comparison": {
+    "mean_weights_5axis_item14_wC_wF_wP": [
+      0.528,
+      0.05,
+      0.422
+    ],
+    "mean_weights_2axis_restricted_wC_wF_wP": [
+      0.358,
+      0.558,
+      0.083
+    ],
+    "still_prefers_high_consensus_2axis_only": false,
+    "note_on_prior_auto_generated_conclusion": "A first-pass automated summary compared only mean w_C (0.528 vs 0.358) and judged these comparable, concluding the consensus preference persists. That comparison was misleading: it ignored composition. The 2-axis fit does not moderate toward the 5-axis pattern with a smaller w_C -- it shifts to an entirely DIFFERENT dominant component. 4 of 6 folds want w_F (flux confidence) high (0.65-0.70) and w_P (perturbation) low (0.05), the opposite of the 5-axis pattern where w_F was consistently pinned near 0 and w_P was the second-largest component. This was caught and corrected before reporting."
+  },
+  "conclusion": "NEITHER of the two pre-specified outcomes (\"confound confirmed, preference disappears\" vs \"confound not present, high-consensus preference persists\") describes what actually happened. The consensus-dominant preference from the 5-axis fit (w_C~0.53, w_F~0.05, w_P~0.42) does NOT persist in the 2-axis (urea_cycle+bcaa only) fit -- so growth-support overlap on SHMT/choline_pc IS implicated in driving item14's specific \"consensus-dominant\" finding, confirming part of the suspected confound. But the 2-axis fit does not settle on a moderate/balanced alternative either -- it flips to a DIFFERENT dominant component entirely (w_F~0.56, flux confidence), which is itself suspicious rather than reassuring: 4 of 6 restricted folds are driven almost entirely by BCAA alone (a 9-reaction axis with only 12% is_active coverage, previously flagged in item 11 as a methodological diagnostic concern, not a clean biological signal). CONCLUSION: item14's specific \"consensus-dominant\" claim does not survive this check -- it substantially depended on the growth-support-overlapping axes. But the replacement preference this check reveals (flux-confidence-dominant) is not more trustworthy -- it appears to be driven by BCAA's known-thin coverage, not a clean independent signal from urea_cycle. The honest summary is: NEITHER unconstrained fit (5-axis or 2-axis) points to a single trustworthy weight preference -- the result is highly sensitive to which axes are included, which is itself the finding.",
+  "status": "RESOLVED -- confound partially confirmed, but replacement signal also unreliable (BCAA-dominated)",
+  "max_abs_discrepancy": 0.1694444444444444,
+  "elapsed_seconds": 118.9017505645752,
+  "per_biomarker_signal": {
+    "bcaa_alone_wants (trained on bcaa only, held out urea_cycle)": [
+      0.25,
+      0.7,
+      0.05
+    ],
+    "urea_cycle_alone_wants (trained on urea_cycle only, held out bcaa)": [
+      0.45,
+      0.3,
+      0.25
+    ],
+    "note": "The 2-axis production fit (0.25, 0.70, 0.05) closely matches BCAA_alone (0.25, 0.70, 0.05) almost exactly, not urea_cycle_alone (0.45, 0.3, 0.25) -- suggesting BCAA dominates the combined 2-axis objective, not urea_cycle. Given BCAA has only 12% is_active coverage (item 11), this combined result should be read with that in mind: BCAA is a noisy, sparsely-covered axis, and its dominance of the 2-axis fit is itself worth scrutiny, not just item14 5-axis consensus finding."
+  }
+}

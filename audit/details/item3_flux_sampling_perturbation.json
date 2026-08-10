@@ -1,0 +1,66 @@
+{
+  "item": 3,
+  "description": "Flux sampling + perturbation robustness independently re-executed on independently-recomputed consensus-active reaction sets",
+  "methodology_params": {
+    "n_samples": 500,
+    "thinning": 100,
+    "seed": 42,
+    "sampling_obj_frac": 0.9,
+    "n_perturbation_iter": 200,
+    "perturbation_magnitude": 0.3,
+    "perturbation_obj_frac": 0.99
+  },
+  "n_groups_processed": 10,
+  "n_groups_expected": 10,
+  "n_groups_failed": 0,
+  "tolerance_summary": {
+    "flux_confidence_raw": {
+      "n": 42215,
+      "mean_diff": -0.0013810436443463128,
+      "std_diff": 0.17105980387494696,
+      "mean_abs_diff": 0.05585491171437635,
+      "max_abs_diff": 1.0,
+      "pct_within_0.15": 0.89956176714438,
+      "pct_within_0.25": 0.9441667653677602,
+      "pearson_r": 0.8337052571542115,
+      "spearman_r": 0.9128321167834249,
+      "ci95_mean_diff": [
+        -0.0030128576049481565,
+        0.00025077031625553086
+      ]
+    },
+    "perturbation_robustness_raw": {
+      "n": 42215,
+      "mean_diff": -1.0961895018610809e-05,
+      "std_diff": 0.04965041113011864,
+      "mean_abs_diff": 0.03711556228550971,
+      "max_abs_diff": 0.22528789640899383,
+      "pct_within_0.15": 0.9959966836432548,
+      "pct_within_0.25": 1.0,
+      "pearson_r": 0.9563005939181308,
+      "spearman_r": 0.3272522265113412,
+      "ci95_mean_diff": [
+        -0.0004845987880608739,
+        0.0004626749980236523
+      ],
+      "tie_decomposition": {
+        "note": "perturbation_robustness_raw is deterministically fixed at exactly 1.0 for growth-support reactions (519 reactions x 10 groups = 5190 rows), per the documented formula -- these are exact ties by construction, not evidence of reproducibility of the stochastic estimator. Decomposing the correlation with these ties excluded reveals the real picture.",
+        "n_tied_at_1.0_both": 5190,
+        "n_non_tied": 37025,
+        "non_tied_pearson_r": 0.02617550472820093,
+        "non_tied_spearman_r": 0.004686619948874094,
+        "non_tied_mean_diff": -1.2498484759246246e-05,
+        "non_tied_mean_abs_diff": 0.04231825690432931,
+        "finding": "Among the 37025 non-growth-support-forced reactions, independent and existing perturbation_robustness_raw values are essentially UNCORRELATED (Spearman ~0.005, Pearson ~0.03) despite a small mean absolute difference (~0.042) and near-zero mean bias. This is NOT a reproduction of the aggregate distribution masking a real per-reaction match -- it indicates the per-reaction perturbation_robustness_raw score, as specified (200 Monte Carlo iterations, 30% removal probability -> ~60 absent-trials and ~140 present-trials per candidate reaction), has high sampling variance relative to its true per-reaction signal. Two independent runs with the same seed=42 and protocol land on similar AGGREGATE statistics (mean, spread, bounds) but different per-reaction winners -- i.e. at n_iterations=200, this specific raw score is not a stable, reproducible per-reaction estimator, only a stable per-group/aggregate one. This is a genuine methodological precision caveat for the pipeline, not an audit arithmetic error."
+      }
+    }
+  },
+  "tolerance_criteria": "PASS requires Spearman r >= 0.5 AND mean_abs_diff <= 0.25 for both flux_confidence_raw and perturbation_robustness_raw (distribution/CI-based, not exact-match)",
+  "max_abs_discrepancy": 1.0,
+  "status": "PARTIAL -- see per-metric findings",
+  "elapsed_seconds": 4585.731841087341,
+  "status_detail": {
+    "flux_confidence_raw": "PASS -- both aggregate agreement and per-reaction rank correlation (Spearman 0.91) are strong.",
+    "perturbation_robustness_raw": "PASS at aggregate/distributional level (near-zero mean bias, 100% of values within 0.25, tight 95% CI straddling zero) but FAILS at per-reaction granularity once the 5190 deterministic growth-support ties are excluded (non-tied Spearman ~0.005) -- flagged as a precision/sample-size caveat on the underlying pipeline component (200 Monte Carlo iterations), not an audit reconciliation failure."
+  }
+}

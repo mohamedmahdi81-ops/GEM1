@@ -1,0 +1,11 @@
+cohort,group,consensus_definition_used,n_strict_consensus_reactions,n_growth_support_added,n_active_reactions,n_blocked_reactions,fba_status,fba_objective_value,pfba_status,pfba_objective_value,pfba_total_flux,n_fva_reactions,output
+GSE89632,NASH,strict,3955,76,4031,8900,optimal,124.83841918186964,optimal,71665.76101046031,71665.76101046022,4031,D:\Mahdi\GEM1\data\flux_analysis\GSE89632__NASH__flux.json
+GSE89632,healthy,strict,4054,65,4119,8812,optimal,124.8384191818697,optimal,71553.53358174408,71553.53358174404,4119,D:\Mahdi\GEM1\data\flux_analysis\GSE89632__healthy__flux.json
+GSE89632,steatosis,strict,3915,64,3979,8952,optimal,124.8384191818697,optimal,71503.14119944954,71503.14119944948,3979,D:\Mahdi\GEM1\data\flux_analysis\GSE89632__steatosis__flux.json
+GSE126848,NASH,strict,4197,95,4292,8639,optimal,124.83841918186968,optimal,71573.55076201427,71573.55076201423,4292,D:\Mahdi\GEM1\data\flux_analysis\GSE126848__NASH__flux.json
+GSE126848,healthy,reduced,4747,0,4747,8184,optimal,124.86814837744569,optimal,71580.27385174196,71580.27385174214,4747,D:\Mahdi\GEM1\data\flux_analysis\GSE126848__healthy__flux.json
+GSE126848,obese_no_NAFLD,strict,3994,63,4057,8874,optimal,124.83841918186967,optimal,72048.80281170893,72048.80281170875,4057,D:\Mahdi\GEM1\data\flux_analysis\GSE126848__obese_no_NAFLD__flux.json
+GSE126848,steatosis,strict,4333,63,4396,8535,optimal,124.86814837744572,optimal,71616.69332997732,71616.6933299774,4396,D:\Mahdi\GEM1\data\flux_analysis\GSE126848__steatosis__flux.json
+GSE135251,NASH,strict,4097,73,4170,8761,optimal,124.83841918186968,optimal,72481.58457546064,72481.58457546064,4170,D:\Mahdi\GEM1\data\flux_analysis\GSE135251__NASH__flux.json
+GSE135251,healthy,strict,4267,83,4350,8581,optimal,124.83841918186967,optimal,71904.84599400692,71904.8459940069,4350,D:\Mahdi\GEM1\data\flux_analysis\GSE135251__healthy__flux.json
+GSE135251,steatosis,strict,4001,73,4074,8857,optimal,124.83841918186975,optimal,72483.85715162691,72483.85715162683,4074,D:\Mahdi\GEM1\data\flux_analysis\GSE135251__steatosis__flux.json

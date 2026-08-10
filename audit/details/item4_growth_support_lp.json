@@ -1,0 +1,19 @@
+{
+  "item": 4,
+  "description": "Growth-support LP (519 reactions, 90% biomass floor) rebuilt from Human-GEM.json via fresh scipy/HiGHS LP",
+  "independent_max_biomass": 124.8681483774457,
+  "reported_max_biomass": 124.8681483774457,
+  "discrepancy_max_biomass": 0.0,
+  "independent_achieved_biomass": 112.38133353970113,
+  "reported_achieved_biomass": 112.38133353970113,
+  "discrepancy_achieved_biomass": 0.0,
+  "independent_n_support": 519,
+  "reported_n_support": 519,
+  "n_support_diff": 0,
+  "support_set_jaccard_overlap": 1.0,
+  "max_abs_discrepancy": 0.0,
+  "pass_threshold": 0.001,
+  "status": "PASS",
+  "note": "L1-minimal support sets are not guaranteed unique under degenerate alternate optima -- exact reaction-count/identity match is informational, not part of the PASS/FAIL gate. PASS/FAIL is gated on the two LP objective values (unconstrained max biomass, achieved 90%-floor biomass), which ARE unique for a well-posed LP.",
+  "elapsed_seconds": 1.1457877159118652
+}

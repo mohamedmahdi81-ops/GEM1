@@ -1,0 +1,11 @@
+cohort,group,n_strict_consensus,n_majority_consensus,consensus_definition_used,gimme_pct_retained,gimme_pct_only
+GSE89632,NASH,3955,5928,strict,99.7,20.0
+GSE89632,healthy,4054,6016,strict,99.6,22.0
+GSE89632,steatosis,3915,5951,strict,99.6,20.0
+GSE126848,NASH,4197,5951,strict,97.5,20.3
+GSE126848,healthy,4747,4747,reduced,97.4,20.4
+GSE126848,obese_no_NAFLD,3994,5809,strict,97.6,18.0
+GSE126848,steatosis,4333,6121,strict,97.6,17.5
+GSE135251,NASH,4097,5893,strict,97.3,18.5
+GSE135251,healthy,4267,5967,strict,96.5,17.6
+GSE135251,steatosis,4001,5700,strict,97.5,20.1

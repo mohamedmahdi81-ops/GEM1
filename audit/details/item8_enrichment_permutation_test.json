@@ -1,0 +1,140 @@
+{
+  "item": 8,
+  "description": "Enrichment recovery counts and p-values for Flux Uncertainty-Only and Uncalibrated Equal Weighting, independently computed (no in-repo Section 3.8 methodology exists to mirror -- confirmed by exhaustive search)",
+  "ground_truth_search": {
+    "searched_patterns": [
+      "enrichment",
+      "Fisher",
+      "Benjamini",
+      "permutation",
+      "20000",
+      "Section 3."
+    ],
+    "finding": "No existing enrichment-test script or notebook anywhere in the repository. The only Benjamini-Hochberg mention in the entire codebase is in docs/MANUSCRIPT_FIGURES.md, explicitly describing a figure whose 'Primary statistical test' is 'Not applicable yet -- no extended analysis has been built' and which is flagged 'this entire figure is unbuilt'. This audit's enrichment test is a first-source, independent implementation of the specified methodology (Fisher's method + BH correction, 20000-draw permutation), not a reproduction of an established in-repo procedure."
+  },
+  "methodology": {
+    "n_permutations": 20000,
+    "seed": 42,
+    "alpha": 0.05,
+    "score_construction": "weighted rank-sum, zero-filled for inactive, then evaluation-percentile (rank among all 12931 reactions per group) -- matches the one population/representation choice with an actual in-repo precedent (how calibrated_confidence_score -> biomarker_ranking_by_group.csv works)",
+    "null_construction": "same-size random reaction sets drawn with replacement from all 12931 reactions, evaluated with the same max-over-isoforms-then-mean-over-groups statistic as the real biomarker sets"
+  },
+  "results_by_architecture": {
+    "flux_uncertainty_only": {
+      "per_axis": {
+        "bcaa": {
+          "observed_statistic": 0.6332070218853916,
+          "n_reactions_in_biomarker": 9,
+          "null_mean": 0.7937292862114298,
+          "null_std": 0.09861430929148012,
+          "p_value_raw": 0.9494525273736313,
+          "p_value_bh_adjusted": 0.9494525273736313,
+          "recovered_at_alpha_0.05": false
+        },
+        "choline_pc": {
+          "observed_statistic": 0.7846802258139356,
+          "n_reactions_in_biomarker": 5,
+          "null_mean": 0.6956341922511793,
+          "null_std": 0.2172235327578424,
+          "p_value_raw": 0.5769711514424278,
+          "p_value_bh_adjusted": 0.7212139393030348,
+          "recovered_at_alpha_0.05": false
+        },
+        "dnl_scd1_fasn": {
+          "observed_statistic": 0.7957466553244142,
+          "n_reactions_in_biomarker": 3,
+          "null_mean": 0.5557812419766452,
+          "null_std": 0.3026375122302499,
+          "p_value_raw": 0.3226338683065847,
+          "p_value_bh_adjusted": 0.7212139393030348,
+          "recovered_at_alpha_0.05": false
+        },
+        "serine_glycine_shmt": {
+          "observed_statistic": 0.7778284742092645,
+          "n_reactions_in_biomarker": 2,
+          "null_mean": 0.4366332066352177,
+          "null_std": 0.33231030276053797,
+          "p_value_raw": 0.2407879606019699,
+          "p_value_bh_adjusted": 0.7212139393030348,
+          "recovered_at_alpha_0.05": false
+        },
+        "urea_cycle": {
+          "observed_statistic": 0.8158688423169128,
+          "n_reactions_in_biomarker": 6,
+          "null_mean": 0.7353938720903256,
+          "null_std": 0.17951640565503638,
+          "p_value_raw": 0.49087545622718864,
+          "p_value_bh_adjusted": 0.7212139393030348,
+          "recovered_at_alpha_0.05": false
+        }
+      },
+      "n_axes_recovered_of_5": 0,
+      "fisher_combined_statistic": 7.736946586039863,
+      "fisher_combined_p_value": 0.6545140690684493,
+      "reported_axes_recovered": 1,
+      "reported_p_value": 0.018,
+      "axes_recovered_discrepancy": -1,
+      "p_value_abs_discrepancy": 0.6365140690684493
+    },
+    "uncalibrated_equal_weighting": {
+      "per_axis": {
+        "bcaa": {
+          "observed_statistic": 0.6932565153507075,
+          "n_reactions_in_biomarker": 9,
+          "null_mean": 0.8804381219549919,
+          "null_std": 0.12150806950688121,
+          "p_value_raw": 0.9427028648567571,
+          "p_value_bh_adjusted": 0.9427028648567571,
+          "recovered_at_alpha_0.05": false
+        },
+        "choline_pc": {
+          "observed_statistic": 0.8968602582940222,
+          "n_reactions_in_biomarker": 5,
+          "null_mean": 0.7552678582476219,
+          "null_std": 0.24443707298442954,
+          "p_value_raw": 0.32103394830258486,
+          "p_value_bh_adjusted": 0.5159117044147793,
+          "recovered_at_alpha_0.05": false
+        },
+        "dnl_scd1_fasn": {
+          "observed_statistic": 0.799760266027376,
+          "n_reactions_in_biomarker": 3,
+          "null_mean": 0.5957082236485963,
+          "null_std": 0.3302799314354405,
+          "p_value_raw": 0.41272936353182343,
+          "p_value_bh_adjusted": 0.5159117044147793,
+          "recovered_at_alpha_0.05": false
+        },
+        "serine_glycine_shmt": {
+          "observed_statistic": 0.9039826772871395,
+          "n_reactions_in_biomarker": 2,
+          "null_mean": 0.4651882588353569,
+          "null_std": 0.35845017490059633,
+          "p_value_raw": 0.07559622018899055,
+          "p_value_bh_adjusted": 0.34285785710714467,
+          "recovered_at_alpha_0.05": false
+        },
+        "urea_cycle": {
+          "observed_statistic": 0.936516897378393,
+          "n_reactions_in_biomarker": 6,
+          "null_mean": 0.8026178675276466,
+          "null_std": 0.20550189048346415,
+          "p_value_raw": 0.13714314284285786,
+          "p_value_bh_adjusted": 0.34285785710714467,
+          "recovered_at_alpha_0.05": false
+        }
+      },
+      "n_axes_recovered_of_5": 0,
+      "fisher_combined_statistic": 13.298509589826065,
+      "fisher_combined_p_value": 0.2074573849695296,
+      "reported_axes_recovered": 1,
+      "reported_p_value": 0.00084,
+      "axes_recovered_discrepancy": -1,
+      "p_value_abs_discrepancy": 0.20661738496952958
+    }
+  },
+  "max_abs_discrepancy": 1,
+  "status": "FIRST_SOURCE_NO_PRIOR_TO_RECONCILE",
+  "status_meaning": "No traceable prior computation exists for the reported values (see ground_truth_search) -- status reflects whether this audit's independently-computed values happen to agree with the previously reported figures, not whether a reconciliation against a verified source succeeded.",
+  "elapsed_seconds": 0.5583696365356445
+}

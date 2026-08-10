@@ -1,0 +1,109 @@
+{
+  "item": 5,
+  "description": "LOCO/LOBO weight optimization independently re-run from raw ranks + biomarker labels",
+  "weight_grid_size": 78,
+  "reported_production_weights": [
+    0.15,
+    0.15,
+    0.7
+  ],
+  "stored_json_production_weights": [
+    0.15,
+    0.15,
+    0.7
+  ],
+  "independent_production_weights": [
+    0.15,
+    0.15,
+    0.7
+  ],
+  "independent_production_score": 0.8787100765602041,
+  "loco_folds": [
+    {
+      "outer_test_cohort": "GSE126848",
+      "selected_weights": [
+        0.15,
+        0.15,
+        0.7
+      ],
+      "inner_selection_score": 0.9039182326708426,
+      "outer_held_out_score": 0.8408978423942465
+    },
+    {
+      "outer_test_cohort": "GSE135251",
+      "selected_weights": [
+        0.15,
+        0.15,
+        0.7
+      ],
+      "inner_selection_score": 0.8762888923259351,
+      "outer_held_out_score": 0.8961565230840615
+    },
+    {
+      "outer_test_cohort": "GSE89632",
+      "selected_weights": [
+        0.15,
+        0.15,
+        0.7
+      ],
+      "inner_selection_score": 0.868527182739154,
+      "outer_held_out_score": 0.9116799422576237
+    }
+  ],
+  "lobo_folds": [
+    {
+      "outer_test_biomarker": "bcaa",
+      "selected_weights": [
+        0.15,
+        0.15,
+        0.7
+      ],
+      "inner_selection_score": 0.9293384115690975,
+      "outer_held_out_score": 0.6761967365246306
+    },
+    {
+      "outer_test_biomarker": "choline_pc",
+      "selected_weights": [
+        0.15,
+        0.15,
+        0.7
+      ],
+      "inner_selection_score": 0.8560822828860877,
+      "outer_held_out_score": 0.96922125125667
+    },
+    {
+      "outer_test_biomarker": "dnl_scd1_fasn",
+      "selected_weights": [
+        0.15,
+        0.15,
+        0.7
+      ],
+      "inner_selection_score": 0.8853839610238959,
+      "outer_held_out_score": 0.8520145387054365
+    },
+    {
+      "outer_test_biomarker": "serine_glycine_shmt",
+      "selected_weights": [
+        0.15,
+        0.15,
+        0.7
+      ],
+      "inner_selection_score": 0.8549145464387906,
+      "outer_held_out_score": 0.9738921970458589
+    },
+    {
+      "outer_test_biomarker": "urea_cycle",
+      "selected_weights": [
+        0.15,
+        0.15,
+        0.7
+      ],
+      "inner_selection_score": 0.867831180883149,
+      "outer_held_out_score": 0.9222256592684246
+    }
+  ],
+  "all_folds_converge_to_reported_weights": true,
+  "max_abs_weight_discrepancy": 0.0,
+  "status": "PASS",
+  "elapsed_seconds": 184.87626671791077
+}

@@ -1,0 +1,49 @@
+{
+  "cohort": "GSE135251",
+  "group": "healthy",
+  "consensus_definition_used": "strict",
+  "n_strict_consensus_reactions": 3831,
+  "n_growth_support_reactions": 519,
+  "n_dropout_candidates": 3831,
+  "magnitude": 0.3,
+  "n_iterations": 200,
+  "seed": 42,
+  "obj_frac": 0.99,
+  "target_biomass": 123.59003499005097,
+  "structural_robustness_index": 0.39,
+  "structural_robustness_ci_lo": 0.325082297194914,
+  "structural_robustness_ci_hi": 0.45906382410711677,
+  "runtime_seconds": 119.41,
+  "validation": {
+    "step6_fba_objective_value": 124.83841918186967,
+    "baseline_fba_objective_value": 124.83841918186971,
+    "baseline_reproduces_step6": true,
+    "target_biomass": 123.59003499005097,
+    "growth_support_reactions_ever_removed": 0,
+    "feasibility_rate_by_n_removed_decile": {
+      "(1059.999, 1110.0]": 0.381,
+      "(1110.0, 1125.8]": 0.5789,
+      "(1125.8, 1132.0]": 0.381,
+      "(1132.0, 1139.0]": 0.4,
+      "(1139.0, 1145.5]": 0.4211,
+      "(1145.5, 1154.4]": 0.6,
+      "(1154.4, 1164.3]": 0.3,
+      "(1164.3, 1171.4]": 0.25,
+      "(1171.4, 1187.0]": 0.2857,
+      "(1187.0, 1253.0]": 0.3158
+    },
+    "split_half_first": {
+      "p": 0.45,
+      "ci_lo": 0.3561,
+      "ci_hi": 0.5476,
+      "n": 100
+    },
+    "split_half_second": {
+      "p": 0.33,
+      "ci_lo": 0.2456,
+      "ci_hi": 0.4269,
+      "n": 100
+    },
+    "split_half_cis_overlap": true
+  }
+}

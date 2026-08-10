@@ -1,0 +1,23 @@
+{
+  "item": 7,
+  "description": "Flux Uncertainty-Only IQR, checked against the SAME population/representation convention independently validated by item 9 and by the equal-weighting Table 3 fix, before considering any new flux sampling",
+  "validated_convention": "active_only population, raw weighted-rank-sum score, pooled across all 10 groups",
+  "convention_evidence": {
+    "calibrated_sd_diff": 0.06053912409973783,
+    "perturbation_dominant_sd_diff": 0.0015975701575898227,
+    "equal_weighting_sd_diff": 1.0939523314101862e-05
+  },
+  "equal_weighting_cross_check": {
+    "independent_value_this_script": 0.16827947979300573,
+    "request_stated_resolved_value": 0.1683,
+    "diff": 2.0520206994278922e-05
+  },
+  "flux_uncertainty_only_iqr_under_validated_convention": 0.4765173644227315,
+  "reported_manuscript_value": 0.214,
+  "discrepancy_vs_reported_manuscript_value": 0.26251736442273155,
+  "broader_population_hypothesis_tested": false,
+  "recommendation": "Do NOT run new flux sampling on a broader (non-consensus-active) reaction population as a first step. Three independent SD checks (item 9) plus this script's own equal-weighting cross-check all validate the SAME 'active_only, raw, pooled' convention with no per-case tuning -- that convention gives Flux Uncertainty-Only an IQR of 0.4765, not the reported 0.214. The parsimonious, evidence-backed conclusion is that the manuscript's Flux-Uncertainty-Only Table 3 entry needs the SAME kind of correction the Equal-Weighting entry already received (0.2410 -> 0.1683), i.e. corrected to 0.4765 -- not that a new, unvalidated broader-population methodology needs to be invented and computed at the cost of ~2+ hours of fresh flux sampling. If there is an independent textual/methodological reason (outside this repository) to believe Flux-Uncertainty-Only specifically was always intended to score a broader population, that justification should be identified BEFORE committing to the new-sampling run -- this script deliberately stops short of guessing one into existence and then computing it, since that would risk reverse-engineering a population definition to hit a pre-stated target rather than testing a real hypothesis.",
+  "status": "RESOLVED_VIA_EXISTING_DATA -- recommend manuscript correction, no new sampling run",
+  "max_abs_discrepancy": 0.26251736442273155,
+  "elapsed_seconds": 0.1805131435394287
+}

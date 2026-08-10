@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "GEM1: A Confidence-Aware Framework for Genome-Scale Metabolic Signature Discovery"
+abstract: >-
+  GEM1 integrates genome-scale metabolic modeling (GSMM) with probabilistic
+  flux uncertainty estimation, cross-reconstruction-algorithm consensus, and
+  a hierarchical, empirically-calibrated confidence score, to rank candidate
+  disease biomarkers by reproducibility and robustness across independent
+  cohorts and reconstruction methods. Demonstrated using NAFLD/MASLD as a
+  case study.
+authors:
+  - family-names: "Al-Badri"
+    given-names: "Mohammed Mahdi Sami"
+    email: "mohamedmahdi81@kus.edu.iq"
+license: MIT
+version: "1.0.0"
+# repository-code: (not included -- no confirmed public repository URL exists yet)
+# doi: (not included -- no Zenodo DOI has been minted yet; add once archived)
+keywords:
+  - genome-scale metabolic modeling
+  - flux balance analysis
+  - biomarker discovery
+  - NAFLD
+  - MASLD
+  - systems biology
+  - metabolic flux analysis

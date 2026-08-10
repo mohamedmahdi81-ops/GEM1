@@ -1,0 +1,133 @@
+{
+  "item": 18,
+  "description": "Kendall's W and Table 3 SD-ordering benchmark re-run excluding growth-support-contaminated axes (SHMT, choline_pc)",
+  "premise_check": {
+    "0.7912_found_in_repo": false,
+    "subsystem_level_kendalls_w_exists": false,
+    "subsystem_finding": "docs/MANUSCRIPT_FIGURES.md explicitly states subsystem-level analysis is entirely unbuilt -- 'No script in this repository aggregates confidence/calibration scores by subsystem'",
+    "actual_kendalls_w_in_repo": {
+      "value": 0.6667,
+      "level": "biomarker (5 biomarkers x 3 cohorts), NOT subsystem",
+      "source": "data/calibration/figure3_statistics.json, produced by scripts/12_figure3_cross_cohort_confidence.py"
+    },
+    "master_architectural_benchmark_found": false,
+    "closest_existing_analog": "item 9's SD sensitivity check (Section 3.4), which already establishes equal-weighting SD < calibrated SD across ALL reactions -- reused and axis-restricted here"
+  },
+  "kendalls_w_full_5axis_from_repo": {
+    "axes_used": [
+      "bcaa",
+      "choline_pc",
+      "dnl_scd1_fasn",
+      "serine_glycine_shmt",
+      "urea_cycle"
+    ],
+    "kendalls_w": 0.6667,
+    "source": "data/calibration/figure3_statistics.json (real pipeline output, not recomputed here)"
+  },
+  "kendalls_w_3axis_uncontaminated": {
+    "axes_used": [
+      "bcaa",
+      "dnl_scd1_fasn",
+      "urea_cycle"
+    ],
+    "n_cohorts": 3,
+    "n_biomarkers": 3,
+    "cohort_biomarker_matrix": {
+      "bcaa": {
+        "GSE89632": 0.880519,
+        "GSE126848": 0.391404,
+        "GSE135251": 0.851597
+      },
+      "dnl_scd1_fasn": {
+        "GSE89632": 0.86049,
+        "GSE126848": 0.888369,
+        "GSE135251": 0.795066
+      },
+      "urea_cycle": {
+        "GSE89632": 0.869925,
+        "GSE126848": 0.982407,
+        "GSE135251": 0.894285
+      }
+    },
+    "friedman_chi2": 2.6666666666666643,
+    "friedman_p": 0.26359713811572705,
+    "kendalls_w": 0.44444444444444403
+  },
+  "kendalls_w_conclusion": "W DECREASES from 0.6667 (5 axes) to 0.4444 (3 uncontaminated axes). At n=3 items this is a very thin test (Friedman's exact null distribution is coarse at this size -- p=0.2636, not significant at alpha=0.05 either way), so treat the point estimate as illustrative, not a precision claim.",
+  "sd_ordering_full_5axis_reactions_only": {
+    "reaction_ids_used": [
+      "MAR00146",
+      "MAR00636",
+      "MAR00638",
+      "MAR00653",
+      "MAR01603",
+      "MAR01606",
+      "MAR02150",
+      "MAR02182",
+      "MAR03744",
+      "MAR03747",
+      "MAR03765",
+      "MAR03777",
+      "MAR03778",
+      "MAR03809",
+      "MAR03811",
+      "MAR03813",
+      "MAR03816",
+      "MAR03845",
+      "MAR03873",
+      "MAR04792",
+      "MAR06416",
+      "MAR06419",
+      "MAR06421",
+      "MAR06923",
+      "MAR08426"
+    ],
+    "n_reactions": 25,
+    "n_reaction_group_rows": 250,
+    "equal_weighting_sd": 0.12247769753332295,
+    "calibrated_sd_direct_column": 0.2882792342566081,
+    "calibrated_sd_reconstructed": 0.2084001914007879,
+    "ordering_equal_lt_calibrated": true
+  },
+  "sd_ordering_3axis_uncontaminated_reactions_only": {
+    "reaction_ids_used": [
+      "MAR00146",
+      "MAR02150",
+      "MAR02182",
+      "MAR03744",
+      "MAR03747",
+      "MAR03765",
+      "MAR03777",
+      "MAR03778",
+      "MAR03809",
+      "MAR03811",
+      "MAR03813",
+      "MAR03816",
+      "MAR03873",
+      "MAR06416",
+      "MAR06419",
+      "MAR06421",
+      "MAR06923",
+      "MAR08426"
+    ],
+    "n_reactions": 18,
+    "n_reaction_group_rows": 180,
+    "equal_weighting_sd": 0.13167273897910695,
+    "calibrated_sd_direct_column": 0.25940278607407485,
+    "calibrated_sd_reconstructed": 0.18545283568092044,
+    "ordering_equal_lt_calibrated": true
+  },
+  "sd_ordering_conclusion": "The equal-weighting < calibrated SD ordering HOLDS when restricted to only the 3 uncontaminated axes' 18 mapped reactions (equal=0.1317 vs. calibrated=0.2594), matching the direction found across all 5 axes' reactions (equal=0.1225 vs. calibrated=0.2883) and across the full 12931-reaction population (item 9: equal=0.1236 vs. calibrated=0.2002). This specific ordering does not appear to depend on the two growth-support-contaminated axes.",
+  "contaminated_axes_excluded": [
+    "serine_glycine_shmt",
+    "choline_pc"
+  ],
+  "uncontaminated_axes_used": [
+    "urea_cycle",
+    "bcaa",
+    "dnl_scd1_fasn"
+  ],
+  "status": "RESOLVED -- premise corrected, both checks re-run on uncontaminated axes",
+  "max_abs_discrepancy": 0.22225555555555593,
+  "elapsed_seconds": 0.18681645393371582
+}

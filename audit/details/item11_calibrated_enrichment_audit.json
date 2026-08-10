@@ -1,0 +1,1436 @@
+{
+  "item": 11,
+  "description": "Audit of calibrated-score enrichment statistics (Section 3.8) discrepancy -- SHMT floor-of-resolution investigation, all-5-axes floor check, flat vs nested Fisher comparison, PEMT seed-variance check, newly-significant-axis screening",
+  "ground_truth_search": {
+    "finding": "No prespecified nested-vs-flat Fisher design found anywhere in the repository. No 'Section 3.9' / BCAA consensus-gate coverage artifact documentation found anywhere in the repository. No parametric/analytical tail-approximation code or larger permutation-draw count found anywhere in the repository. See script docstring for exact search terms."
+  },
+  "methodology": {
+    "n_permutations": 20000,
+    "alpha": 0.05,
+    "empirical_p_formula": "(1 + #{null >= observed}) / (1 + N)",
+    "score_source": "calibrated_confidence_score column of all_groups_calibrated_with_metadata.csv, per-group evaluation-percentile (rank among all 12931 reactions, method='min')",
+    "cross_check_vs_biomarker_ranking_csv": {
+      "n_compared": 50,
+      "max_abs_diff": 4.96713324582565e-07,
+      "mean_abs_diff": 2.4133477689449704e-07
+    }
+  },
+  "axes": {
+    "serine_glycine_shmt": {
+      "mapped_reactions": [
+        "MAR03845",
+        "MAR04792"
+      ],
+      "n_mapped_reactions": 2,
+      "present_active_per_group": {
+        "GSE89632__healthy": {
+          "n_present": 2,
+          "n_active": 2,
+          "active_reaction_ids": [
+            "MAR03845",
+            "MAR04792"
+          ]
+        },
+        "GSE89632__steatosis": {
+          "n_present": 2,
+          "n_active": 2,
+          "active_reaction_ids": [
+            "MAR03845",
+            "MAR04792"
+          ]
+        },
+        "GSE89632__NASH": {
+          "n_present": 2,
+          "n_active": 2,
+          "active_reaction_ids": [
+            "MAR03845",
+            "MAR04792"
+          ]
+        },
+        "GSE126848__healthy": {
+          "n_present": 2,
+          "n_active": 1,
+          "active_reaction_ids": [
+            "MAR03845"
+          ]
+        },
+        "GSE126848__obese_no_NAFLD": {
+          "n_present": 2,
+          "n_active": 1,
+          "active_reaction_ids": [
+            "MAR03845"
+          ]
+        },
+        "GSE126848__steatosis": {
+          "n_present": 2,
+          "n_active": 2,
+          "active_reaction_ids": [
+            "MAR03845",
+            "MAR04792"
+          ]
+        },
+        "GSE126848__NASH": {
+          "n_present": 2,
+          "n_active": 1,
+          "active_reaction_ids": [
+            "MAR03845"
+          ]
+        },
+        "GSE135251__healthy": {
+          "n_present": 2,
+          "n_active": 1,
+          "active_reaction_ids": [
+            "MAR03845"
+          ]
+        },
+        "GSE135251__steatosis": {
+          "n_present": 2,
+          "n_active": 1,
+          "active_reaction_ids": [
+            "MAR03845"
+          ]
+        },
+        "GSE135251__NASH": {
+          "n_present": 2,
+          "n_active": 1,
+          "active_reaction_ids": [
+            "MAR03845"
+          ]
+        }
+      },
+      "flat_design": {
+        "observed_statistic": 0.9738921970458589,
+        "n_reactions_in_axis": 2,
+        "n_permutations": 20000,
+        "n_null_ge_observed": 582,
+        "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+        "p_value": 0.029148542572871357,
+        "p_floor": 4.999750012499375e-05,
+        "hit_floor": false,
+        "bh_adjusted_p": 0.14574271286435678,
+        "significant_bh_0.05": false
+      },
+      "nested_design": {
+        "n_reactions_in_axis": 2,
+        "n_permutations_per_group": 20000,
+        "per_group": [
+          {
+            "cohort": "GSE89632",
+            "group": "healthy",
+            "observed_statistic": 0.9664372438326502,
+            "n_null_ge_observed": 1290,
+            "p_value": 0.06454677266136694,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE89632",
+            "group": "steatosis",
+            "observed_statistic": 0.9734745959322558,
+            "n_null_ge_observed": 1042,
+            "p_value": 0.05214739263036848,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE89632",
+            "group": "NASH",
+            "observed_statistic": 0.9907199752532674,
+            "n_null_ge_observed": 387,
+            "p_value": 0.019399030048497575,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE126848",
+            "group": "healthy",
+            "observed_statistic": 0.9621065656175083,
+            "n_null_ge_observed": 1519,
+            "p_value": 0.0759962001899905,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE126848",
+            "group": "obese_no_NAFLD",
+            "observed_statistic": 0.9842239579305545,
+            "n_null_ge_observed": 619,
+            "p_value": 0.030998450077496124,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE126848",
+            "group": "steatosis",
+            "observed_statistic": 0.9800479467945248,
+            "n_null_ge_observed": 779,
+            "p_value": 0.03899805009749512,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE126848",
+            "group": "NASH",
+            "observed_statistic": 0.9549918799783466,
+            "n_null_ge_observed": 1796,
+            "p_value": 0.08984550772461376,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE135251",
+            "group": "healthy",
+            "observed_statistic": 0.982445286520764,
+            "n_null_ge_observed": 662,
+            "p_value": 0.03314834258287085,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE135251",
+            "group": "steatosis",
+            "observed_statistic": 0.9820586188229835,
+            "n_null_ge_observed": 799,
+            "p_value": 0.039998000099995,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE135251",
+            "group": "NASH",
+            "observed_statistic": 0.9624158997757327,
+            "n_null_ge_observed": 1518,
+            "p_value": 0.0759462026898655,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          }
+        ],
+        "per_cohort": {
+          "GSE89632": {
+            "n_groups": 3,
+            "group_p_values": [
+              0.06454677266136694,
+              0.05214739263036848,
+              0.019399030048497575
+            ],
+            "fisher_statistic": 19.273156936775642,
+            "df": 6,
+            "p_value": 0.0037263431807431635
+          },
+          "GSE126848": {
+            "n_groups": 4,
+            "group_p_values": [
+              0.0759962001899905,
+              0.030998450077496124,
+              0.03899805009749512,
+              0.08984550772461376
+            ],
+            "fisher_statistic": 23.40959461359605,
+            "df": 8,
+            "p_value": 0.0028763148138795103
+          },
+          "GSE135251": {
+            "n_groups": 3,
+            "group_p_values": [
+              0.03314834258287085,
+              0.039998000099995,
+              0.0759462026898655
+            ],
+            "fisher_statistic": 18.406836866817894,
+            "df": 6,
+            "p_value": 0.005291991741890545
+          }
+        },
+        "final_fisher_statistic": 33.37026776527887,
+        "final_df": 6,
+        "p_value": 8.898391051559429e-06,
+        "any_group_hit_floor": false,
+        "n_groups_hit_floor": 0,
+        "bh_adjusted_p": 4.4491955257797144e-05,
+        "significant_bh_0.05": true
+      },
+      "floor_of_resolution_check": {
+        "p_floor_single_test": 4.999750012499375e-05,
+        "flat_p_below_theoretical_floor": false,
+        "nested_final_p_below_single_test_floor": true,
+        "nested_can_legitimately_beat_single_test_floor": true,
+        "explanation": "A single flat empirical permutation p-value with N=20000 draws and a +1 correction cannot be smaller than 1/(N+1) by construction -- that is a hard floor on ANY one Monte Carlo count. But Fisher's method COMBINING multiple already-floored (or near-floored) per-group p-values can legitimately produce a combined p-value far smaller than that floor -- this is not a violation of the resolution limit, it is what combining independent significant tests is supposed to do. Whether that is what actually happened here is checked explicitly below via n_groups_hit_floor and the resulting final combined p."
+      },
+      "previously_reported": {
+        "significant": true,
+        "bh_p": 2.1e-05
+      }
+    },
+    "urea_cycle": {
+      "mapped_reactions": [
+        "MAR03873",
+        "MAR03809",
+        "MAR03811",
+        "MAR03813",
+        "MAR03816",
+        "MAR08426"
+      ],
+      "n_mapped_reactions": 6,
+      "present_active_per_group": {
+        "GSE89632__healthy": {
+          "n_present": 6,
+          "n_active": 3,
+          "active_reaction_ids": [
+            "MAR03809",
+            "MAR03816",
+            "MAR03873"
+          ]
+        },
+        "GSE89632__steatosis": {
+          "n_present": 6,
+          "n_active": 3,
+          "active_reaction_ids": [
+            "MAR03809",
+            "MAR03816",
+            "MAR03873"
+          ]
+        },
+        "GSE89632__NASH": {
+          "n_present": 6,
+          "n_active": 3,
+          "active_reaction_ids": [
+            "MAR03809",
+            "MAR03816",
+            "MAR03873"
+          ]
+        },
+        "GSE126848__healthy": {
+          "n_present": 6,
+          "n_active": 5,
+          "active_reaction_ids": [
+            "MAR03809",
+            "MAR03811",
+            "MAR03813",
+            "MAR03816",
+            "MAR03873"
+          ]
+        },
+        "GSE126848__obese_no_NAFLD": {
+          "n_present": 6,
+          "n_active": 4,
+          "active_reaction_ids": [
+            "MAR03809",
+            "MAR03811",
+            "MAR03816",
+            "MAR03873"
+          ]
+        },
+        "GSE126848__steatosis": {
+          "n_present": 6,
+          "n_active": 5,
+          "active_reaction_ids": [
+            "MAR03809",
+            "MAR03811",
+            "MAR03813",
+            "MAR03816",
+            "MAR03873"
+          ]
+        },
+        "GSE126848__NASH": {
+          "n_present": 6,
+          "n_active": 5,
+          "active_reaction_ids": [
+            "MAR03809",
+            "MAR03811",
+            "MAR03813",
+            "MAR03816",
+            "MAR03873"
+          ]
+        },
+        "GSE135251__healthy": {
+          "n_present": 6,
+          "n_active": 4,
+          "active_reaction_ids": [
+            "MAR03809",
+            "MAR03811",
+            "MAR03816",
+            "MAR03873"
+          ]
+        },
+        "GSE135251__steatosis": {
+          "n_present": 6,
+          "n_active": 4,
+          "active_reaction_ids": [
+            "MAR03809",
+            "MAR03811",
+            "MAR03816",
+            "MAR03873"
+          ]
+        },
+        "GSE135251__NASH": {
+          "n_present": 6,
+          "n_active": 4,
+          "active_reaction_ids": [
+            "MAR03809",
+            "MAR03811",
+            "MAR03816",
+            "MAR03873"
+          ]
+        }
+      },
+      "flat_design": {
+        "observed_statistic": 0.9222256592684246,
+        "n_reactions_in_axis": 6,
+        "n_permutations": 20000,
+        "n_null_ge_observed": 4616,
+        "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+        "p_value": 0.23083845807709613,
+        "p_floor": 4.999750012499375e-05,
+        "hit_floor": false,
+        "bh_adjusted_p": 0.3101094945252737,
+        "significant_bh_0.05": false
+      },
+      "nested_design": {
+        "n_reactions_in_axis": 6,
+        "n_permutations_per_group": 20000,
+        "per_group": [
+          {
+            "cohort": "GSE89632",
+            "group": "healthy",
+            "observed_statistic": 0.9027144072384193,
+            "n_null_ge_observed": 9229,
+            "p_value": 0.4614769261536923,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE89632",
+            "group": "steatosis",
+            "observed_statistic": 0.8762663367102312,
+            "n_null_ge_observed": 10942,
+            "p_value": 0.5471226438678066,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE89632",
+            "group": "NASH",
+            "observed_statistic": 0.8307942154512412,
+            "n_null_ge_observed": 13397,
+            "p_value": 0.6698665066746663,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE126848",
+            "group": "healthy",
+            "observed_statistic": 0.9862346299590132,
+            "n_null_ge_observed": 1576,
+            "p_value": 0.07884605769711514,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE126848",
+            "group": "obese_no_NAFLD",
+            "observed_statistic": 0.9745572654860413,
+            "n_null_ge_observed": 2885,
+            "p_value": 0.14429278536073195,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE126848",
+            "group": "steatosis",
+            "observed_statistic": 0.9850746268656716,
+            "n_null_ge_observed": 1712,
+            "p_value": 0.08564571771411429,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE126848",
+            "group": "NASH",
+            "observed_statistic": 0.9837599566932178,
+            "n_null_ge_observed": 1846,
+            "p_value": 0.09234538273086346,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE135251",
+            "group": "healthy",
+            "observed_statistic": 0.8587116232309953,
+            "n_null_ge_observed": 12040,
+            "p_value": 0.6020198990050497,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE135251",
+            "group": "steatosis",
+            "observed_statistic": 0.9423865130307014,
+            "n_null_ge_observed": 6008,
+            "p_value": 0.30043497825108745,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE135251",
+            "group": "NASH",
+            "observed_statistic": 0.8817570180187148,
+            "n_null_ge_observed": 10691,
+            "p_value": 0.5345732713364332,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          }
+        ],
+        "per_cohort": {
+          "GSE89632": {
+            "n_groups": 3,
+            "group_p_values": [
+              0.4614769261536923,
+              0.5471226438678066,
+              0.6698665066746663
+            ],
+            "fisher_statistic": 3.554164687749911,
+            "df": 6,
+            "p_value": 0.7367499320387615
+          },
+          "GSE126848": {
+            "n_groups": 4,
+            "group_p_values": [
+              0.07884605769711514,
+              0.14429278536073195,
+              0.08564571771411429,
+              0.09234538273086346
+            ],
+            "fisher_statistic": 18.631848800648932,
+            "df": 8,
+            "p_value": 0.016957472445410238
+          },
+          "GSE135251": {
+            "n_groups": 3,
+            "group_p_values": [
+              0.6020198990050497,
+              0.30043497825108745,
+              0.5345732713364332
+            ],
+            "fisher_statistic": 4.672550360747105,
+            "df": 6,
+            "p_value": 0.5864427157452343
+          }
+        },
+        "final_fisher_statistic": 9.832467453394496,
+        "final_df": 6,
+        "p_value": 0.1318867904343073,
+        "any_group_hit_floor": false,
+        "n_groups_hit_floor": 0,
+        "bh_adjusted_p": 0.21981131739051216,
+        "significant_bh_0.05": false
+      },
+      "floor_of_resolution_check": {
+        "p_floor_single_test": 4.999750012499375e-05,
+        "flat_p_below_theoretical_floor": false,
+        "nested_final_p_below_single_test_floor": false,
+        "nested_can_legitimately_beat_single_test_floor": true,
+        "explanation": "A single flat empirical permutation p-value with N=20000 draws and a +1 correction cannot be smaller than 1/(N+1) by construction -- that is a hard floor on ANY one Monte Carlo count. But Fisher's method COMBINING multiple already-floored (or near-floored) per-group p-values can legitimately produce a combined p-value far smaller than that floor -- this is not a violation of the resolution limit, it is what combining independent significant tests is supposed to do. Whether that is what actually happened here is checked explicitly below via n_groups_hit_floor and the resulting final combined p."
+      },
+      "previously_reported": {
+        "significant": false,
+        "bh_p": null
+      }
+    },
+    "bcaa": {
+      "mapped_reactions": [
+        "MAR03744",
+        "MAR03747",
+        "MAR03765",
+        "MAR06923",
+        "MAR03777",
+        "MAR03778",
+        "MAR06416",
+        "MAR06419",
+        "MAR06421"
+      ],
+      "n_mapped_reactions": 9,
+      "present_active_per_group": {
+        "GSE89632__healthy": {
+          "n_present": 9,
+          "n_active": 2,
+          "active_reaction_ids": [
+            "MAR06419",
+            "MAR06421"
+          ]
+        },
+        "GSE89632__steatosis": {
+          "n_present": 9,
+          "n_active": 2,
+          "active_reaction_ids": [
+            "MAR06419",
+            "MAR06421"
+          ]
+        },
+        "GSE89632__NASH": {
+          "n_present": 9,
+          "n_active": 2,
+          "active_reaction_ids": [
+            "MAR06419",
+            "MAR06421"
+          ]
+        },
+        "GSE126848__healthy": {
+          "n_present": 9,
+          "n_active": 0,
+          "active_reaction_ids": []
+        },
+        "GSE126848__obese_no_NAFLD": {
+          "n_present": 9,
+          "n_active": 0,
+          "active_reaction_ids": []
+        },
+        "GSE126848__steatosis": {
+          "n_present": 9,
+          "n_active": 1,
+          "active_reaction_ids": [
+            "MAR06421"
+          ]
+        },
+        "GSE126848__NASH": {
+          "n_present": 9,
+          "n_active": 1,
+          "active_reaction_ids": [
+            "MAR06421"
+          ]
+        },
+        "GSE135251__healthy": {
+          "n_present": 9,
+          "n_active": 1,
+          "active_reaction_ids": [
+            "MAR06421"
+          ]
+        },
+        "GSE135251__steatosis": {
+          "n_present": 9,
+          "n_active": 1,
+          "active_reaction_ids": [
+            "MAR06421"
+          ]
+        },
+        "GSE135251__NASH": {
+          "n_present": 9,
+          "n_active": 1,
+          "active_reaction_ids": [
+            "MAR06421"
+          ]
+        }
+      },
+      "flat_design": {
+        "observed_statistic": 0.6761967365246306,
+        "n_reactions_in_axis": 9,
+        "n_permutations": 20000,
+        "n_null_ge_observed": 18899,
+        "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+        "p_value": 0.9449527523623819,
+        "p_floor": 4.999750012499375e-05,
+        "hit_floor": false,
+        "bh_adjusted_p": 0.9449527523623817,
+        "significant_bh_0.05": false
+      },
+      "nested_design": {
+        "n_reactions_in_axis": 9,
+        "n_permutations_per_group": 20000,
+        "per_group": [
+          {
+            "cohort": "GSE89632",
+            "group": "healthy",
+            "observed_statistic": 0.8043461449230531,
+            "n_null_ge_observed": 17194,
+            "p_value": 0.8597070146492676,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE89632",
+            "group": "steatosis",
+            "observed_statistic": 0.9034104090944243,
+            "n_null_ge_observed": 12031,
+            "p_value": 0.6015699215039249,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE89632",
+            "group": "NASH",
+            "observed_statistic": 0.9338024901399737,
+            "n_null_ge_observed": 9201,
+            "p_value": 0.4600769961501925,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE126848",
+            "group": "healthy",
+            "observed_statistic": 7.733353955610548e-05,
+            "n_null_ge_observed": 20000,
+            "p_value": 1.0,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE126848",
+            "group": "obese_no_NAFLD",
+            "observed_statistic": 7.733353955610548e-05,
+            "n_null_ge_observed": 20000,
+            "p_value": 1.0,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE126848",
+            "group": "steatosis",
+            "observed_statistic": 0.8722449926533138,
+            "n_null_ge_observed": 14134,
+            "p_value": 0.7067146642667866,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE126848",
+            "group": "NASH",
+            "observed_statistic": 0.6932178485809295,
+            "n_null_ge_observed": 19252,
+            "p_value": 0.9626018699065046,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE135251",
+            "group": "healthy",
+            "observed_statistic": 0.7153352408939757,
+            "n_null_ge_observed": 19069,
+            "p_value": 0.9534523273836308,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE135251",
+            "group": "steatosis",
+            "observed_statistic": 0.9375918335782228,
+            "n_null_ge_observed": 8775,
+            "p_value": 0.43877806109694517,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE135251",
+            "group": "NASH",
+            "observed_statistic": 0.9018637383033021,
+            "n_null_ge_observed": 12160,
+            "p_value": 0.608019599020049,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          }
+        ],
+        "per_cohort": {
+          "GSE89632": {
+            "n_groups": 3,
+            "group_p_values": [
+              0.8597070146492676,
+              0.6015699215039249,
+              0.4600769961501925
+            ],
+            "fisher_statistic": 2.871475108174215,
+            "df": 6,
+            "p_value": 0.8247966167706705
+          },
+          "GSE126848": {
+            "n_groups": 4,
+            "group_p_values": [
+              1.0,
+              1.0,
+              0.7067146642667866,
+              0.9626018699065046
+            ],
+            "fisher_statistic": 0.7704873214306265,
+            "df": 8,
+            "p_value": 0.9993242875625679
+          },
+          "GSE135251": {
+            "n_groups": 3,
+            "group_p_values": [
+              0.9534523273836308,
+              0.43877806109694517,
+              0.608019599020049
+            ],
+            "fisher_statistic": 2.7379511286559572,
+            "df": 6,
+            "p_value": 0.840944406523363
+          }
+        },
+        "final_fisher_statistic": 0.7330482284187718,
+        "final_df": 6,
+        "p_value": 0.9937498837775973,
+        "any_group_hit_floor": false,
+        "n_groups_hit_floor": 0,
+        "bh_adjusted_p": 0.9937498837775973,
+        "significant_bh_0.05": false
+      },
+      "floor_of_resolution_check": {
+        "p_floor_single_test": 4.999750012499375e-05,
+        "flat_p_below_theoretical_floor": false,
+        "nested_final_p_below_single_test_floor": false,
+        "nested_can_legitimately_beat_single_test_floor": true,
+        "explanation": "A single flat empirical permutation p-value with N=20000 draws and a +1 correction cannot be smaller than 1/(N+1) by construction -- that is a hard floor on ANY one Monte Carlo count. But Fisher's method COMBINING multiple already-floored (or near-floored) per-group p-values can legitimately produce a combined p-value far smaller than that floor -- this is not a violation of the resolution limit, it is what combining independent significant tests is supposed to do. Whether that is what actually happened here is checked explicitly below via n_groups_hit_floor and the resulting final combined p."
+      },
+      "previously_reported": {
+        "significant": false,
+        "bh_p": null
+      }
+    },
+    "dnl_scd1_fasn": {
+      "mapped_reactions": [
+        "MAR02150",
+        "MAR02182",
+        "MAR00146"
+      ],
+      "n_mapped_reactions": 3,
+      "present_active_per_group": {
+        "GSE89632__healthy": {
+          "n_present": 3,
+          "n_active": 3,
+          "active_reaction_ids": [
+            "MAR00146",
+            "MAR02150",
+            "MAR02182"
+          ]
+        },
+        "GSE89632__steatosis": {
+          "n_present": 3,
+          "n_active": 3,
+          "active_reaction_ids": [
+            "MAR00146",
+            "MAR02150",
+            "MAR02182"
+          ]
+        },
+        "GSE89632__NASH": {
+          "n_present": 3,
+          "n_active": 3,
+          "active_reaction_ids": [
+            "MAR00146",
+            "MAR02150",
+            "MAR02182"
+          ]
+        },
+        "GSE126848__healthy": {
+          "n_present": 3,
+          "n_active": 3,
+          "active_reaction_ids": [
+            "MAR00146",
+            "MAR02150",
+            "MAR02182"
+          ]
+        },
+        "GSE126848__obese_no_NAFLD": {
+          "n_present": 3,
+          "n_active": 3,
+          "active_reaction_ids": [
+            "MAR00146",
+            "MAR02150",
+            "MAR02182"
+          ]
+        },
+        "GSE126848__steatosis": {
+          "n_present": 3,
+          "n_active": 3,
+          "active_reaction_ids": [
+            "MAR00146",
+            "MAR02150",
+            "MAR02182"
+          ]
+        },
+        "GSE126848__NASH": {
+          "n_present": 3,
+          "n_active": 3,
+          "active_reaction_ids": [
+            "MAR00146",
+            "MAR02150",
+            "MAR02182"
+          ]
+        },
+        "GSE135251__healthy": {
+          "n_present": 3,
+          "n_active": 1,
+          "active_reaction_ids": [
+            "MAR00146"
+          ]
+        },
+        "GSE135251__steatosis": {
+          "n_present": 3,
+          "n_active": 1,
+          "active_reaction_ids": [
+            "MAR00146"
+          ]
+        },
+        "GSE135251__NASH": {
+          "n_present": 3,
+          "n_active": 1,
+          "active_reaction_ids": [
+            "MAR00146"
+          ]
+        }
+      },
+      "flat_design": {
+        "observed_statistic": 0.8520145387054365,
+        "n_reactions_in_axis": 3,
+        "n_permutations": 20000,
+        "n_null_ge_observed": 4961,
+        "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+        "p_value": 0.24808759562021898,
+        "p_floor": 4.999750012499375e-05,
+        "hit_floor": false,
+        "bh_adjusted_p": 0.3101094945252737,
+        "significant_bh_0.05": false
+      },
+      "nested_design": {
+        "n_reactions_in_axis": 3,
+        "n_permutations_per_group": 20000,
+        "per_group": [
+          {
+            "cohort": "GSE89632",
+            "group": "healthy",
+            "observed_statistic": 0.8639703039208104,
+            "n_null_ge_observed": 7079,
+            "p_value": 0.35398230088495575,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE89632",
+            "group": "steatosis",
+            "observed_statistic": 0.8054288144768386,
+            "n_null_ge_observed": 9600,
+            "p_value": 0.480025998700065,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE89632",
+            "group": "NASH",
+            "observed_statistic": 0.912071765524708,
+            "n_null_ge_observed": 4803,
+            "p_value": 0.24018799060046997,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE126848",
+            "group": "healthy",
+            "observed_statistic": 0.9201917871780991,
+            "n_null_ge_observed": 4445,
+            "p_value": 0.2222888855557222,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE126848",
+            "group": "obese_no_NAFLD",
+            "observed_statistic": 0.9283118088314902,
+            "n_null_ge_observed": 4004,
+            "p_value": 0.20023998800059997,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE126848",
+            "group": "steatosis",
+            "observed_statistic": 0.8827623540329441,
+            "n_null_ge_observed": 6248,
+            "p_value": 0.31243437828108594,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE126848",
+            "group": "NASH",
+            "observed_statistic": 0.8222101925605135,
+            "n_null_ge_observed": 8986,
+            "p_value": 0.44932753362331884,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE135251",
+            "group": "healthy",
+            "observed_statistic": 0.8972237259299358,
+            "n_null_ge_observed": 5462,
+            "p_value": 0.27313634318284086,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE135251",
+            "group": "steatosis",
+            "observed_statistic": 0.6887325032866755,
+            "n_null_ge_observed": 13449,
+            "p_value": 0.6724663766811659,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE135251",
+            "group": "NASH",
+            "observed_statistic": 0.7992421313123501,
+            "n_null_ge_observed": 9744,
+            "p_value": 0.48722563871806407,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          }
+        ],
+        "per_cohort": {
+          "GSE89632": {
+            "n_groups": 3,
+            "group_p_values": [
+              0.35398230088495575,
+              0.480025998700065,
+              0.24018799060046997
+            ],
+            "fisher_statistic": 6.397513490546491,
+            "df": 6,
+            "p_value": 0.38016327191009014
+          },
+          "GSE126848": {
+            "n_groups": 4,
+            "group_p_values": [
+              0.2222888855557222,
+              0.20023998800059997,
+              0.31243437828108594,
+              0.44932753362331884
+            ],
+            "fisher_statistic": 10.150760307061244,
+            "df": 8,
+            "p_value": 0.25460361050058555
+          },
+          "GSE135251": {
+            "n_groups": 3,
+            "group_p_values": [
+              0.27313634318284086,
+              0.6724663766811659,
+              0.48722563871806407
+            ],
+            "fisher_statistic": 4.8272305769822905,
+            "df": 6,
+            "p_value": 0.566155582476481
+          }
+        },
+        "final_fisher_statistic": 5.808176450718143,
+        "final_df": 6,
+        "p_value": 0.4450178954955043,
+        "any_group_hit_floor": false,
+        "n_groups_hit_floor": 0,
+        "bh_adjusted_p": 0.5562723693693804,
+        "significant_bh_0.05": false
+      },
+      "floor_of_resolution_check": {
+        "p_floor_single_test": 4.999750012499375e-05,
+        "flat_p_below_theoretical_floor": false,
+        "nested_final_p_below_single_test_floor": false,
+        "nested_can_legitimately_beat_single_test_floor": true,
+        "explanation": "A single flat empirical permutation p-value with N=20000 draws and a +1 correction cannot be smaller than 1/(N+1) by construction -- that is a hard floor on ANY one Monte Carlo count. But Fisher's method COMBINING multiple already-floored (or near-floored) per-group p-values can legitimately produce a combined p-value far smaller than that floor -- this is not a violation of the resolution limit, it is what combining independent significant tests is supposed to do. Whether that is what actually happened here is checked explicitly below via n_groups_hit_floor and the resulting final combined p."
+      },
+      "previously_reported": {
+        "significant": false,
+        "bh_p": null
+      }
+    },
+    "choline_pc": {
+      "mapped_reactions": [
+        "MAR00636",
+        "MAR00638",
+        "MAR00653",
+        "MAR01603",
+        "MAR01606"
+      ],
+      "n_mapped_reactions": 5,
+      "present_active_per_group": {
+        "GSE89632__healthy": {
+          "n_present": 5,
+          "n_active": 1,
+          "active_reaction_ids": [
+            "MAR00653"
+          ]
+        },
+        "GSE89632__steatosis": {
+          "n_present": 5,
+          "n_active": 1,
+          "active_reaction_ids": [
+            "MAR00653"
+          ]
+        },
+        "GSE89632__NASH": {
+          "n_present": 5,
+          "n_active": 1,
+          "active_reaction_ids": [
+            "MAR00653"
+          ]
+        },
+        "GSE126848__healthy": {
+          "n_present": 5,
+          "n_active": 2,
+          "active_reaction_ids": [
+            "MAR00653",
+            "MAR01606"
+          ]
+        },
+        "GSE126848__obese_no_NAFLD": {
+          "n_present": 5,
+          "n_active": 2,
+          "active_reaction_ids": [
+            "MAR00653",
+            "MAR01606"
+          ]
+        },
+        "GSE126848__steatosis": {
+          "n_present": 5,
+          "n_active": 2,
+          "active_reaction_ids": [
+            "MAR00653",
+            "MAR01606"
+          ]
+        },
+        "GSE126848__NASH": {
+          "n_present": 5,
+          "n_active": 2,
+          "active_reaction_ids": [
+            "MAR00653",
+            "MAR01606"
+          ]
+        },
+        "GSE135251__healthy": {
+          "n_present": 5,
+          "n_active": 1,
+          "active_reaction_ids": [
+            "MAR00653"
+          ]
+        },
+        "GSE135251__steatosis": {
+          "n_present": 5,
+          "n_active": 1,
+          "active_reaction_ids": [
+            "MAR00653"
+          ]
+        },
+        "GSE135251__NASH": {
+          "n_present": 5,
+          "n_active": 2,
+          "active_reaction_ids": [
+            "MAR00653",
+            "MAR01606"
+          ]
+        }
+      },
+      "flat_design": {
+        "observed_statistic": 0.96922125125667,
+        "n_reactions_in_axis": 5,
+        "n_permutations": 20000,
+        "n_null_ge_observed": 2127,
+        "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+        "p_value": 0.1063946802659867,
+        "p_floor": 4.999750012499375e-05,
+        "hit_floor": false,
+        "bh_adjusted_p": 0.26598670066496677,
+        "significant_bh_0.05": false
+      },
+      "nested_design": {
+        "n_reactions_in_axis": 5,
+        "n_permutations_per_group": 20000,
+        "per_group": [
+          {
+            "cohort": "GSE89632",
+            "group": "healthy",
+            "observed_statistic": 0.9744799319464852,
+            "n_null_ge_observed": 2382,
+            "p_value": 0.1191440427978601,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE89632",
+            "group": "steatosis",
+            "observed_statistic": 0.967055912149099,
+            "n_null_ge_observed": 3082,
+            "p_value": 0.15414229288535572,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE89632",
+            "group": "NASH",
+            "observed_statistic": 0.9702265872708994,
+            "n_null_ge_observed": 2723,
+            "p_value": 0.13619319034048297,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE126848",
+            "group": "healthy",
+            "observed_statistic": 0.9483411955765215,
+            "n_null_ge_observed": 4717,
+            "p_value": 0.2358882055897205,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE126848",
+            "group": "obese_no_NAFLD",
+            "observed_statistic": 0.9786559430825149,
+            "n_null_ge_observed": 2072,
+            "p_value": 0.10364481775911205,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE126848",
+            "group": "steatosis",
+            "observed_statistic": 0.986079962879901,
+            "n_null_ge_observed": 1354,
+            "p_value": 0.06774661266936653,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE126848",
+            "group": "NASH",
+            "observed_statistic": 0.9747892661047096,
+            "n_null_ge_observed": 2328,
+            "p_value": 0.11644417779111045,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE135251",
+            "group": "healthy",
+            "observed_statistic": 0.9549918799783466,
+            "n_null_ge_observed": 3973,
+            "p_value": 0.19869006549672516,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE135251",
+            "group": "steatosis",
+            "observed_statistic": 0.9794292784780759,
+            "n_null_ge_observed": 1942,
+            "p_value": 0.09714514274286286,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          },
+          {
+            "cohort": "GSE135251",
+            "group": "NASH",
+            "observed_statistic": 0.9581625551001469,
+            "n_null_ge_observed": 3903,
+            "p_value": 0.1951902404879756,
+            "p_floor": 4.999750012499375e-05,
+            "hit_floor": false
+          }
+        ],
+        "per_cohort": {
+          "GSE89632": {
+            "n_groups": 3,
+            "group_p_values": [
+              0.1191440427978601,
+              0.15414229288535572,
+              0.13619319034048297
+            ],
+            "fisher_statistic": 11.981964163208428,
+            "df": 6,
+            "p_value": 0.06237237334203094
+          },
+          "GSE126848": {
+            "n_groups": 4,
+            "group_p_values": [
+              0.2358882055897205,
+              0.10364481775911205,
+              0.06774661266936653,
+              0.11644417779111045
+            ],
+            "fisher_statistic": 17.107013659086274,
+            "df": 8,
+            "p_value": 0.029013846111328512
+          },
+          "GSE135251": {
+            "n_groups": 3,
+            "group_p_values": [
+              0.19869006549672516,
+              0.09714514274286286,
+              0.1951902404879756
+            ],
+            "fisher_statistic": 11.162677667672648,
+            "df": 6,
+            "p_value": 0.08347693692456881
+          }
+        },
+        "final_fisher_statistic": 17.59559967428803,
+        "final_df": 6,
+        "p_value": 0.0073264207219675415,
+        "any_group_hit_floor": false,
+        "n_groups_hit_floor": 0,
+        "bh_adjusted_p": 0.018316051804918854,
+        "significant_bh_0.05": true
+      },
+      "floor_of_resolution_check": {
+        "p_floor_single_test": 4.999750012499375e-05,
+        "flat_p_below_theoretical_floor": false,
+        "nested_final_p_below_single_test_floor": false,
+        "nested_can_legitimately_beat_single_test_floor": true,
+        "explanation": "A single flat empirical permutation p-value with N=20000 draws and a +1 correction cannot be smaller than 1/(N+1) by construction -- that is a hard floor on ANY one Monte Carlo count. But Fisher's method COMBINING multiple already-floored (or near-floored) per-group p-values can legitimately produce a combined p-value far smaller than that floor -- this is not a violation of the resolution limit, it is what combining independent significant tests is supposed to do. Whether that is what actually happened here is checked explicitly below via n_groups_hit_floor and the resulting final combined p."
+      },
+      "previously_reported": {
+        "significant": true,
+        "bh_p": 0.012
+      }
+    }
+  },
+  "flat_design_overall": {
+    "per_axis_raw_p": {
+      "serine_glycine_shmt": 0.029148542572871357,
+      "urea_cycle": 0.23083845807709613,
+      "bcaa": 0.9449527523623819,
+      "dnl_scd1_fasn": 0.24808759562021898,
+      "choline_pc": 0.1063946802659867
+    },
+    "per_axis_bh_p": {
+      "serine_glycine_shmt": 0.14574271286435678,
+      "urea_cycle": 0.3101094945252737,
+      "bcaa": 0.9449527523623817,
+      "dnl_scd1_fasn": 0.3101094945252737,
+      "choline_pc": 0.26598670066496677
+    },
+    "axes_significant_bh_0.05": [],
+    "fisher_combined_across_5_axes": {
+      "statistic": 17.385161863624706,
+      "df": 10,
+      "p_value": 0.06626406684955921
+    }
+  },
+  "nested_design_overall": {
+    "per_axis_raw_p": {
+      "serine_glycine_shmt": 8.898391051559429e-06,
+      "urea_cycle": 0.1318867904343073,
+      "bcaa": 0.9937498837775973,
+      "dnl_scd1_fasn": 0.4450178954955043,
+      "choline_pc": 0.0073264207219675415
+    },
+    "per_axis_bh_p": {
+      "serine_glycine_shmt": 4.4491955257797144e-05,
+      "urea_cycle": 0.21981131739051216,
+      "bcaa": 0.9937498837775973,
+      "dnl_scd1_fasn": 0.5562723693693804,
+      "choline_pc": 0.018316051804918854
+    },
+    "axes_significant_bh_0.05": [
+      "serine_glycine_shmt",
+      "choline_pc"
+    ],
+    "fisher_combined_across_5_axes": {
+      "statistic": 38.775260303134594,
+      "df": 10,
+      "p_value": 2.7794920747559182e-05
+    }
+  },
+  "design_selection_note": "Both designs are reported side by side. Neither is selected as 'the' answer because no prespecified design was found in the repository to justify picking one over the other; the choice is NOT made based on which gives a more favorable (smaller) p-value, per explicit instruction.",
+  "shmt_discrepancy_source_determination": {
+    "reported_bh_p": 2.1e-05,
+    "single_flat_test_floor_1_over_Np1": 4.999750012499375e-05,
+    "flat_bh_p": 0.14574271286435678,
+    "two_level_nested_bh_p": 4.4491955257797144e-05,
+    "one_level_nested_raw_p": 4.82374309518363e-06,
+    "one_level_nested_bh_p_standalone": null,
+    "reported_value_below_single_test_floor": true,
+    "flat_breaks_floor": false,
+    "two_level_nested_breaks_floor": true,
+    "one_level_nested_breaks_floor": true,
+    "order_of_magnitude_match_two_level_nested": true,
+    "conclusion": "RESOLVED (mechanism, not exact value): the reported 2.1e-5 IS below the hard floor (1/(N+1) = 4.99975e-05) that bounds any SINGLE flat empirical permutation p-value at N=20000 draws -- confirming the request's math that a flat design cannot produce it. But a NESTED design (per-group p-values combined via Fisher's method) is not bound by that floor: combining multiple independent per-group tests amplifies significance beyond what any one Monte Carlo count could show. This audit's two-level nested (per-cohort then across-cohort) design gives SHMT a BH-adjusted p of 4.449e-05 -- itself below the single-test floor, and within the same order of magnitude as the reported 2.1e-5 (not an exact match). The one-level nested variant (all 10 groups combined directly, no per-cohort step) gives a raw p of 4.824e-06. CONCLUSION: the most likely source of the discrepancy is a NESTED Fisher-combination design (structural/aggregation choice), not a larger draw count or a parametric approximation -- but no prespecified script or document in this repository pins down the EXACT nested variant (per-cohort-then-across vs. one-level-across-all-groups, or possibly a different cohort grouping) that would reproduce 2.1e-5 precisely. That exact match cannot be traced further without a source script, which does not exist in this repository."
+  },
+  "pemt_choline_pc_seed_variance_check": {
+    "seeds_used": [
+      42,
+      123,
+      2024,
+      7,
+      99991
+    ],
+    "reported_value": 0.012,
+    "flat_design": {
+      "per_seed": [
+        {
+          "seed": 42,
+          "p_value": 0.1063946802659867,
+          "n_null_ge_observed": 2127
+        },
+        {
+          "seed": 123,
+          "p_value": 0.10924453777311134,
+          "n_null_ge_observed": 2184
+        },
+        {
+          "seed": 2024,
+          "p_value": 0.10814459277036148,
+          "n_null_ge_observed": 2162
+        },
+        {
+          "seed": 7,
+          "p_value": 0.11024448777561122,
+          "n_null_ge_observed": 2204
+        },
+        {
+          "seed": 99991,
+          "p_value": 0.10854457277136143,
+          "n_null_ge_observed": 2170
+        }
+      ],
+      "min": 0.1063946802659867,
+      "max": 0.11024448777561122,
+      "mean": 0.10851457427128644,
+      "std": 0.001277277124290647,
+      "clusters_near_reported": false
+    },
+    "nested_design": {
+      "per_seed": [
+        {
+          "seed": 42,
+          "p_value": 0.0073264207219675415
+        },
+        {
+          "seed": 123,
+          "p_value": 0.008239083229608202
+        },
+        {
+          "seed": 2024,
+          "p_value": 0.00739174903362505
+        },
+        {
+          "seed": 7,
+          "p_value": 0.008220398692600828
+        },
+        {
+          "seed": 99991,
+          "p_value": 0.007605882648802353
+        }
+      ],
+      "min": 0.0073264207219675415,
+      "max": 0.008239083229608202,
+      "mean": 0.0077567068653207946,
+      "std": 0.000397186453916976,
+      "clusters_near_reported": true
+    },
+    "interpretation": "Requested check: does re-running the FLAT-Fisher PEMT computation under different seeds explain the gap between the reported 0.012 and this audit's computed values via sampling noise alone? Flat-design p clusters tightly across seeds (see flat_design.std) but at a value far from 0.012 (flat_design.mean) -- i.e. NOT sampling noise, the flat design consistently misses 0.012 regardless of seed. The nested design (per-group -> per-cohort -> across-cohort Fisher combination) lands much closer to 0.012 across seeds -- pointing to a STRUCTURAL explanation (aggregation/design choice: nested vs. flat), not Monte Carlo variance, consistent with the same conclusion reached independently for SHMT."
+  },
+  "newly_significant_axes": {
+    "flat": [],
+    "nested": []
+  },
+  "bcaa_flag": null,
+  "status": "AUDITED -- see per-axis and per-design detail; manuscript files NOT modified",
+  "max_abs_discrepancy": 2.3491955257797146e-05,
+  "elapsed_seconds": 1.0229995250701904
+}

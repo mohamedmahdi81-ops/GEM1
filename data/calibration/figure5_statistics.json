@@ -1,0 +1,10 @@
+{
+  "wilcoxon_W": 8.0,
+  "wilcoxon_p": 0.1953125,
+  "wilcoxon_method": "auto (scipy default; resolves to exact for n=8, no ties/zeros)",
+  "mean_paired_difference_005_minus_015": 0.003562498388884644,
+  "sd_paired_difference": 0.005935071203902789,
+  "between_fold_sd_loco_floor015": 0.0372035034091463,
+  "between_fold_sd_lobo_floor015": 0.12335904848979969,
+  "spec_correction_note": "docs/MANUSCRIPT_FIGURES.md Figure 5 originally stated Wilcoxon p=0.1797 for this comparison. This script's computation from the same source data gives p=0.1953 (W=8.0 matched the original exactly, as did every effect-size number). Traced 2026-08-05: neither 09_calibration.py nor _floor_sensitivity_check.py contains a Wilcoxon call, so the original was computed ad hoc outside any script; scipy's 'exact'/'approx' (+/- continuity correction) methods were all checked and none reproduce 0.1797. Concluded a one-off arithmetic slip, not a methodology difference. The spec has been corrected to match this script's output; the qualitative conclusion ('not statistically significant') is unchanged at alpha=0.05 either way."
+}

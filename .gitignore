@@ -1,0 +1,83 @@
+# GEO raw/source data
+# Expression matrices ARE tracked, but only as gzip-compressed .csv.gz
+# (verified byte-identical to the uncompressed .csv via SHA-256; GSE135251's
+# compressed size, ~39MB, clears GitHub's 100MB per-file limit that the
+# uncompressed 123MB original did not). Only the uncompressed .csv is
+# excluded here -- this pattern does not match *.csv.gz.
+data/geo_cohorts/*expression_matrix.csv
+data/geo_cohorts/*_Gene_counts_raw.txt.gz
+data/geo_cohorts/*_family.soft.gz
+data/geo_cohorts/*_RAW.tar
+
+# Human-GEM base model (large, regenerable via scripts/01_load_base_model.py)
+models/Human-GEM.xml
+models/Human-GEM.json
+
+# Python caches / virtual environments
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+ENV/
+
+# IDE / OS files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# logs
+logs/
+audit/logs/
+*.log
+
+# temporary / debug files
+scripts/_test_*.log
+scripts/watch_imat_*.csv
+data/context_specific_models/_fastcc_consistent_set.json
+tINIT_test.lp
+audit/details/dmahdi_literal_string_search.txt
+*.tmp
+
+# backup directories
+scripts/_backups/
+data/*/_backup_pre_*/
+
+# credentials / secrets
+*.env
+*credentials*
+*api_key*
+*.pem
+
+# private manuscript/document files
+GEM1_manuscript_post-audit.docx
+JBI/
+
+# environment-specific tool config
+.claude/
+
+# generated bulk sampling intermediates (summary.csv/validation.json/manifest kept)
+data/flux_sampling/*samples.csv.gz
+
+# redundant archive bundle (contents already tracked individually elsewhere)
+GEM1_project_package.zip
+
+# Claude Code tooling config -- CLAUDE.md at this path is actually a stub for the
+# shared parent directory (D:\Mahdi), not GEM1 project documentation: it contains
+# Claude-Code-internal meta-instructions, references to a personal .claude.json,
+# and machine-specific paths (D:/Mahdi/GEM1, D:/Mahdi/ferroptosis). CLAUDE.md.bak
+# is an internal development artifact (an old, stale snapshot of GEM1's actual
+# project memory). Neither belongs in the public release.
+CLAUDE.md
+CLAUDE.md.bak
+
+# development/diagnostic scripts not required by the publication/reproducibility pipeline
+# (kept locally, just not part of the public release -- see audit/README.md Phase 6 report)
+scripts/_*.py
+!scripts/_floor_sensitivity_check.py
+scripts/_run_step7_then_step8.ps1
+scripts/diagnose_and_run.ps1

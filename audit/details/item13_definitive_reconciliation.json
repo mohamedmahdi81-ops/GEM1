@@ -1,0 +1,1316 @@
+{
+  "item": 13,
+  "description": "DEFINITIVE RECONCILIATION PASS -- single frozen methodology, supersedes all prior enrichment figures in this audit (items 8, 11, 12)",
+  "frozen_mapping": {
+    "serine_glycine_shmt": [
+      "MAR03845",
+      "MAR04792"
+    ],
+    "urea_cycle": [
+      "MAR03873",
+      "MAR03809",
+      "MAR03811",
+      "MAR03813",
+      "MAR03816",
+      "MAR08426"
+    ],
+    "bcaa": [
+      "MAR03744",
+      "MAR03747",
+      "MAR03765",
+      "MAR06923",
+      "MAR03777",
+      "MAR03778",
+      "MAR06416",
+      "MAR06419",
+      "MAR06421"
+    ],
+    "dnl_scd1": [
+      "MAR00146",
+      "MAR00147",
+      "MAR00148"
+    ],
+    "choline_pc": [
+      "MAR00636",
+      "MAR00638",
+      "MAR00653",
+      "MAR01603",
+      "MAR01606"
+    ]
+  },
+  "mapping_note": "DNL uses Table 2's current SCD1-only mapping (MAR00146/147/148), per explicit instruction -- NOT the FASN-inclusive mapping used in items 11/12.",
+  "methodology": {
+    "score_source": "calibrated_confidence_score, per-group evaluation-percentile (rank among all 12931 reactions per group, method='min')",
+    "procedure": "per-group permutation -> empirical p per axis per group -> Fisher combination directly across all 10 groups (one level) -> BH correction across 5 axes",
+    "n_permutations": 100000,
+    "seed": 42,
+    "p_value_formula": "(1 + #{null >= observed}) / (1 + N)",
+    "resolution_floor": 9.99990000099999e-06,
+    "alpha": 0.05
+  },
+  "independence_diagnostic": {
+    "correlation_matrix": [
+      [
+        1.0,
+        0.8318231980162596,
+        0.8399752836766959,
+        0.5805419695174705,
+        0.5885865425607558,
+        0.6102727611957425,
+        0.6284673535459321,
+        0.5983525063458921,
+        0.5877145881655539,
+        0.5927275025372261
+      ],
+      [
+        0.8318231980162595,
+        1.0,
+        0.8530022315380424,
+        0.5869016599698673,
+        0.599996308844486,
+        0.6052210139880954,
+        0.6229054614555163,
+        0.5793912989862022,
+        0.5929056104736549,
+        0.5886230674607325
+      ],
+      [
+        0.8399752836766959,
+        0.8530022315380424,
+        1.0,
+        0.5946348601439485,
+        0.609674503587284,
+        0.6164041041659557,
+        0.6289312695432969,
+        0.59460236544515,
+        0.6042469239854387,
+        0.5943053642543287
+      ],
+      [
+        0.5805419695174705,
+        0.5869016599698673,
+        0.5946348601439485,
+        1.0,
+        0.8238925141804424,
+        0.8122986710314083,
+        0.7808257396928824,
+        0.7908030648819333,
+        0.8030912218113415,
+        0.7870111603959828
+      ],
+      [
+        0.5885865425607558,
+        0.599996308844486,
+        0.609674503587284,
+        0.8238925141804423,
+        1.0,
+        0.808067484544141,
+        0.780785078546703,
+        0.7904009127908299,
+        0.8107192120336281,
+        0.7997489836046943
+      ],
+      [
+        0.6102727611957425,
+        0.6052210139880954,
+        0.6164041041659557,
+        0.8122986710314083,
+        0.8080674845441411,
+        1.0,
+        0.8509169421193439,
+        0.8137333547916356,
+        0.8263839126985547,
+        0.8131129197686412
+      ],
+      [
+        0.6284673535459321,
+        0.6229054614555163,
+        0.6289312695432969,
+        0.7808257396928823,
+        0.7807850785467031,
+        0.8509169421193438,
+        1.0,
+        0.7994354504560481,
+        0.8110939574220773,
+        0.7861978098388711
+      ],
+      [
+        0.5983525063458921,
+        0.5793912989862022,
+        0.59460236544515,
+        0.7908030648819332,
+        0.7904009127908299,
+        0.8137333547916357,
+        0.7994354504560481,
+        1.0,
+        0.8370050659657883,
+        0.8270036582035687
+      ],
+      [
+        0.5877145881655539,
+        0.5929056104736549,
+        0.6042469239854387,
+        0.8030912218113414,
+        0.810719212033628,
+        0.8263839126985548,
+        0.8110939574220773,
+        0.8370050659657884,
+        1.0,
+        0.8504730414339389
+      ],
+      [
+        0.5927275025372261,
+        0.5886230674607325,
+        0.5943053642543287,
+        0.7870111603959828,
+        0.7997489836046943,
+        0.8131129197686412,
+        0.7861978098388711,
+        0.8270036582035687,
+        0.8504730414339389,
+        1.0
+      ]
+    ],
+    "group_order": [
+      "GSE89632__healthy",
+      "GSE89632__steatosis",
+      "GSE89632__NASH",
+      "GSE126848__healthy",
+      "GSE126848__obese_no_NAFLD",
+      "GSE126848__steatosis",
+      "GSE126848__NASH",
+      "GSE135251__healthy",
+      "GSE135251__steatosis",
+      "GSE135251__NASH"
+    ],
+    "within_cohort_pairs": [
+      {
+        "group_i": "GSE89632__healthy",
+        "group_j": "GSE89632__steatosis",
+        "correlation": 0.8318231980162596
+      },
+      {
+        "group_i": "GSE89632__healthy",
+        "group_j": "GSE89632__NASH",
+        "correlation": 0.8399752836766959
+      },
+      {
+        "group_i": "GSE89632__steatosis",
+        "group_j": "GSE89632__NASH",
+        "correlation": 0.8530022315380424
+      },
+      {
+        "group_i": "GSE126848__healthy",
+        "group_j": "GSE126848__obese_no_NAFLD",
+        "correlation": 0.8238925141804424
+      },
+      {
+        "group_i": "GSE126848__healthy",
+        "group_j": "GSE126848__steatosis",
+        "correlation": 0.8122986710314083
+      },
+      {
+        "group_i": "GSE126848__healthy",
+        "group_j": "GSE126848__NASH",
+        "correlation": 0.7808257396928824
+      },
+      {
+        "group_i": "GSE126848__obese_no_NAFLD",
+        "group_j": "GSE126848__steatosis",
+        "correlation": 0.808067484544141
+      },
+      {
+        "group_i": "GSE126848__obese_no_NAFLD",
+        "group_j": "GSE126848__NASH",
+        "correlation": 0.780785078546703
+      },
+      {
+        "group_i": "GSE126848__steatosis",
+        "group_j": "GSE126848__NASH",
+        "correlation": 0.8509169421193439
+      },
+      {
+        "group_i": "GSE135251__healthy",
+        "group_j": "GSE135251__steatosis",
+        "correlation": 0.8370050659657883
+      },
+      {
+        "group_i": "GSE135251__healthy",
+        "group_j": "GSE135251__NASH",
+        "correlation": 0.8270036582035687
+      },
+      {
+        "group_i": "GSE135251__steatosis",
+        "group_j": "GSE135251__NASH",
+        "correlation": 0.8504730414339389
+      }
+    ],
+    "across_cohort_pairs": [
+      {
+        "group_i": "GSE89632__healthy",
+        "group_j": "GSE126848__healthy",
+        "correlation": 0.5805419695174705
+      },
+      {
+        "group_i": "GSE89632__healthy",
+        "group_j": "GSE126848__obese_no_NAFLD",
+        "correlation": 0.5885865425607558
+      },
+      {
+        "group_i": "GSE89632__healthy",
+        "group_j": "GSE126848__steatosis",
+        "correlation": 0.6102727611957425
+      },
+      {
+        "group_i": "GSE89632__healthy",
+        "group_j": "GSE126848__NASH",
+        "correlation": 0.6284673535459321
+      },
+      {
+        "group_i": "GSE89632__healthy",
+        "group_j": "GSE135251__healthy",
+        "correlation": 0.5983525063458921
+      },
+      {
+        "group_i": "GSE89632__healthy",
+        "group_j": "GSE135251__steatosis",
+        "correlation": 0.5877145881655539
+      },
+      {
+        "group_i": "GSE89632__healthy",
+        "group_j": "GSE135251__NASH",
+        "correlation": 0.5927275025372261
+      },
+      {
+        "group_i": "GSE89632__steatosis",
+        "group_j": "GSE126848__healthy",
+        "correlation": 0.5869016599698673
+      },
+      {
+        "group_i": "GSE89632__steatosis",
+        "group_j": "GSE126848__obese_no_NAFLD",
+        "correlation": 0.599996308844486
+      },
+      {
+        "group_i": "GSE89632__steatosis",
+        "group_j": "GSE126848__steatosis",
+        "correlation": 0.6052210139880954
+      },
+      {
+        "group_i": "GSE89632__steatosis",
+        "group_j": "GSE126848__NASH",
+        "correlation": 0.6229054614555163
+      },
+      {
+        "group_i": "GSE89632__steatosis",
+        "group_j": "GSE135251__healthy",
+        "correlation": 0.5793912989862022
+      },
+      {
+        "group_i": "GSE89632__steatosis",
+        "group_j": "GSE135251__steatosis",
+        "correlation": 0.5929056104736549
+      },
+      {
+        "group_i": "GSE89632__steatosis",
+        "group_j": "GSE135251__NASH",
+        "correlation": 0.5886230674607325
+      },
+      {
+        "group_i": "GSE89632__NASH",
+        "group_j": "GSE126848__healthy",
+        "correlation": 0.5946348601439485
+      },
+      {
+        "group_i": "GSE89632__NASH",
+        "group_j": "GSE126848__obese_no_NAFLD",
+        "correlation": 0.609674503587284
+      },
+      {
+        "group_i": "GSE89632__NASH",
+        "group_j": "GSE126848__steatosis",
+        "correlation": 0.6164041041659557
+      },
+      {
+        "group_i": "GSE89632__NASH",
+        "group_j": "GSE126848__NASH",
+        "correlation": 0.6289312695432969
+      },
+      {
+        "group_i": "GSE89632__NASH",
+        "group_j": "GSE135251__healthy",
+        "correlation": 0.59460236544515
+      },
+      {
+        "group_i": "GSE89632__NASH",
+        "group_j": "GSE135251__steatosis",
+        "correlation": 0.6042469239854387
+      },
+      {
+        "group_i": "GSE89632__NASH",
+        "group_j": "GSE135251__NASH",
+        "correlation": 0.5943053642543287
+      },
+      {
+        "group_i": "GSE126848__healthy",
+        "group_j": "GSE135251__healthy",
+        "correlation": 0.7908030648819333
+      },
+      {
+        "group_i": "GSE126848__healthy",
+        "group_j": "GSE135251__steatosis",
+        "correlation": 0.8030912218113415
+      },
+      {
+        "group_i": "GSE126848__healthy",
+        "group_j": "GSE135251__NASH",
+        "correlation": 0.7870111603959828
+      },
+      {
+        "group_i": "GSE126848__obese_no_NAFLD",
+        "group_j": "GSE135251__healthy",
+        "correlation": 0.7904009127908299
+      },
+      {
+        "group_i": "GSE126848__obese_no_NAFLD",
+        "group_j": "GSE135251__steatosis",
+        "correlation": 0.8107192120336281
+      },
+      {
+        "group_i": "GSE126848__obese_no_NAFLD",
+        "group_j": "GSE135251__NASH",
+        "correlation": 0.7997489836046943
+      },
+      {
+        "group_i": "GSE126848__steatosis",
+        "group_j": "GSE135251__healthy",
+        "correlation": 0.8137333547916356
+      },
+      {
+        "group_i": "GSE126848__steatosis",
+        "group_j": "GSE135251__steatosis",
+        "correlation": 0.8263839126985547
+      },
+      {
+        "group_i": "GSE126848__steatosis",
+        "group_j": "GSE135251__NASH",
+        "correlation": 0.8131129197686412
+      },
+      {
+        "group_i": "GSE126848__NASH",
+        "group_j": "GSE135251__healthy",
+        "correlation": 0.7994354504560481
+      },
+      {
+        "group_i": "GSE126848__NASH",
+        "group_j": "GSE135251__steatosis",
+        "correlation": 0.8110939574220773
+      },
+      {
+        "group_i": "GSE126848__NASH",
+        "group_j": "GSE135251__NASH",
+        "correlation": 0.7861978098388711
+      }
+    ],
+    "within_cohort_mean_correlation": 0.8246724090791013,
+    "across_cohort_mean_correlation": 0.67385269686869,
+    "within_minus_across_diff": 0.15081971221041135,
+    "welch_t_statistic": 8.015860298969988,
+    "welch_t_p_value": 6.897443306985785e-10,
+    "non_independence_evidence": true,
+    "eigenvalues": [
+      0.13755935826443363,
+      0.14632204670899648,
+      0.14795626135716383,
+      0.16510530106422422,
+      0.1712912819178771,
+      0.1857998387114738,
+      0.24328988347098957,
+      0.25705990786136446,
+      1.0986839434748783,
+      7.4469321771686
+    ],
+    "effective_n_independent_tests_li_ji": 3.454383879356522,
+    "naive_n_tests": 10,
+    "fisher_anti_conservative_flagged": true
+  },
+  "axes": {
+    "serine_glycine_shmt": {
+      "mapped_reactions": [
+        "MAR03845",
+        "MAR04792"
+      ],
+      "n_mapped_reactions": 2,
+      "per_group": [
+        {
+          "cohort": "GSE89632",
+          "group": "healthy",
+          "observed_statistic": 0.9664372438326502,
+          "n_reactions_in_axis": 2,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 6546,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.06546934530654694,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE89632",
+          "group": "steatosis",
+          "observed_statistic": 0.9734745959322558,
+          "n_reactions_in_axis": 2,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 5370,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.053709462905370944,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE89632",
+          "group": "NASH",
+          "observed_statistic": 0.9907199752532674,
+          "n_reactions_in_axis": 2,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 1825,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.018259817401825983,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE126848",
+          "group": "healthy",
+          "observed_statistic": 0.9621065656175083,
+          "n_reactions_in_axis": 2,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 7386,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.07386926130738693,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE126848",
+          "group": "obese_no_NAFLD",
+          "observed_statistic": 0.9842239579305545,
+          "n_reactions_in_axis": 2,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 3155,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.03155968440315597,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE126848",
+          "group": "steatosis",
+          "observed_statistic": 0.9800479467945248,
+          "n_reactions_in_axis": 2,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 3992,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.03992960070399296,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE126848",
+          "group": "NASH",
+          "observed_statistic": 0.9549918799783466,
+          "n_reactions_in_axis": 2,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 8765,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.08765912340876592,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE135251",
+          "group": "healthy",
+          "observed_statistic": 0.982445286520764,
+          "n_reactions_in_axis": 2,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 3500,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.035009649903500965,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE135251",
+          "group": "steatosis",
+          "observed_statistic": 0.9820586188229835,
+          "n_reactions_in_axis": 2,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 3644,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.03644963550364496,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE135251",
+          "group": "NASH",
+          "observed_statistic": 0.9624158997757327,
+          "n_reactions_in_axis": 2,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 7489,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.07489925100748993,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        }
+      ],
+      "group_p_values": [
+        0.06546934530654694,
+        0.053709462905370944,
+        0.018259817401825983,
+        0.07386926130738693,
+        0.03155968440315597,
+        0.03992960070399296,
+        0.08765912340876592,
+        0.035009649903500965,
+        0.03644963550364496,
+        0.07489925100748993
+      ],
+      "naive_fisher_statistic": 61.25045740051131,
+      "naive_df": 20,
+      "naive_combined_p": 4.553090251491199e-06,
+      "brown_correction_detail": {
+        "raw_statistic_T": 61.25045740051131,
+        "k": 10,
+        "sum_pairwise_cov": 121.9879141032783,
+        "var_T_corrected": 283.97582820655657,
+        "var_T_independent": 40.0,
+        "inflation_factor_c": 7.099395705163914,
+        "corrected_df_f": 2.817141180826493,
+        "corrected_statistic_T_over_c": 8.627559294371961,
+        "p_value": 0.02974873382299348
+      },
+      "independence_corrected_combined_p": 0.02974873382299348,
+      "n_groups_hit_permutation_floor": 0,
+      "naive_bh_adjusted_p": 2.2765451257455993e-05,
+      "naive_significant": true,
+      "independence_corrected_bh_adjusted_p": 0.08982198203846797,
+      "independence_corrected_significant": false
+    },
+    "urea_cycle": {
+      "mapped_reactions": [
+        "MAR03873",
+        "MAR03809",
+        "MAR03811",
+        "MAR03813",
+        "MAR03816",
+        "MAR08426"
+      ],
+      "n_mapped_reactions": 6,
+      "per_group": [
+        {
+          "cohort": "GSE89632",
+          "group": "healthy",
+          "observed_statistic": 0.9027144072384193,
+          "n_reactions_in_axis": 6,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 46063,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.46063539364606354,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE89632",
+          "group": "steatosis",
+          "observed_statistic": 0.8762663367102312,
+          "n_reactions_in_axis": 6,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 54908,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.5490845091549085,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE89632",
+          "group": "NASH",
+          "observed_statistic": 0.8307942154512412,
+          "n_reactions_in_axis": 6,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 67048,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.6704832951670483,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE126848",
+          "group": "healthy",
+          "observed_statistic": 0.9862346299590132,
+          "n_reactions_in_axis": 6,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 8066,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.08066919330806692,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE126848",
+          "group": "obese_no_NAFLD",
+          "observed_statistic": 0.9745572654860413,
+          "n_reactions_in_axis": 6,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 14215,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.14215857841421586,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE126848",
+          "group": "steatosis",
+          "observed_statistic": 0.9850746268656716,
+          "n_reactions_in_axis": 6,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 8542,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.08542914570854292,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE126848",
+          "group": "NASH",
+          "observed_statistic": 0.9837599566932178,
+          "n_reactions_in_axis": 6,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 9264,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.0926490735092649,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE135251",
+          "group": "healthy",
+          "observed_statistic": 0.8587116232309953,
+          "n_reactions_in_axis": 6,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 59888,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.5988840111598884,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE135251",
+          "group": "steatosis",
+          "observed_statistic": 0.9423865130307014,
+          "n_reactions_in_axis": 6,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 29844,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.2984470155298447,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE135251",
+          "group": "NASH",
+          "observed_statistic": 0.8817570180187148,
+          "n_reactions_in_axis": 6,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 52963,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.5296347036529635,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        }
+      ],
+      "group_p_values": [
+        0.46063539364606354,
+        0.5490845091549085,
+        0.6704832951670483,
+        0.08066919330806692,
+        0.14215857841421586,
+        0.08542914570854292,
+        0.0926490735092649,
+        0.5988840111598884,
+        0.2984470155298447,
+        0.5296347036529635
+      ],
+      "naive_fisher_statistic": 26.878081403922106,
+      "naive_df": 20,
+      "naive_combined_p": 0.13872906331352186,
+      "brown_correction_detail": {
+        "raw_statistic_T": 26.878081403922106,
+        "k": 10,
+        "sum_pairwise_cov": 121.9879141032783,
+        "var_T_corrected": 283.97582820655657,
+        "var_T_independent": 40.0,
+        "inflation_factor_c": 7.099395705163914,
+        "corrected_df_f": 2.817141180826493,
+        "corrected_statistic_T_over_c": 3.785967499229786,
+        "p_value": 0.2590520080845429
+      },
+      "independence_corrected_combined_p": 0.2590520080845429,
+      "n_groups_hit_permutation_floor": 0,
+      "naive_bh_adjusted_p": 0.17341132914190233,
+      "naive_significant": false,
+      "independence_corrected_bh_adjusted_p": 0.3238150101056786,
+      "independence_corrected_significant": false
+    },
+    "bcaa": {
+      "mapped_reactions": [
+        "MAR03744",
+        "MAR03747",
+        "MAR03765",
+        "MAR06923",
+        "MAR03777",
+        "MAR03778",
+        "MAR06416",
+        "MAR06419",
+        "MAR06421"
+      ],
+      "n_mapped_reactions": 9,
+      "per_group": [
+        {
+          "cohort": "GSE89632",
+          "group": "healthy",
+          "observed_statistic": 0.8043461449230531,
+          "n_reactions_in_axis": 9,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 85982,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.8598214017859821,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE89632",
+          "group": "steatosis",
+          "observed_statistic": 0.9034104090944243,
+          "n_reactions_in_axis": 9,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 60189,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.6018939810601894,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE89632",
+          "group": "NASH",
+          "observed_statistic": 0.9338024901399737,
+          "n_reactions_in_axis": 9,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 45936,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.45936540634593653,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE126848",
+          "group": "healthy",
+          "observed_statistic": 7.733353955610548e-05,
+          "n_reactions_in_axis": 9,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 100000,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 1.0,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE126848",
+          "group": "obese_no_NAFLD",
+          "observed_statistic": 7.733353955610548e-05,
+          "n_reactions_in_axis": 9,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 100000,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 1.0,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE126848",
+          "group": "steatosis",
+          "observed_statistic": 0.8722449926533138,
+          "n_reactions_in_axis": 9,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 70592,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.7059229407705923,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE126848",
+          "group": "NASH",
+          "observed_statistic": 0.6932178485809295,
+          "n_reactions_in_axis": 9,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 96210,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.96210037899621,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE135251",
+          "group": "healthy",
+          "observed_statistic": 0.7153352408939757,
+          "n_reactions_in_axis": 9,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 95151,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.951510484895151,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE135251",
+          "group": "steatosis",
+          "observed_statistic": 0.9375918335782228,
+          "n_reactions_in_axis": 9,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 44146,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.44146558534414654,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE135251",
+          "group": "NASH",
+          "observed_statistic": 0.9018637383033021,
+          "n_reactions_in_axis": 9,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 60708,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.6070839291607084,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        }
+      ],
+      "group_p_values": [
+        0.8598214017859821,
+        0.6018939810601894,
+        0.45936540634593653,
+        1.0,
+        1.0,
+        0.7059229407705923,
+        0.96210037899621,
+        0.951510484895151,
+        0.44146558534414654,
+        0.6070839291607084
+      ],
+      "naive_fisher_statistic": 6.379895073215863,
+      "naive_df": 20,
+      "naive_combined_p": 0.9982774816487183,
+      "brown_correction_detail": {
+        "raw_statistic_T": 6.379895073215863,
+        "k": 10,
+        "sum_pairwise_cov": 121.9879141032783,
+        "var_T_corrected": 283.97582820655657,
+        "var_T_independent": 40.0,
+        "inflation_factor_c": 7.099395705163914,
+        "corrected_df_f": 2.817141180826493,
+        "corrected_statistic_T_over_c": 0.898653257005423,
+        "p_value": 0.7990795791104779
+      },
+      "independence_corrected_combined_p": 0.7990795791104779,
+      "n_groups_hit_permutation_floor": 0,
+      "naive_bh_adjusted_p": 0.9982774816487183,
+      "naive_significant": false,
+      "independence_corrected_bh_adjusted_p": 0.7990795791104779,
+      "independence_corrected_significant": false
+    },
+    "dnl_scd1": {
+      "mapped_reactions": [
+        "MAR00146",
+        "MAR00147",
+        "MAR00148"
+      ],
+      "n_mapped_reactions": 3,
+      "per_group": [
+        {
+          "cohort": "GSE89632",
+          "group": "healthy",
+          "observed_statistic": 0.9832959554558812,
+          "n_reactions_in_axis": 3,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 4933,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.04933950660493395,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE89632",
+          "group": "steatosis",
+          "observed_statistic": 0.9841466243909984,
+          "n_reactions_in_axis": 3,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 4806,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.04806951930480695,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE89632",
+          "group": "NASH",
+          "observed_statistic": 0.9802799474131931,
+          "n_reactions_in_axis": 3,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 5731,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.05731942680573194,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE126848",
+          "group": "healthy",
+          "observed_statistic": 0.9865439641172377,
+          "n_reactions_in_axis": 3,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 4117,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.04117958820411796,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE126848",
+          "group": "obese_no_NAFLD",
+          "observed_statistic": 0.9613332302219473,
+          "n_reactions_in_axis": 3,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 11123,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.11123888761112388,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE126848",
+          "group": "steatosis",
+          "observed_statistic": 0.9893279715412574,
+          "n_reactions_in_axis": 3,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 3189,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.03189968100318997,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE126848",
+          "group": "NASH",
+          "observed_statistic": 0.9756399350398268,
+          "n_reactions_in_axis": 3,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 7146,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.07146928530714693,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE135251",
+          "group": "healthy",
+          "observed_statistic": 0.9754852679607146,
+          "n_reactions_in_axis": 3,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 7251,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.07251927480725193,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE135251",
+          "group": "steatosis",
+          "observed_statistic": 0.9844559585492227,
+          "n_reactions_in_axis": 3,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 4599,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.04599954000459995,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE135251",
+          "group": "NASH",
+          "observed_statistic": 0.984610625628335,
+          "n_reactions_in_axis": 3,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 4535,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.045359546404535954,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        }
+      ],
+      "group_p_values": [
+        0.04933950660493395,
+        0.04806951930480695,
+        0.05731942680573194,
+        0.04117958820411796,
+        0.11123888761112388,
+        0.03189968100318997,
+        0.07146928530714693,
+        0.07251927480725193,
+        0.04599954000459995,
+        0.045359546404535954
+      ],
+      "naive_fisher_statistic": 58.33789765914197,
+      "naive_df": 20,
+      "naive_combined_p": 1.2836128203796981e-05,
+      "brown_correction_detail": {
+        "raw_statistic_T": 58.33789765914197,
+        "k": 10,
+        "sum_pairwise_cov": 121.9879141032783,
+        "var_T_corrected": 283.97582820655657,
+        "var_T_independent": 40.0,
+        "inflation_factor_c": 7.099395705163914,
+        "corrected_df_f": 2.817141180826493,
+        "corrected_statistic_T_over_c": 8.217304694920514,
+        "p_value": 0.03592879281538719
+      },
+      "independence_corrected_combined_p": 0.03592879281538719,
+      "n_groups_hit_permutation_floor": 0,
+      "naive_bh_adjusted_p": 3.2090320509492454e-05,
+      "naive_significant": true,
+      "independence_corrected_bh_adjusted_p": 0.08982198203846797,
+      "independence_corrected_significant": false
+    },
+    "choline_pc": {
+      "mapped_reactions": [
+        "MAR00636",
+        "MAR00638",
+        "MAR00653",
+        "MAR01603",
+        "MAR01606"
+      ],
+      "n_mapped_reactions": 5,
+      "per_group": [
+        {
+          "cohort": "GSE89632",
+          "group": "healthy",
+          "observed_statistic": 0.9744799319464852,
+          "n_reactions_in_axis": 5,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 12226,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.12226877731222688,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE89632",
+          "group": "steatosis",
+          "observed_statistic": 0.967055912149099,
+          "n_reactions_in_axis": 5,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 15368,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.15368846311536885,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE89632",
+          "group": "NASH",
+          "observed_statistic": 0.9702265872708994,
+          "n_reactions_in_axis": 5,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 14206,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.14206857931420686,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE126848",
+          "group": "healthy",
+          "observed_statistic": 0.9483411955765215,
+          "n_reactions_in_axis": 5,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 23464,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.23464765352346476,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE126848",
+          "group": "obese_no_NAFLD",
+          "observed_statistic": 0.9786559430825149,
+          "n_reactions_in_axis": 5,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 10378,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.1037889621103789,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE126848",
+          "group": "steatosis",
+          "observed_statistic": 0.986079962879901,
+          "n_reactions_in_axis": 5,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 6749,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.06749932500674993,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE126848",
+          "group": "NASH",
+          "observed_statistic": 0.9747892661047096,
+          "n_reactions_in_axis": 5,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 11834,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.11834881651183488,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE135251",
+          "group": "healthy",
+          "observed_statistic": 0.9549918799783466,
+          "n_reactions_in_axis": 5,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 20744,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.20744792552074479,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE135251",
+          "group": "steatosis",
+          "observed_statistic": 0.9794292784780759,
+          "n_reactions_in_axis": 5,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 9818,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.0981890181098189,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        },
+        {
+          "cohort": "GSE135251",
+          "group": "NASH",
+          "observed_statistic": 0.9581625551001469,
+          "n_reactions_in_axis": 5,
+          "n_permutations": 100000,
+          "n_null_ge_observed": 19370,
+          "p_value_formula": "(1 + n_null_ge_observed) / (1 + n_permutations)",
+          "p_value": 0.19370806291937082,
+          "p_floor": 9.99990000099999e-06,
+          "hit_floor": false
+        }
+      ],
+      "group_p_values": [
+        0.12226877731222688,
+        0.15368846311536885,
+        0.14206857931420686,
+        0.23464765352346476,
+        0.1037889621103789,
+        0.06749932500674993,
+        0.11834881651183488,
+        0.20744792552074479,
+        0.0981890181098189,
+        0.19370806291937082
+      ],
+      "naive_fisher_statistic": 40.01153614467881,
+      "naive_df": 20,
+      "naive_combined_p": 0.004978664451855019,
+      "brown_correction_detail": {
+        "raw_statistic_T": 40.01153614467881,
+        "k": 10,
+        "sum_pairwise_cov": 121.9879141032783,
+        "var_T_corrected": 283.97582820655657,
+        "var_T_independent": 40.0,
+        "inflation_factor_c": 7.099395705163914,
+        "corrected_df_f": 2.817141180826493,
+        "corrected_statistic_T_over_c": 5.635907309065117,
+        "p_value": 0.1156164872640707
+      },
+      "independence_corrected_combined_p": 0.1156164872640707,
+      "n_groups_hit_permutation_floor": 0,
+      "naive_bh_adjusted_p": 0.008297774086425033,
+      "naive_significant": true,
+      "independence_corrected_bh_adjusted_p": 0.19269414544011784,
+      "independence_corrected_significant": false
+    }
+  },
+  "definitive_table": [
+    {
+      "axis": "serine_glycine_shmt",
+      "mapped_reactions": "MAR03845;MAR04792",
+      "raw_combined_p_naive_fisher": 4.553090251491199e-06,
+      "bh_adjusted_p_naive_fisher": 2.2765451257455993e-05,
+      "significant_naive_YN": "Y",
+      "raw_combined_p_independence_corrected": 0.02974873382299348,
+      "bh_adjusted_p_independence_corrected": 0.08982198203846797,
+      "significant_independence_corrected_YN": "N"
+    },
+    {
+      "axis": "urea_cycle",
+      "mapped_reactions": "MAR03873;MAR03809;MAR03811;MAR03813;MAR03816;MAR08426",
+      "raw_combined_p_naive_fisher": 0.13872906331352186,
+      "bh_adjusted_p_naive_fisher": 0.17341132914190233,
+      "significant_naive_YN": "N",
+      "raw_combined_p_independence_corrected": 0.2590520080845429,
+      "bh_adjusted_p_independence_corrected": 0.3238150101056786,
+      "significant_independence_corrected_YN": "N"
+    },
+    {
+      "axis": "bcaa",
+      "mapped_reactions": "MAR03744;MAR03747;MAR03765;MAR06923;MAR03777;MAR03778;MAR06416;MAR06419;MAR06421",
+      "raw_combined_p_naive_fisher": 0.9982774816487183,
+      "bh_adjusted_p_naive_fisher": 0.9982774816487183,
+      "significant_naive_YN": "N",
+      "raw_combined_p_independence_corrected": 0.7990795791104779,
+      "bh_adjusted_p_independence_corrected": 0.7990795791104779,
+      "significant_independence_corrected_YN": "N"
+    },
+    {
+      "axis": "dnl_scd1",
+      "mapped_reactions": "MAR00146;MAR00147;MAR00148",
+      "raw_combined_p_naive_fisher": 1.2836128203796981e-05,
+      "bh_adjusted_p_naive_fisher": 3.2090320509492454e-05,
+      "significant_naive_YN": "Y",
+      "raw_combined_p_independence_corrected": 0.03592879281538719,
+      "bh_adjusted_p_independence_corrected": 0.08982198203846797,
+      "significant_independence_corrected_YN": "N"
+    },
+    {
+      "axis": "choline_pc",
+      "mapped_reactions": "MAR00636;MAR00638;MAR00653;MAR01603;MAR01606",
+      "raw_combined_p_naive_fisher": 0.004978664451855019,
+      "bh_adjusted_p_naive_fisher": 0.008297774086425033,
+      "significant_naive_YN": "Y",
+      "raw_combined_p_independence_corrected": 0.1156164872640707,
+      "bh_adjusted_p_independence_corrected": 0.19269414544011784,
+      "significant_independence_corrected_YN": "N"
+    }
+  ],
+  "bcaa_framing_note": "BCAA's is_active coverage across its 9 mapped reactions x 10 groups is 11/90 (12%), far below every other axis (67-80%, except choline_pc at 30%) -- see item11's per-axis detail. Framed here explicitly as a METHODOLOGICAL DIAGNOSTIC of the consensus-gating design (most BCAA reactions are gated out of the is_active/active-reaction set before enrichment is even tested), NOT as a biological claim that BCAA metabolism is absent or unaffected in NAFLD/NASH.",
+  "supersedes": "All previously reported enrichment p-values in this audit (item 8's comparator-architecture test, item 11's calibrated-score flat/nested tests, item 12's DNL mapping reconciliation) are superseded by this table for the calibrated GEM1 score's enrichment result. Items 1-7, 9, 10 (unrelated to enrichment) are untouched and NOT superseded.",
+  "status": "DEFINITIVE",
+  "max_abs_discrepancy": "N/A -- this is the frozen definitive computation, not a reconciliation against a prior number",
+  "elapsed_seconds": 0.5910797119140625
+}

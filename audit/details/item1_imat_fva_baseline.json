@@ -1,0 +1,135 @@
+{
+  "item": 1,
+  "description": "Single-Algorithm (iMAT+FVA) external baseline, independently reconstructed",
+  "n_groups_processed": 10,
+  "n_groups_expected": 10,
+  "per_group_results": {
+    "GSE89632__healthy": {
+      "cohort": "GSE89632",
+      "group": "healthy",
+      "n_imat_active_raw": 5525,
+      "n_active_with_growth_support": 5525,
+      "fba_status": "optimal",
+      "fba_objective_value": 124.83841918186964,
+      "n_fva_reactions": 5525,
+      "elapsed_seconds": 164.92032599449158
+    },
+    "GSE89632__steatosis": {
+      "cohort": "GSE89632",
+      "group": "steatosis",
+      "n_imat_active_raw": 5354,
+      "n_active_with_growth_support": 5354,
+      "fba_status": "optimal",
+      "fba_objective_value": 124.86814837744573,
+      "n_fva_reactions": 5354,
+      "elapsed_seconds": 158.22866249084473
+    },
+    "GSE89632__NASH": {
+      "cohort": "GSE89632",
+      "group": "NASH",
+      "n_imat_active_raw": 5349,
+      "n_active_with_growth_support": 5349,
+      "fba_status": "optimal",
+      "fba_objective_value": 124.8681483774457,
+      "n_fva_reactions": 5349,
+      "elapsed_seconds": 159.0135223865509
+    },
+    "GSE126848__healthy": {
+      "cohort": "GSE126848",
+      "group": "healthy",
+      "n_imat_active_raw": 5421,
+      "n_active_with_growth_support": 5421,
+      "fba_status": "optimal",
+      "fba_objective_value": 124.86814837744569,
+      "n_fva_reactions": 5421,
+      "elapsed_seconds": 157.87299466133118
+    },
+    "GSE126848__obese_no_NAFLD": {
+      "cohort": "GSE126848",
+      "group": "obese_no_NAFLD",
+      "n_imat_active_raw": 5338,
+      "n_active_with_growth_support": 5338,
+      "fba_status": "optimal",
+      "fba_objective_value": 124.86814837744568,
+      "n_fva_reactions": 5338,
+      "elapsed_seconds": 155.42040157318115
+    },
+    "GSE126848__steatosis": {
+      "cohort": "GSE126848",
+      "group": "steatosis",
+      "n_imat_active_raw": 5688,
+      "n_active_with_growth_support": 5688,
+      "fba_status": "optimal",
+      "fba_objective_value": 124.8681483774457,
+      "n_fva_reactions": 5688,
+      "elapsed_seconds": 168.72462964057922
+    },
+    "GSE126848__NASH": {
+      "cohort": "GSE126848",
+      "group": "NASH",
+      "n_imat_active_raw": 5636,
+      "n_active_with_growth_support": 5636,
+      "fba_status": "optimal",
+      "fba_objective_value": 124.86814837744573,
+      "n_fva_reactions": 5636,
+      "elapsed_seconds": 166.0554358959198
+    },
+    "GSE135251__healthy": {
+      "cohort": "GSE135251",
+      "group": "healthy",
+      "n_imat_active_raw": 5488,
+      "n_active_with_growth_support": 5488,
+      "fba_status": "optimal",
+      "fba_objective_value": 124.86814837744568,
+      "n_fva_reactions": 5488,
+      "elapsed_seconds": 160.15310406684875
+    },
+    "GSE135251__steatosis": {
+      "cohort": "GSE135251",
+      "group": "steatosis",
+      "n_imat_active_raw": 5348,
+      "n_active_with_growth_support": 5348,
+      "fba_status": "optimal",
+      "fba_objective_value": 124.86814837744573,
+      "n_fva_reactions": 5348,
+      "elapsed_seconds": 159.76720476150513
+    },
+    "GSE135251__NASH": {
+      "cohort": "GSE135251",
+      "group": "NASH",
+      "n_imat_active_raw": 5356,
+      "n_active_with_growth_support": 5356,
+      "fba_status": "optimal",
+      "fba_objective_value": 124.8681483774457,
+      "n_fva_reactions": 5356,
+      "elapsed_seconds": 171.62009692192078
+    }
+  },
+  "baseline_biomarker_metric": {
+    "definition": "mean over (biomarker,group) of MAX evaluation-percentile (rank among all 12931 reactions, method=min) of a binary is-in-iMAT(+growth-support)-active-set score -- the only signal a naive single-algorithm+FVA workflow provides",
+    "value": 0.5552269739385971,
+    "groups_included": [
+      "GSE126848__NASH",
+      "GSE126848__healthy",
+      "GSE126848__obese_no_NAFLD",
+      "GSE126848__steatosis",
+      "GSE135251__NASH",
+      "GSE135251__healthy",
+      "GSE135251__steatosis",
+      "GSE89632__NASH",
+      "GSE89632__healthy",
+      "GSE89632__steatosis"
+    ]
+  },
+  "gem1_full_pipeline_biomarker_metric": {
+    "definition": "same aggregation rule, applied to GEM1's own calibrated_confidence_score column",
+    "value": 0.8787100765602041
+  },
+  "delta_gem1_minus_baseline": 0.32348310262160695,
+  "reported_reference_value": null,
+  "reported_reference_source": "NONE FOUND -- no script/notebook/doc in the repository defines a reported iMAT+FVA baseline number (confirmed by exhaustive search during audit setup)",
+  "max_abs_discrepancy": "N/A -- no reference value exists to diff against",
+  "status": "PASS",
+  "status_meaning": "PASS = independent reconstruction + fresh FVA completed for all 10 groups and produced internally consistent numbers. Does NOT mean 'matches a manuscript figure' -- none exists in-repo to match against.",
+  "elapsed_seconds": 1630.2405042648315
+}
