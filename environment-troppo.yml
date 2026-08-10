@@ -1,0 +1,46 @@
+# GEM1 Step 3 (context-specific model extraction) environment ONLY.
+# Must be Python 3.10 or 3.11 -- troppo's pinned dependencies (cobamp==0.2.1,
+# cobra==0.24.0, xlrd==1.2.0) predate Python 3.12's removal of distutils and
+# fail to build there. Do not merge this into environment.yml or attempt to
+# run Step 3 in the gem1-main environment.
+#
+# Package list and versions below are the VERIFIED output of
+# `pip list --format=freeze` run directly against the actual working conda
+# environment used to produce every Step-3 output in this repository (env
+# name locally: "gem1-troppo"; re-verified at Phase 11, matches the same
+# inspection from Phase 4). Nothing here is inferred or guessed.
+# Python version verified via `python --version`: 3.10.20.
+#
+# Known required fix, documented from this project's own working history:
+# optlang must be upgraded past cobamp 0.2.1's declared optlang==1.5.2 pin --
+# that pinned version's GLPK backend has two confirmed bugs that surface on
+# a model Human-GEM's size during FastCC's reversible-reaction-flipping loop
+# (TypeError in _remove_variables, IndexError in Objective._get_expression).
+# optlang==1.8.3 (pinned below) is the verified-working fix; pip will warn
+# about the declared cobamp constraint being violated -- that warning is a
+# stale/declarative pip constraint, not a real incompatibility (cobamp/troppo
+# only use optlang's generic public Model/Variable/Objective API).
+name: gem1-troppo
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - troppo==0.0.7
+      - cobamp==0.2.1
+      - cobra==0.24.0
+      - xlrd==1.2.0
+      - optlang==1.8.3
+      - GEOparse==2.0.4
+      - numpy==1.21.6
+      - pandas==1.3.5
+      - swiglpk==5.0.13
+      # Optional but effectively required for practical runtime: iMAT/tINIT
+      # (MILP-based) did not converge in practical time on Human-GEM's scale
+      # using GLPK alone in this project's working history (see
+      # docs/GEM1-roadmap-schedule.md) -- Gurobi with an academic license,
+      # plus the MIPGap/TimeLimit caps documented in
+      # scripts/03_build_context_specific_models.py, is what was actually
+      # used to produce the Step-3 outputs in this repository.
+      - gurobipy==13.0.2

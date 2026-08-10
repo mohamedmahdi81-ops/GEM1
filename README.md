@@ -57,7 +57,7 @@ GEM1/
   models/
     README.md                <- Human-GEM provenance/licensing (model files not redistributed)
   data/
-    geo_cohorts/              <- cohort sample metadata (raw expression matrices not redistributed, see below)
+    geo_cohorts/              <- cohort sample metadata + gzip-compressed expression matrices (see below)
     context_specific_models/  <- Step 3 output: per-cohort x group x algorithm active-reaction sets
     consensus_scores/         <- Step 4 output
     confidence_scores/        <- Step 5 output
@@ -74,23 +74,22 @@ GEM1/
 
 ## Installation
 
-Two separate Python environments are required (see `CLAUDE.md`/project
-documentation for the full rationale): a main environment for Steps 1-2 and
-6-13, and a dedicated environment for Step 3 (context-specific model
-extraction), which depends on `troppo` and its pinned dependencies that
-require Python 3.10/3.11.
+Two separate Python environments are required (see `docs/GEM1-roadmap-schedule.md`
+for the full rationale): a main environment for Steps 1-2 and 6-13 (and all
+`audit/` scripts), and a dedicated environment for Step 3 (context-specific
+model extraction), which depends on `troppo` and its pinned dependencies
+that require Python 3.10/3.11.
 
-Environment specifications: proposed `environment.yml` (main) and
-`environment-troppo.yml` (extraction) are being finalized separately and
-will be added to this repository once confirmed against the actual packages
-required by the release workflow.
+```bash
+conda env create -f environment.yml           # main pipeline + audit
+conda env create -f environment-troppo.yml     # Step 3 extraction only
+```
 
-Key dependencies (main environment): `cobra`, `numpy`, `pandas`, `scipy`,
-`matplotlib`, `scikit-learn`, `statsmodels`, `GEOparse`, `plotly`,
-`openpyxl`, `networkx`, `python-libsbml`, `Escher`.
-
-Key dependencies (extraction environment): `troppo`, `cobamp`, `cobra==0.24.0`,
-`xlrd==1.2.0`, `optlang`, `GEOparse`, `numpy`, `pandas`.
+Both files list exact, verified package versions (the actual output of
+`pip list --format=freeze` against the working environments used to produce
+this repository's results) — see the comments in each file for solver notes
+and known required fixes (e.g. the `optlang` upgrade needed in the troppo
+environment).
 
 A solver capable of handling both LP and MILP problems is required; the
 pipeline defaults to GLPK (bundled with `cobra`) but is documented and
@@ -122,17 +121,35 @@ publicly available GEO cohorts:
 | [GSE126848](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE126848) | RNA-seq | 57 | healthy 14 / obese (no NAFLD) 12 / steatosis 15 / NASH 16 |
 | [GSE135251](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE135251) | RNA-seq | 216 | healthy 10 / steatosis 51 / NASH 155 |
 
-**Raw GEO expression matrices are not redistributed in this repository** —
-they are large (up to ~123 MB per cohort) and are already publicly available
-directly from GEO under the accessions above. Only small, derived sample
-metadata (disease-group labels; a few KB to tens of KB per cohort) is
-included in `data/geo_cohorts/`.
+**The three GEO expression matrices ARE included in this repository**, as
+gzip-compressed files (originals are large — up to ~123 MB per cohort
+uncompressed — and GitHub enforces a 100 MB per-file limit, so the matrices
+are distributed compressed rather than omitted):
 
-To obtain the source data yourself, run `scripts/02_fetch_geo_cohorts.py`
-(which downloads each cohort via `GEOparse` using the accessions above) and
+```
+data/geo_cohorts/GSE89632_expression_matrix.csv.gz
+data/geo_cohorts/GSE126848_expression_matrix.csv.gz
+data/geo_cohorts/GSE135251_expression_matrix.csv.gz
+```
+
+Each `.csv.gz` was verified byte-identical to its original uncompressed
+`.csv` via SHA-256 hash comparison (hash of the decompressed content matches
+the hash of the original file exactly) before the uncompressed originals
+were removed from the working tree. To decompress:
+
+```bash
+gzip -dk data/geo_cohorts/GSE89632_expression_matrix.csv.gz      # -k keeps the .gz copy
+# repeat for GSE126848 / GSE135251
+```
+
+Small, derived sample metadata (disease-group labels) is also included in
+`data/geo_cohorts/` directly as plain CSV.
+
+If you would rather regenerate the matrices from scratch instead of using
+the tracked compressed copies, run `scripts/02_fetch_geo_cohorts.py` (which
+downloads each cohort via `GEOparse` using the accessions above) and
 `scripts/02b_build_rnaseq_expression_matrices.py` (which builds the
-CPM-normalized RNA-seq matrices for GSE126848/GSE135251). This reproduces
-`data/geo_cohorts/*_expression_matrix.csv` locally.
+CPM-normalized RNA-seq matrices for GSE126848/GSE135251).
 
 ### Human-GEM (base metabolic model)
 

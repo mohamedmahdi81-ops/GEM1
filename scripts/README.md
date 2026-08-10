@@ -1,62 +1,62 @@
-# GEM1 — Step 2/4/5 starter scripts
+# `scripts/` — the GEM1 pipeline
 
-A note on where this came from: I tried to actually run this pipeline in this
-cloud session, but this sandbox's network policy blocks PyPI (`pip install`)
-and GitHub raw file downloads — only a narrow allowlist of hosts is reachable
-here. So I could not install cobra/troppo/GEOparse or download Human-GEM in
-this container. If you want future sessions to actually execute GSMM code
-in the cloud sandbox rather than just producing scripts for you to run
-locally, the network policy for this environment would need to allow
-`pypi.org`, `files.pythonhosted.org`, and `raw.githubusercontent.com` — that's
-an environment setting, see https://code.claude.com/docs/en/claude-code-on-the-web
-for how egress policy is configured. Otherwise, run these three scripts on
-your own machine, where you already have Python + cobra installed.
+This directory contains GEM1's full, executed pipeline. Every script listed
+below has been run to completion, and its output is committed under `data/`
+and `results/` elsewhere in this repository. The pipeline's results have
+additionally been independently re-verified from raw data by the audit in
+`audit/` (see `audit/README.md`) — that audit is a from-scratch
+recomputation, not a re-run of these scripts, and documents exactly which
+quantities were confirmed, which were revised, and which remain open
+questions.
 
-## What's here
+## Environments
 
-1. **`01_load_base_model.py`** — downloads Human-GEM, loads it in COBRApy,
-   verifies reaction/gene/metabolite counts, sanity-checks that it grows
-   under default FBA.
-2. **`02_fetch_geo_cohorts.py`** — pulls the three selected NAFLD/MASLD
-   cohorts (GSE89632, GSE126848, GSE135251) via GEOparse and writes out a
-   sample-metadata CSV per cohort for you to hand-label with disease groups.
-3. **`03_build_context_specific_models.py`** — runs all four reconstruction
-   algorithms (FASTCORE, GIMME, iMAT, tINIT/INIT) via `troppo`, per disease
-   group, per cohort. This is Step 5 of the roadmap.
+Two separate conda environments are required — see the top-level
+`README.md` and `environment.yml` / `environment-troppo.yml` for exact,
+verified package versions. In short: Steps 1-2 and 6-13 run in the main
+environment; Step 3 (context-specific model extraction) requires a
+dedicated Python 3.10/3.11 environment because of `troppo`'s pinned
+dependencies.
 
-## Before running
+## Pipeline, in order
 
-```bash
-pip install cobra troppo GEOparse pandas numpy
-```
+| Step | Script | Purpose |
+|---|---|---|
+| 1 | `01_load_base_model.py` | Download Human-GEM, load via COBRApy, sanity-check reaction/gene/metabolite counts and default FBA feasibility. |
+| 2 | `02_fetch_geo_cohorts.py` | Fetch the three GEO cohorts (GSE89632, GSE126848, GSE135251) via `GEOparse`; write per-cohort sample metadata. |
+| 2b | `02b_build_rnaseq_expression_matrices.py` | Build CPM-normalized RNA-seq expression matrices for the two RNA-seq cohorts. |
+| 3 | `03_build_context_specific_models.py` | Extract context-specific models via four independent reconstruction algorithms (FASTCORE, GIMME, iMAT, tINIT) per cohort × disease group, using `troppo`. **Run this one in the `gem1-troppo` environment.** |
+| 4 | `04_consensus_scoring.py` | Reconstruction-algorithm consensus scoring (structural agreement across FASTCORE/iMAT/tINIT; GIMME evaluated separately). |
+| 5 | `05_confidence_engine.py` | Hierarchical confidence engine, Layer 1 (reconstruction consensus). |
+| 6 | `06_flux_analysis.py` | FBA/pFBA/FVA on each group's consensus-active reaction set. |
+| 7 | `07_flux_sampling.py` | Monte Carlo flux sampling (OptGP) for flux-uncertainty evidence. |
+| 8 | `08_perturbation_testing.py` | Monte Carlo structural perturbation robustness testing. |
+| 9 | `09_calibration.py` | Empirical weight calibration via nested LOCO/LOBO cross-validation against the literature-curated biomarker panel. |
+| 10 | `10_join_calibration_metadata.py` | Join calibrated scores with reaction metadata. |
+| 11 | `11_biomarker_ranking_by_group.py` | Per-group biomarker ranking summary. |
+| 12 | `12_figure*.py`, `12_supplementary_s1_escher_maps.py` | Manuscript figures and supplementary outputs. |
 
-`troppo` was **not** in your original install list (you installed cobra,
-escher, GEOparse, etc., but not troppo/corda) — the roadmap's Step 5 needs it
-for GIMME/iMAT/FASTCORE/INIT.
+Long-running steps (3, 7, 8) were run as detached background processes so
+they survive terminal closure — see the in-script documentation and
+`docs/GEM1-roadmap-schedule.md` for the exact launch pattern used during
+development, and `audit/run_sequential.ps1` for a working example of
+chaining multiple long steps sequentially (required on memory-constrained
+machines — running these concurrently can exhaust available RAM/page file).
 
-## Run order
+## `_floor_sensitivity_check.py`
 
-```bash
-python 01_load_base_model.py
-python 02_fetch_geo_cohorts.py
-# --> open data/geo_cohorts/*_sample_metadata.csv, add a 'disease_group'
-#     column by hand for each sample (healthy / steatosis / NASH / fibrosis)
-python 03_build_context_specific_models.py
-```
+A standalone sensitivity-analysis script (not part of the main numbered
+sequence) that reruns Step 9's calibration weight grid search at alternative
+floor values (0.05, 0.0) instead of the production floor (0.15). Its output,
+`data/calibration/floor_sensitivity_results.json`, is a real, cited result
+(see `docs/MANUSCRIPT_FIGURES.md`) — kept in the public release for that
+reason, unlike the other one-off diagnostic/dev scripts used during
+development (not included in this repository; see `.gitignore`).
 
-## Known gaps to close before trusting the output
+## Known open items
 
-- **Gene ID mapping**: Human-GEM genes are identified by Ensembl/Entrez IDs
-  (check `[g.id for g in model.genes][:5]` after Step 1). GSE89632 is a
-  probe-level Illumina microarray and GSE126848/GSE135251 are RNA-seq —
-  each needs its own probe/gene-ID -> model-gene-ID mapping before the
-  expression scores in Step 5 are meaningful. This script does not do that
-  mapping for you.
-- **troppo API drift**: the exact `ReconstructionWrapper` call signatures in
-  `03_build_context_specific_models.py` are correct as of troppo's public
-  example notebooks at the time this was written, but I could not run this
-  script to confirm against your installed troppo version (network-blocked
-  in this session). Test one cohort/group/algorithm combination first.
-- **GSE135251 sample count**: I could not verify the exact current sample
-  count for this series from this sandbox; the fetch script will print it —
-  record it in the novelty dossier once you have it.
+See `audit/README.md` for a full, itemized account of what has and hasn't
+been independently re-verified, including several manuscript-adjacent
+figures that could not be traced to any script in this repository (treated
+as open findings, not silently assumed correct) and a documented weight-
+calibration instability finding (items 14/16/17 in the audit).
