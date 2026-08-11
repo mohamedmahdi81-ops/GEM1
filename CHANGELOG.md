@@ -6,6 +6,11 @@ This project has not yet been formally released on GitHub or archived on
 Zenodo. This changelog documents the state of the codebase as prepared for
 that eventual release, not a published version history.
 
+## [1.0.1] - 2026-08-11
+
+- Corrected author name and title/abstract metadata in CITATION.cff;
+  removed tool-specific references from code comments and documentation.
+
 ## [Unreleased] — Manuscript / research release preparation
 
 This is the current manuscript/research release preparation state of GEM1,

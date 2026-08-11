@@ -17,10 +17,9 @@ authors:
     given-names: "Mohammed Mahdi"
     email: "mohamedmahdi81@kus.edu.iq"
 license: MIT
-version: "1.0.0"
+version: "1.0.1"
 repository-code: "https://github.com/mohamedmahdi81-ops/GEM1"
-# version above reflects the release-preparation target (see CHANGELOG.md's
-# [Unreleased] entry) -- no git tag or GitHub Release has been created yet.
+# version above corresponds to git tag v1.0.1 (see CHANGELOG.md's [1.0.1] entry).
 # doi: (not included -- no Zenodo DOI has been minted yet; add once archived)
 keywords:
   - genome-scale metabolic modeling
