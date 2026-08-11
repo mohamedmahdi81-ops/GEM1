@@ -68,18 +68,18 @@ GSMM workflow?"
 - Pipeline step producing these statistics: N/A (figure depicts Steps 1–11 collectively; no single step's statistics are shown here)
 
 **Reproducibility**:
-- Pipeline stage: All (Steps 1–11)
-- Generation script: **Not yet implemented.** Step 12 ("Visualization & confidence reporting") is listed as Pending in `docs/GEM1-roadmap-schedule.md`; no figure-rendering script exists anywhere in `scripts/` (confirmed via repo-wide search for figure/plot/viz-named files — none found).
+- Pipeline stage: All (Steps 1–11), rendered by Step 12
+- Generation script: `scripts/12_figure1_overview.py` (confirmed exists).
 - Input files: see table above
 - Manifest version: no single versioned pipeline manifest exists; each step has its own dated manifest CSV (see table above). Most recent regeneration batch spans 2026-07-23 (Step 5 re-extraction) through 2026-07-30 (Step 11 calibration).
 - Model version: `Human-GEM.json`'s own `version` field = `1`; no separate upstream release tag is recorded in this repo beyond the reaction/metabolite/gene counts confirmed directly against the local model file (12,931 / 8,461 / 2,848 — all confirmed to match the local file exactly).
 - Calibration version: production weights `(w1=0.15, w2=0.15, w3=0.70)`, fixed 2026-07-30 (`data/calibration/calibration_weights_and_validation.json`).
-- Output directory: N/A (no figure output exists yet)
-- Verification status: Underlying Steps 1–11 outputs independently re-audited at multiple points (see `audit/README.md` and `scripts/README.md` for the full audit trail). The figure itself has not been generated or verified, since it doesn't exist yet.
+- Output directory: `results/figures/figure1_overview.png`
+- Verification status: Underlying Steps 1–11 outputs independently re-audited at multiple points (see `audit/README.md` and `scripts/README.md` for the full audit trail). The figure file itself exists at the path above; its content has not been separately reviewed as part of this document.
 
 **Caption outline**: "Overview of the GEM1 pipeline. (A) Four-stage workflow from raw transcriptomic cohorts through context-specific reconstruction (four independent algorithms), uncertainty quantification (flux sampling and perturbation robustness), and a hierarchical, empirically-calibrated confidence engine, applied here to three independent NAFLD/MASLD cohorts. (B) Structure of the confidence engine's evidence layers."
 
-**Dependencies**: Steps 1–11 all complete (confirmed above); Step 12 (figure generation itself) not started.
+**Dependencies**: Steps 1–11 all complete (confirmed above); Step 12 figure generation complete (`scripts/12_figure1_overview.py`).
 
 ---
 
@@ -362,7 +362,7 @@ metabolic network context.
 
 **Input datasets / input files**: Same calibrated-score outputs as Figures 3-5; the 5 biomarker pathways already mapped to specific reaction IDs in `docs/STEP11_BIOMARKER_MAPPING.md` are the natural candidates for "representative pathway visualizations" (e.g. urea cycle, serine/glycine one-carbon metabolism).
 
-**Analysis scripts**: **None exist.** Confirmed by direct check: `import escher` succeeds in the `GEM1` conda environment (version 1.8.1 installed, matching the environment setup documented in `environment.yml`), but a repo-wide search found zero files referencing Escher, pathway maps, or visualization of any kind. Step 12 (Visualization & confidence reporting) is genuinely not started — this is not an oversight in this document, it's the actual current state of the repository.
+**Analysis scripts**: `scripts/12_supplementary_s1_escher_maps.py` (confirmed exists; builds two hand-laid-out Escher maps — urea cycle and serine/glycine one-carbon metabolism/SHMT — for the GSE135251 healthy-vs-NASH comparison, per the script's own docstring). `import escher` succeeds in the `GEM1` conda environment (version 1.8.1 installed, matching the environment setup documented in `environment.yml`).
 
 **Panel layout** (proposed): One or two Escher map panels (e.g., urea cycle; serine/glycine one-carbon metabolism), reactions colored/sized by `calibrated_confidence_score`, using Human-GEM's existing map definitions if available in the installed Escher package, or a custom map built from the relevant biomarker's mapped reaction IDs if not.
 
@@ -376,18 +376,18 @@ metabolic network context.
 - Pipeline step producing these statistics: N/A (the underlying scores come from Step 11, but no new statistic is computed for this figure itself)
 
 **Reproducibility**:
-- Pipeline stage: Step 11 (data source); Step 12 (rendering — not started)
-- Generation script: None exists yet.
+- Pipeline stage: Step 11 (data source); Step 12 (rendering — complete)
+- Generation script: `scripts/12_supplementary_s1_escher_maps.py`.
 - Input files: `data/calibration/all_groups_calibrated.csv`, `docs/STEP11_BIOMARKER_MAPPING.md`
 - Manifest version: N/A (no figure manifest exists)
 - Model version: `Human-GEM.json` version `1`
 - Calibration version: `(0.15, 0.15, 0.70)`, 2026-07-30
-- Output directory: N/A
-- Verification status: **Escher (v1.8.1) confirmed installed and importable in the `GEM1` conda environment** — the tooling is available, but zero implementation work has been done. This figure is entirely unbuilt; nothing here should be read as "in progress."
+- Output directory: `results/figures/escher_html/` (per-pathway `.html`/`.png` pairs) and `results/figures/supplementary_s1_escher_maps.png` (combined figure)
+- Verification status: **Escher (v1.8.1) confirmed installed** in the `GEM1` conda environment (matching `environment.yml`). The figure files exist at the output paths above; their content has not been separately reviewed as part of this document.
 
 **Caption outline**: "Escher pathway map(s) showing calibrated confidence scores overlaid on [urea cycle / one-carbon metabolism], illustrating that GEM1's confidence estimates map onto biologically coherent, literature-recognized pathways rather than scattered, uninterpretable reactions."
 
-**Dependencies**: Step 11 complete (data ready); Step 12 (Escher rendering script) does not exist and would need to be written from scratch.
+**Dependencies**: Step 11 complete (data ready); Step 12 (Escher rendering script) complete (`scripts/12_supplementary_s1_escher_maps.py`).
 
 ---
 
