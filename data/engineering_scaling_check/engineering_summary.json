@@ -1,0 +1,28 @@
+{
+  "group": "GSE126848/obese_no_NAFLD",
+  "n_candidates_full_network": 3538,
+  "M_eng": 5,
+  "magnitude": 0.3,
+  "tau": 1e-06,
+  "seed": 999001,
+  "total_wall_clock_s": 358.1051802635193,
+  "total_solves": 12377,
+  "n_cold_solves": 5,
+  "n_warm_solves": 12372,
+  "mean_cold_solve_time_s": 0.07927608489990234,
+  "mean_warm_solve_time_s": 0.028830329924002845,
+  "sd_warm_solve_time_s": 0.0025096855116209776,
+  "mean_eligible_fraction": 0.6993781797625778,
+  "sd_eligible_fraction": 0.008943845316704939,
+  "n_cold_nonoptimal": 0,
+  "n_warm_nonoptimal": 0,
+  "n_monotonicity_violations": 0,
+  "worst_violation_magnitude": 0.0,
+  "storage_bytes": {
+    "cold_solves.csv": 327,
+    "warm_solves.csv.gz": 174279,
+    "background_summary.csv": 542
+  },
+  "total_storage_bytes": 175148,
+  "bytes_per_warm_row_compressed": 14.086566440349175
+}

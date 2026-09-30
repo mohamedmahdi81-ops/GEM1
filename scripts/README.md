@@ -30,8 +30,8 @@ dependencies.
 | 5 | `05_confidence_engine.py` | Hierarchical confidence engine, Layer 1 (reconstruction consensus). |
 | 6 | `06_flux_analysis.py` | FBA/pFBA/FVA on each group's consensus-active reaction set. |
 | 7 | `07_flux_sampling.py` | Monte Carlo flux sampling (OptGP) for flux-uncertainty evidence. |
-| 8 | `08_perturbation_testing.py` | Monte Carlo structural perturbation robustness testing. |
-| 9 | `09_calibration.py` | Empirical weight calibration via nested LOCO/LOBO cross-validation against the literature-curated biomarker panel. |
+| 8 | `08_perturbation_testing.py` | **Superseded.** Original (unpaired) Monte Carlo structural perturbation robustness testing — see "Current method: paired-counterfactual perturbation" below for its replacement. |
+| 9 | `09_calibration.py` | **Superseded.** Empirical weight calibration (0.15/0.15/0.70) via nested LOCO/LOBO cross-validation against the literature-curated biomarker panel — suspended, see below. |
 | 10 | `10_join_calibration_metadata.py` | Join calibrated scores with reaction metadata. |
 | 11 | `11_biomarker_ranking_by_group.py` | Per-group biomarker ranking summary. |
 | 12 | `12_figure*.py`, `12_supplementary_s1_escher_maps.py` | Manuscript figures and supplementary outputs. |
@@ -42,6 +42,29 @@ they survive terminal closure — see the in-script documentation and
 development, and `audit/run_sequential.ps1` for a working example of
 chaining multiple long steps sequentially (required on memory-constrained
 machines — running these concurrently can exhaust available RAM/page file).
+
+## Current method: paired-counterfactual perturbation
+
+Replaces Step 8's unpaired estimator (found not to provide reproducible
+reaction-level rankings — see `audit/item3_flux_sampling_perturbation.py`,
+Spearman ~0.005 between independent replicates) and does not feed into
+Step 9's suspended composite score. Reuses Steps 1-6's outputs directly. See
+the top-level `README.md`'s "Current method" section for the full
+methodology, frozen-parameter list, and production summary statistics.
+
+| Script | Purpose |
+|---|---|
+| `08b_paired_perturbation_production.py` | Frozen-specification (M=800, TAU=1e-6, magnitude=0.30, obj_frac=0.99) paired-counterfactual production run. One invocation per `cohort:group` (10 total); checkpointed/resumable. |
+| `09_paired_perturbation_pilot.py` | 44-reaction curated-subset pilot preceding the full-network production run; configurable `--n-backgrounds`/`--seed` for the pilot's own convergence checks. Uses `proposed_pilot_reaction_subset_v2.csv`. |
+| `stage2_convergence_pilot.py` | Follow-up investigation of how many Monte Carlo trials the *old* (Step 8) estimator needs for a stable per-reaction estimate, given the reproducibility failure the audit found. Motivates the paired-counterfactual redesign; does not itself produce the redesign. |
+| `_paired_perturbation_synthesis.py` | Read-only, post-production (all 10 groups ACCEPTED) cross-group synthesis tables -> `data/paired_perturbation_synthesis/`. |
+| `_stats_core_analysis.py` | Read-only advanced statistics: sparsity/occurrence, positive-effect magnitude, eligibility-aware recurrence permutation nulls, cross-cohort reproducibility, biomarker-reaction permutation tests, Monte Carlo precision, pilot-vs-production Bland-Altman -> `data/paired_perturbation_statistics/tables/`. Full methodology, exact results, and every test's assumptions/limitations are written out in `data/paired_perturbation_statistics/STATISTICS_REPORT.md`. |
+| `_fig_A_architecture.py` ... `_fig_F_pilot_mc.py` | One script per manuscript figure (A-F), each reading only from `_stats_core_analysis.py`'s tables (or `reaction_scores.csv` directly) and writing PDF+SVG+PNG plus a source-data CSV to `data/paired_perturbation_statistics/figures/`. |
+
+These are kept in the public release despite the `_`-prefix dev-script
+naming convention used elsewhere in this directory (see `.gitignore`'s
+explicit exceptions) — same rationale as `_floor_sensitivity_check.py`
+below: real, cited manuscript outputs, not one-off diagnostics.
 
 ## `_floor_sensitivity_check.py`
 

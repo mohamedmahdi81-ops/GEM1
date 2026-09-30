@@ -1,0 +1,27 @@
+{
+  "cohort": "GSE89632",
+  "group": "NASH",
+  "seed": 800008,
+  "config": {
+    "TAU": 1e-06,
+    "M": 800,
+    "magnitude": 0.3,
+    "obj_frac": 0.99,
+    "legacy_weights_suspended": true
+  },
+  "n_dropout_candidates": 3512,
+  "provenance": {
+    "git_commit": "bc0489171e2c42cf82d4182f3dec6df6dcb2f161",
+    "script": "scripts\\08b_paired_perturbation_production.py",
+    "created_utc": "2026-09-26T15:32:51Z",
+    "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:26:47) [MSC v.1942 64 bit (AMD64)]",
+    "numpy": "2.5.1",
+    "pandas": "2.3.3",
+    "active_set_source": "data/consensus_scores/GSE89632__NASH__consensus.json",
+    "growth_support_source": "data/context_specific_models/minimal_growth_support.json"
+  },
+  "monte_carlo_uncertainty_scope": "SE/CI reflect background-sampling (Monte Carlo) variance conditional on the fixed, already-constructed context-specific group model (fixed active_set, fixed growth_support, fixed consensus algorithm output). Does NOT capture model-construction, consensus-algorithm, or cross-cohort uncertainty.",
+  "status": "ACCEPTED",
+  "rejection_reasons": [],
+  "completed_at_utc": "2026-09-27T07:19:04Z"
+}

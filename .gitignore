@@ -63,8 +63,45 @@ JBI/
 # generated bulk sampling intermediates (summary.csv/validation.json/manifest kept)
 data/flux_sampling/*samples.csv.gz
 
+# paired-counterfactual production: raw per-background x per-reaction pair
+# shards (~335MB across all 10 groups, ~20.7M rows) AND the 8,000 individual
+# per-background summary CSVs (~2.7MB, 800 files/group x 10 groups) are both
+# bulk Monte-Carlo-draw-level intermediates -- excluded, same policy as
+# data/flux_sampling/*samples.csv.gz above. The derived reaction_scores.csv
+# (final per-group output), manifest.json, and checkpoint.json are kept.
+data/paired_perturbation_production/*/pairs/
+data/paired_perturbation_production/*/backgrounds/
+
+# paired-counterfactual pilot: same policy, raw per-seed pair/background
+# shards excluded, derived reaction_scores.csv and small summary CSVs kept.
+data/paired_perturbation_pilot/*__pairs.csv.gz
+data/paired_perturbation_pilot/*__backgrounds.csv
+
+# old (superseded) unpaired-perturbation N-ladder convergence sweep: raw
+# intermediate only. The reproducibility-failure finding it investigates is
+# independently documented in audit/ (already tracked); this raw sweep data
+# is not itself a manuscript result.
+data/perturbation_pilot/
+
 # redundant archive bundle (contents already tracked individually elsewhere)
 GEM1_project_package.zip
+
+# ad hoc local backup/handoff artifacts -- not part of the repository
+# structure (zip/rar snapshots of directories already tracked individually;
+# a personal cross-session continuity note, not project documentation).
+# No legitimate repository output is a .zip/.rar, so excluded globally --
+# new ones have kept appearing during this session (e.g.
+# data/paired_perturbation_statistics/tables.zip,
+# .../figures/figF_source_data.zip), apparently created outside this
+# session's own actions.
+*.zip
+*.rar
+GEM1_handoff.md
+
+# stray file with a malformed/truncated name (embedded commas, ".not.txt"
+# suffix) -- appears to be an accidental duplicate of
+# scripts/proposed_pilot_reaction_subset_v2.csv, not a real input
+scripts/reaction_id,component,old_score,not.txt
 
 # Claude Code tooling config -- CLAUDE.md at this path is actually a stub for the
 # shared parent directory (D:\Mahdi), not GEM1 project documentation: it contains
@@ -84,5 +121,18 @@ KICKOFF_PROMPT.md
 # (kept locally, just not part of the public release -- see audit/README.md Phase 6 report)
 scripts/_*.py
 !scripts/_floor_sensitivity_check.py
+# paired-counterfactual post-production statistics/figure package: real,
+# cited manuscript outputs (data/paired_perturbation_statistics/,
+# data/paired_perturbation_synthesis/), same rationale as
+# _floor_sensitivity_check.py above -- kept despite the underscore-prefix
+# dev-script naming convention.
+!scripts/_paired_perturbation_synthesis.py
+!scripts/_stats_core_analysis.py
+!scripts/_fig_A_architecture.py
+!scripts/_fig_B_positive_effect.py
+!scripts/_fig_C_recurrence_null.py
+!scripts/_fig_D_cross_cohort.py
+!scripts/_fig_E_biomarker_heatmap.py
+!scripts/_fig_F_pilot_mc.py
 scripts/_run_step7_then_step8.ps1
 scripts/diagnose_and_run.ps1

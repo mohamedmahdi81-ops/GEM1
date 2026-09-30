@@ -1,0 +1,2 @@
+method,n_groups_combined,combined_Z,combined_p_two_sided
+Stouffer combination of per-group eligibility-aware permutation z-scores (equal weight),10,-0.5281906905874054,0.5973669901110135

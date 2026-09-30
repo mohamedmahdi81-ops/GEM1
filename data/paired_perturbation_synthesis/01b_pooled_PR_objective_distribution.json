@@ -1,0 +1,13 @@
+{
+  "n_reaction_rows_pooled_across_10_groups": 37025,
+  "mean": 0.00422807844631557,
+  "std": 0.08003109991551927,
+  "min": -4.787096994799616e-13,
+  "p10": -1.7128516685154475e-14,
+  "p25": -6.273260189593677e-15,
+  "median": 1.7544265080496302e-15,
+  "p75": 1.4840117654620544e-14,
+  "p90": 1.01157705065503e-12,
+  "max": 4.457588856442859,
+  "note": "Pooled = every (reaction, group) row concatenated, unweighted by group; NOT deduplicated by reaction_id."
+}
